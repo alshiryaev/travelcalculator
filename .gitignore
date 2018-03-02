@@ -22,4 +22,4 @@ yarn-error.log*
 server/.vs
 server/TravelCalculator/bin
 server/TravelCalculator/obj
-server/TravelCalculator/
+server/TravelCalculator/wwwroot
