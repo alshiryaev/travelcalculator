@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+import './css/normalize.css';
+import './css/App.css';
 import {Route, Link } from 'react-router-dom';
 import routes from '../routes';
 
@@ -14,6 +15,9 @@ class App extends Component {
             <li><Link to="/About">О нас</Link></li>
           </ul>
         </header>
+
+        {/* Здесь вставляется основной контент на каждой странице */}
+
         {routes.map((route, index) => (
           <Route
             key={index}
@@ -22,6 +26,13 @@ class App extends Component {
             component={route.component}
           />
         ))}
+
+        {/* Основной контент заканчивается */}
+
+        <footer>
+          &copy; Yuretc & Alex Perm 2018
+        </footer>
+
       </div>
     );
   }

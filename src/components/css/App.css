@@ -1,0 +1,16 @@
+
+header {
+  height: 100px;
+  border-bottom: 1px solid black;
+}
+
+body{
+  width: 100%;
+  min-height: 100vh;
+  background: url('../img/DSC_3967-min.JPG') no-repeat top center;
+  background-size: cover;
+}
+
+header{
+  background: rgba(0, 0, 0, .2)
+}
