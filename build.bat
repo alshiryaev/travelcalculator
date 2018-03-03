@@ -1,0 +1,1 @@
+npm run build && xcopy build server\TravelCalculator\wwwroot /s /y
