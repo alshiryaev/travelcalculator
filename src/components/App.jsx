@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './css/normalize.css';
 import './css/App.css';
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import routes from '../routes';
 
 class App extends Component {
@@ -10,11 +10,13 @@ class App extends Component {
       <div>
         <div className="wrapper">
           <header>
+            <nav>
             <ul>
-              <li><Link to="/">Главная</Link></li>
-              <li><Link to="/Calculator">Калькулятор</Link></li>
-              <li><Link to="/About">О нас</Link></li>
+                <li><NavLink exact className="nav-link" activeClassName="active" to="/">Главная</NavLink ></li>
+                <li><NavLink className="nav-link" activeClassName="active" to="/Calculator">Калькулятор</NavLink ></li>
+                <li><NavLink className="nav-link" activeClassName="active" to="/About">О нас</NavLink ></li>
             </ul>
+            </nav>
           </header>
 
           {/* Здесь вставляется основной контент на каждой странице */}
