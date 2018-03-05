@@ -1,6 +1,7 @@
 import Home from './components/Home/Home';
 import Calculator from './components/Calculator/Calculator';
 import About from './components/About/About';
+import foodTable from './components/Foodtable/Foodtable';
 
 const routes = [
     {
@@ -15,6 +16,10 @@ const routes = [
     {
         path:'/about',
         component:About
+    },
+    {
+        path:'/foodTable',
+        component:foodTable
     }
 ];
 
