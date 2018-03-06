@@ -1,13 +1,17 @@
 .wrapper_table{
-    width: 600px;
+    width: 100%;
     margin: 30px auto;
 }
 
 .food__table{
     display: table;
     width: 100%;
-    background-color: rgba(010, 010, 010, 0.5)
+    background-color: rgba(010, 010, 010, 0.5);
+    border-top: 1px solid #111111;
+    border-left: 1px solid #111111;
 }
+
+
 
 .food__table_row{
     display: table-row;
@@ -15,20 +19,31 @@
     text-align: center;
     padding: 10px;
     height: 38px;
+    border-bottom: 1px solid #111111;
+}
+
+.food__table_row:last-child{
+    border-bottom: none;
 }
 
 .food__table_cell{
     display: table-cell;
     width: 100%;
     text-align: center;
+    vertical-align: middle;
     padding: 10px;
-    border: 1px solid #111111;
+    border-bottom: 1px solid #111111;
+    border-right: 1px solid #111111;
+}
+
+.cell-0{
+    width: 90px;
 }
 
 .cell-1{
-    width: 360px;
+    width: 420px;
 }
 
 .cell-2{
-    width: 240px;
+    width: 120px;
 }
