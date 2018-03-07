@@ -1,7 +1,7 @@
 import Home from './components/Home/Home';
 import Calculator from './components/Calculator/Calculator';
 import About from './components/About/About';
-import foodTable from './components/Foodtable/Foodtable';
+import Food from './components/Food/Food';
 
 const routes = [
     {
@@ -18,8 +18,8 @@ const routes = [
         component:About
     },
     {
-        path:'/foodTable',
-        component:foodTable
+        path:'/Food',
+        component:Food
     }
 ];
 
