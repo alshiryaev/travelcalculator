@@ -1,9 +1,9 @@
 D:\Projects\travelcalculator\server\TravelCalculator.Domain\bin\Debug\netcoreapp2.0\TravelCalculator.Domain.deps.json
 D:\Projects\travelcalculator\server\TravelCalculator.Domain\bin\Debug\netcoreapp2.0\TravelCalculator.Domain.dll
 D:\Projects\travelcalculator\server\TravelCalculator.Domain\bin\Debug\netcoreapp2.0\TravelCalculator.Domain.pdb
-D:\Projects\travelcalculator\server\TravelCalculator.Domain\obj\Debug\netcoreapp2.0\TravelCalculator.Domain.csprojResolveAssemblyReference.cache
 D:\Projects\travelcalculator\server\TravelCalculator.Domain\obj\Debug\netcoreapp2.0\TravelCalculator.Domain.csproj.CoreCompileInputs.cache
 D:\Projects\travelcalculator\server\TravelCalculator.Domain\obj\Debug\netcoreapp2.0\TravelCalculator.Domain.AssemblyInfoInputs.cache
 D:\Projects\travelcalculator\server\TravelCalculator.Domain\obj\Debug\netcoreapp2.0\TravelCalculator.Domain.AssemblyInfo.cs
 D:\Projects\travelcalculator\server\TravelCalculator.Domain\obj\Debug\netcoreapp2.0\TravelCalculator.Domain.dll
 D:\Projects\travelcalculator\server\TravelCalculator.Domain\obj\Debug\netcoreapp2.0\TravelCalculator.Domain.pdb
+D:\Projects\travelcalculator\server\TravelCalculator.Domain\obj\Debug\netcoreapp2.0\TravelCalculator.Domain.csprojResolveAssemblyReference.cache

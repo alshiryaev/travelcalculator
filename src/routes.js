@@ -1,7 +1,7 @@
 import Home from './components/Home/Home';
 import Calculator from './components/Calculator/Calculator';
 import About from './components/About/About';
-import Food from './components/Food/Food';
+import ProductsTable from './components/ProductsTable/ProductsTable';
 
 const routes = [
     {
@@ -14,13 +14,14 @@ const routes = [
         component:Calculator
     },
     {
-        path:'/about',
-        component:About
+        path:'/products',
+        component:ProductsTable
     },
     {
-        path:'/Food',
-        component:Food
+        path:'/about',
+        component:About
     }
+   
 ];
 
 export default routes;

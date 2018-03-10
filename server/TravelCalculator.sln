@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelCalculator", "TravelCalculator\TravelCalculator.csproj", "{45F4C02C-C1D3-46CE-A0AD-CD8A5C441DB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelCalculator.Domain", "TravelCalculator.Domain\TravelCalculator.Domain.csproj", "{AEA36C7F-9FFC-4381-AFE1-0A346AE224B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelCalculator.Domain", "TravelCalculator.Domain\TravelCalculator.Domain.csproj", "{AEA36C7F-9FFC-4381-AFE1-0A346AE224B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

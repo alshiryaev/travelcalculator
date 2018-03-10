@@ -23,3 +23,5 @@ server/.vs
 server/TravelCalculator/bin
 server/TravelCalculator/obj
 server/TravelCalculator/wwwroot/
+server/TravelCalculator.Domain/obj
+server/TravelCalculator.Domain/bin

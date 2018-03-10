@@ -13,9 +13,9 @@ class App extends Component {
             <nav>
             <ul>
                 <li><NavLink exact className="nav-link" activeClassName="active" to="/">Главная</NavLink ></li>
-                <li><NavLink className="nav-link" activeClassName="active" to="/Calculator">Калькулятор</NavLink ></li>
-                <li><NavLink className="nav-link" activeClassName="active" to="/About">О нас</NavLink ></li>
-                <li><NavLink className="nav-link" activeClassName="active" to="/Food">Продукты</NavLink ></li>
+                <li><NavLink className="nav-link" activeClassName="active" to="/calculator">Калькулятор</NavLink ></li>
+                <li><NavLink className="nav-link" activeClassName="active" to="/products">Продукты</NavLink ></li>
+                <li><NavLink className="nav-link" activeClassName="active" to="/about">О нас</NavLink ></li>               
             </ul>
             </nav>
           </header>
