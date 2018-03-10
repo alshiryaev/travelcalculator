@@ -34,7 +34,15 @@ class App extends Component {
           {/* Основной контент заканчивается */}
 
           <footer>
-            &copy; Yuretc & Alex Perm 2018
+            <div className="social">
+            Мы в социальных сетях:
+              <ul>
+                <li><a className="href-box" href="https://vk.com/alexpl"> </a><div className="social-links__logo"></div>Alexey Shiryev</li>
+                <li><a className="href-box" href="https://vk.com/id7339163"> </a><div className="social-links__logo"></div>Yuriy Pinegin</li>
+                {/* <li><a href="https://vk.com/ikuchev">Dmitriy Kuchev</a></li> */}
+              </ul>
+            </div>
+            <div>&copy; Yuretc & Alex Perm 2018</div>
         </footer>
         </div>
       </div>
