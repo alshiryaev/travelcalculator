@@ -19,4 +19,8 @@
     <ProjectReference Include="..\TravelCalculator.Domain\TravelCalculator.Domain.csproj" />
   </ItemGroup>
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="if $(ConfigurationName) == Release set ASPNETCORE_ENVIRONMENT=Production&#xD;&#xA;npm run build &amp;&amp; xcopy $(ProjectDir)..\..\build $(ProjectDir)wwwroot /s /y&#xD;&#xA;" />
+  </Target>
+
 </Project>

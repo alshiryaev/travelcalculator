@@ -10,19 +10,19 @@ using TravelCalculator.Domain.Repositories;
 namespace TravelCalculator.Controllers
 {
     [Route("api/[controller]")]
-    public class ProductController : Controller
+    public class ProductsController : Controller
     {
         private readonly ProductRepository _productRepository;
 
-        public ProductController(ProductRepository productRepository)
+        public ProductsController(ProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
 
         [HttpGet]
-        public IEnumerable<Product> Get()
+        public IActionResult Get()
         {
-            return _productRepository.GetProducts();
+            return Ok(_productRepository.GetProducts());
         }
     }
 }

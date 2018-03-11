@@ -14,10 +14,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/03/2018 11:17:02</publishTime>
     </File>
     <File Include="appsettings.json">
-      <publishTime>03/07/2018 22:56:18</publishTime>
+      <publishTime>03/10/2018 18:36:23</publishTime>
     </File>
     <File Include="appsettings.Production.json">
-      <publishTime>03/09/2018 19:35:35</publishTime>
+      <publishTime>03/10/2018 18:01:31</publishTime>
     </File>
     <File Include="dotnet-aspnet-codegenerator-design.dll">
       <publishTime>01/10/2018 08:58:35</publishTime>
@@ -68,46 +68,52 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/10/2018 08:58:36</publishTime>
     </File>
     <File Include="TravelCalculator.deps.json">
-      <publishTime>03/09/2018 21:01:40</publishTime>
+      <publishTime>03/10/2018 18:43:39</publishTime>
     </File>
     <File Include="TravelCalculator.dll">
-      <publishTime>03/09/2018 21:01:39</publishTime>
+      <publishTime>03/10/2018 18:43:38</publishTime>
     </File>
     <File Include="TravelCalculator.Domain.dll">
-      <publishTime>03/09/2018 21:01:35</publishTime>
+      <publishTime>03/10/2018 17:53:46</publishTime>
     </File>
     <File Include="TravelCalculator.Domain.pdb">
-      <publishTime>03/09/2018 21:01:35</publishTime>
+      <publishTime>03/10/2018 17:53:46</publishTime>
     </File>
     <File Include="TravelCalculator.pdb">
-      <publishTime>03/09/2018 21:01:39</publishTime>
+      <publishTime>03/10/2018 18:43:38</publishTime>
     </File>
     <File Include="TravelCalculator.PrecompiledViews.dll">
-      <publishTime>03/09/2018 21:01:40</publishTime>
+      <publishTime>03/10/2018 18:43:39</publishTime>
     </File>
     <File Include="TravelCalculator.PrecompiledViews.pdb">
-      <publishTime>03/09/2018 21:01:40</publishTime>
+      <publishTime>03/10/2018 18:43:39</publishTime>
     </File>
     <File Include="TravelCalculator.runtimeconfig.json">
-      <publishTime>03/09/2018 21:01:40</publishTime>
+      <publishTime>03/10/2018 18:43:39</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>03/09/2018 21:01:40</publishTime>
+      <publishTime>03/10/2018 18:43:39</publishTime>
     </File>
     <File Include="wwwroot/asset-manifest.json">
-      <publishTime>03/08/2018 12:02:27</publishTime>
+      <publishTime>03/10/2018 11:08:24</publishTime>
     </File>
     <File Include="wwwroot/favicon.ico">
-      <publishTime>03/08/2018 12:02:22</publishTime>
+      <publishTime>03/10/2018 11:08:19</publishTime>
     </File>
     <File Include="wwwroot/index.html">
-      <publishTime>03/08/2018 12:02:27</publishTime>
+      <publishTime>03/10/2018 11:08:24</publishTime>
     </File>
     <File Include="wwwroot/manifest.json">
-      <publishTime>03/08/2018 12:02:22</publishTime>
+      <publishTime>03/10/2018 11:08:19</publishTime>
     </File>
     <File Include="wwwroot/service-worker.js">
-      <publishTime>03/08/2018 12:02:27</publishTime>
+      <publishTime>03/10/2018 11:08:24</publishTime>
+    </File>
+    <File Include="wwwroot/static/css/main.6fe73e5a.css">
+      <publishTime>03/10/2018 11:08:24</publishTime>
+    </File>
+    <File Include="wwwroot/static/css/main.6fe73e5a.css.map">
+      <publishTime>03/10/2018 11:08:24</publishTime>
     </File>
     <File Include="wwwroot/static/css/main.7f943d82.css">
       <publishTime>03/04/2018 16:28:15</publishTime>
@@ -132,6 +138,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="wwwroot/static/css/main.f2087196.css.map">
       <publishTime>03/04/2018 01:17:15</publishTime>
+    </File>
+    <File Include="wwwroot/static/js/main.005186e6.js">
+      <publishTime>03/10/2018 11:08:24</publishTime>
+    </File>
+    <File Include="wwwroot/static/js/main.005186e6.js.map">
+      <publishTime>03/10/2018 11:08:24</publishTime>
     </File>
     <File Include="wwwroot/static/js/main.0d9c75e5.js">
       <publishTime>03/05/2018 00:36:33</publishTime>
@@ -187,8 +199,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="wwwroot/static/js/main.d3216d62.js.map">
       <publishTime>03/08/2018 11:29:06</publishTime>
     </File>
+    <File Include="wwwroot/static/media/background.6bc56b02.JPG">
+      <publishTime>03/10/2018 11:08:24</publishTime>
+    </File>
     <File Include="wwwroot/static/media/DSC_3967-min.6bc56b02.JPG">
       <publishTime>03/08/2018 12:02:27</publishTime>
+    </File>
+    <File Include="wwwroot/static/media/vk-logo.3f53b1f7.svg">
+      <publishTime>03/10/2018 11:08:24</publishTime>
     </File>
   </ItemGroup>
 </Project>

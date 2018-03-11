@@ -3,7 +3,7 @@ import Calculator from './components/Calculator/Calculator';
 import About from './components/About/About';
 import ProductsTable from './components/ProductsTable/ProductsTable';
 
-const routes = [
+ const routes = [
     {
         path:'/',
         exact: true,
