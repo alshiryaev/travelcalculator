@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './food.css';
+import './productTable.css';
+import loadedGif from '../img/loading.gif';
 
 export default class ProductTable extends Component {
 
@@ -8,7 +9,8 @@ export default class ProductTable extends Component {
     super(props);
 
     this.state = {
-      products: []
+      products: [],
+      loaded: false
     };
   }
 
@@ -16,38 +18,36 @@ export default class ProductTable extends Component {
     axios.get('http://alexpl-001-site1.ftempurl.com/api/products/')
       .then(res => {
         this.setState({
+          loaded: true,
           products: res.data
         })
-      })
-      .catch(err => {
-
-      })
+      });
   }
 
   render() {
     return (
-      <div className="wrapper_table">
-        <div className="food__table">
-          <div className="food__table_row">
-            <div className="food__table_cell cell-0">№ п/п</div>
-            <div className="food__table_cell cell-1">Название продукта</div>
-            <div className="food__table_cell cell-2">Белки, г</div>
-            <div className="food__table_cell cell-2">Жиры, г</div>
-            <div className="food__table_cell cell-2">Углеводы, г</div>
-            <div className="food__table_cell cell-2">Калорийность, ккал</div>
-          </div>
-          {this.state.products.map((product, index) => (
-            <div key={index} className="food__table_row">
-              <div  className="food__table_cell cell-0">{index}</div>
-              <div className="food__table_cell cell-1">{product.name}</div>
-              <div className="food__table_cell cell-2">{product.protein}</div>
-              <div className="food__table_cell cell-2">{product.fat}</div>
-              <div className="food__table_cell cell-2">{product.carbohydrates}</div>
-              <div className="food__table_cell cell-2">{product.calories}</div>
+      this.state.loaded ?
+        <div className="wrapper_table">
+          <div className="food__table">
+            <div className="food__table_row">
+              <div className="food__table_cell cell-1">Название продукта</div>
+              <div className="food__table_cell cell-2">Белки, г</div>
+              <div className="food__table_cell cell-2">Жиры, г</div>
+              <div className="food__table_cell cell-2">Углеводы, г</div>
+              <div className="food__table_cell cell-2">Калорийность, ккал</div>
             </div>
-          ))}
+            {this.state.products.map((product, index) => (
+              <div key={index} className="food__table_row">
+                <div className="food__table_cell cell-1">{product.name}</div>
+                <div className="food__table_cell cell-2">{product.protein}</div>
+                <div className="food__table_cell cell-2">{product.fat}</div>
+                <div className="food__table_cell cell-2">{product.carbohydrates}</div>
+                <div className="food__table_cell cell-2">{product.calories}</div>
+              </div>
+            ))}
+          </div >
         </div >
-      </div >
+        : <div className="loading-image"><img alt="" src={loadedGif} /></div>
     );
   }
 }
