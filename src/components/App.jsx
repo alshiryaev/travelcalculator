@@ -10,7 +10,7 @@ class App extends Component {
       <div>
         <div className="wrapper">
           <header>
-            <nav>
+            <nav className="navbar">
             <ul>
                 <li><NavLink exact className="nav-link" activeClassName="active" to={"/"}>Главная</NavLink ></li>
                 <li><NavLink className="nav-link" activeClassName="active" to={"/calculator"}>Калькулятор</NavLink ></li>
@@ -42,7 +42,7 @@ class App extends Component {
                 {/* <li><a href="https://vk.com/ikuchev">Dmitriy Kuchev</a></li> */}
               </ul>
             </div>
-            <div>&copy; Yuretc & Alex Perm 2018</div>
+            {/* <div>&copy; Yuretc & Alex Perm 2018</div> */}
         </footer>
         </div>
       </div>

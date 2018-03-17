@@ -1,18 +1,8 @@
-body {
-    width: 100%;
-    font-family: 'Montserrat', sans-serif;
-    color: white;
-}
-
-a:visited {
-    color: #fff;
-}
-
 ul {
     margin: 0;
 }
 
-.href-box{
+.href-box {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -22,36 +12,29 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    width: 100%;
+    width: 1100px;
     height: 100vh;
-    background: url('../img/background.JPG') no-repeat top center;
-    background-size: cover;
+    margin: 0 auto;
+    background: #ffffff;
     overflow-y: scroll;
+    color: var(--main-color);
 }
 
 header {
-    background: rgba(0, 0, 0, .2);
     height: 100px;
     flex: 0 0 100px;
-    border-bottom: 1px solid black;
+}
+
+.navbar {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
 }
 
 section {
-    width: 1000px;
+    width: 100%;
     margin: 0 auto;
     flex: 1;
-}
-
-footer {
-    flex: 0 0 100px;
-    border: 1px solid #000000;
-    background: rgba(0, 0, 0, .2);
-    color: whitesmoke;
-}
-
-.active {
-    background-color: #000;
-    color: #fff;
 }
 
 nav ul {
@@ -64,36 +47,45 @@ nav ul li {
 }
 
 .nav-link {
+    color: var(--main-color);
     text-decoration: none;
     text-transform: uppercase;
 }
 
+.active {
+    padding: 8px;
+    background-color: #000;
+    color: #fff;
+}
 
 /*  ****Footer style****    */
 
-.social {
-    display: inline-block;
+footer {
+    flex: 0 0 100px;
 }
 
-/* .social ul {
-    padding: 0;
-} */
+.social {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
 
-.social a{
+.social a {
     text-decoration: none;
 }
-.social a:hover{
+
+.social a:hover {
     cursor: pointer;
 }
 
-.social li{
+.social li {
     position: relative;
     list-style: none;
     padding: 5px;
     vertical-align: middle;
 }
 
-.social-links__logo{
+.social-links__logo {
     display: inline-block;
     width: 20px;
     height: 20px;
