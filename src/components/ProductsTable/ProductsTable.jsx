@@ -37,8 +37,8 @@ export default class ProductTable extends Component {
             <div className="food__table_cell cell-2">Калорийность, ккал</div>
           </div>
           {this.state.products.map((product, index) => (
-            <div className="food__table_row">
-              <div className="food__table_cell cell-0">{index}</div>
+            <div key={index} className="food__table_row">
+              <div  className="food__table_cell cell-0">{index}</div>
               <div className="food__table_cell cell-1">{product.name}</div>
               <div className="food__table_cell cell-2">{product.protein}</div>
               <div className="food__table_cell cell-2">{product.fat}</div>
