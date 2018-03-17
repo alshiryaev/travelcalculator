@@ -1,19 +1,16 @@
-.wrapper_table{
+.wrapper_table {
     width: 960px;
     margin: 30px auto;
 }
 
-.food__table{
+.food__table {
     display: table;
     width: 100%;
-    background-color: rgba(010, 010, 010, 0.5);
     border-top: 1px solid #111111;
     border-left: 1px solid #111111;
 }
 
-
-
-.food__table_row{
+.food__table_row {
     display: table-row;
     width: 100%;
     text-align: center;
@@ -22,11 +19,11 @@
     border-bottom: 1px solid #111111;
 }
 
-.food__table_row:last-child{
+.food__table_row:last-child {
     border-bottom: none;
 }
 
-.food__table_cell{
+.food__table_cell {
     display: table-cell;
     width: 100%;
     text-align: center;
@@ -36,15 +33,19 @@
     border-right: 1px solid #111111;
 }
 
-.cell-0{
+.cell-0 {
     width: 90px;
 }
 
-.cell-1{
+.cell-1 {
     width: 600px;
     text-align: left;
 }
 
-.cell-2{
+.cell-2 {
     width: 120px;
+}
+
+.loading-image {
+    margin-left: 35%;
 }
