@@ -23,10 +23,5 @@ server/.vs
 server/TravelCalculator/bin
 server/TravelCalculator/obj
 server/TravelCalculator/wwwroot/
-server/TravelCalculator.Domain/obj
-server/TravelCalculator.Domain/bin
-server/TravelCalculator.Domain/bin/Debug/netcoreapp2.0/TravelCalculator.Domain.dll
-server/TravelCalculator.Domain/bin/Debug/netcoreapp2.0/TravelCalculator.Domain.pdb
-server/TravelCalculator.Domain/obj/Debug/netcoreapp2.0/TravelCalculator.Domain.dll
-server/TravelCalculator.Domain/obj/Debug/netcoreapp2.0/TravelCalculator.Domain.pdb
-server/TravelCalculator.Domain/obj/Debug/netcoreapp2.0/TravelCalculator.Domain.csproj.FileListAbsolute.txt
+server/TravelCalculator.Domain/obj/
+server/TravelCalculator.Domain/bin/
