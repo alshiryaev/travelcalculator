@@ -5,7 +5,7 @@ class Admin extends Component {
   render() {
     return (
       <div>
-       <p className="hello-words">Административная часть :)</p>
+       <p className="hello-words">Административная часть :)Здесь будут добавляться и редактироваться продукты</p>
       </div>
     );
   }

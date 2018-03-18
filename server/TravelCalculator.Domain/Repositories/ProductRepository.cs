@@ -19,5 +19,10 @@ namespace TravelCalculator.Domain.Repositories
         {
             return _applicationContext.Products.AsEnumerable();
         }
+
+        public void AddNewProduct(Product product)
+        {
+            _applicationContext.Products.Add(product);
+        }
     }
 }

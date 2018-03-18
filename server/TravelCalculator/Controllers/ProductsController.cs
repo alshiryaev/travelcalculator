@@ -24,5 +24,11 @@ namespace TravelCalculator.Controllers
         {
             return Ok(_productRepository.GetProducts());
         }
+
+        [HttpPost]
+        public IActionResult Post([FromBody]Product product)
+        {
+            return Ok(_productRepository.AddNewProduct(product));
+        }
     }
 }
