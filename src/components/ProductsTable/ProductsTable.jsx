@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './productTable.css';
+import './ProductTable.css';
 import loadedGif from '../img/loading.gif';
 
 export default class ProductTable extends Component {
@@ -35,6 +35,7 @@ export default class ProductTable extends Component {
               <div className="food__table_cell cell-2">Жиры, г</div>
               <div className="food__table_cell cell-2">Углеводы, г</div>
               <div className="food__table_cell cell-2">Калорийность, ккал</div>
+              {this.props.isAdmin ? <div className="food__table_cell cell-2"></div> : <div></div>}
             </div>
             {this.state.products.map((product, index) => (
               <div key={index} className="food__table_row">
@@ -43,6 +44,11 @@ export default class ProductTable extends Component {
                 <div className="food__table_cell cell-2">{product.fat}</div>
                 <div className="food__table_cell cell-2">{product.carbohydrates}</div>
                 <div className="food__table_cell cell-2">{product.calories}</div>
+                {this.props.isAdmin ?
+                  <div className="food__table_cell cell-2">
+                    <button title="Редактировать" className="table-button">E</button>
+                    <button title="Удалить" className="table-button">X</button>
+                  </div> : <div></div>}
               </div>
             ))}
           </div >

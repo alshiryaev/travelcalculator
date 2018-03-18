@@ -1,4 +1,8 @@
-.hello-words{
-    text-align: center;
-    margin: 0 3%;
+button {
+    background: white;
+    padding: 3px;
+    margin: 5px;
+    border: 1px solid #65c8f0;   
+    cursor: pointer;
+    margin-left: 5%;
 }

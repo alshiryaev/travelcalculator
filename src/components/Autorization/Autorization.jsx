@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './autorization.css';
+import './Autorization.css';
 
 class Autorization extends Component {
   render() {

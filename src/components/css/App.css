@@ -52,9 +52,13 @@ nav ul li {
     text-transform: uppercase;
 }
 
+.nav-link:hover{
+    text-decoration: underline;
+}
+
 .active {
     padding: 8px;
-    background-color: #000;
+    background-color: rgb(67, 107, 218);
     color: #fff;
 }
 
@@ -92,4 +96,10 @@ footer {
     background: url(../img/vk-logo.svg) no-repeat center;
     background-size: cover;
     margin-right: 10px;
+}
+
+.hello-words{
+    text-align: center;
+    margin: 0 3%;
+    font-size: 2em;
 }
