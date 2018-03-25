@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './productTable.css';
 import loadedGif from '../img/loading.gif';
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table';
 
 export default class ProductTable extends Component {
 
@@ -24,35 +32,46 @@ export default class ProductTable extends Component {
       });
   }
 
+
+
   render() {
+    console.log('isAdmin = ' + this.props.isAdmin);
     return (
       this.state.loaded ?
-        <div className="wrapper_table">
-          <div className="food__table">
-            <div className="food__table_row">
-              <div className="food__table_cell cell-1">Название продукта</div>
-              <div className="food__table_cell cell-2">Белки, г</div>
-              <div className="food__table_cell cell-2">Жиры, г</div>
-              <div className="food__table_cell cell-2">Углеводы, г</div>
-              <div className="food__table_cell cell-2">Калорийность, ккал</div>
-              {this.props.isAdmin ? <div className="food__table_cell cell-2"></div> : <div></div>}
-            </div>
+        <Table
+          fixedHeader={true}>
+          <TableHeader
+            adjustForCheckbox={false}
+            displaySelectAll={false}>
+            <TableRow>
+              <TableHeaderColumn>#</TableHeaderColumn>
+              <TableHeaderColumn>Название продукта</TableHeaderColumn>
+              <TableHeaderColumn>Белки, г</TableHeaderColumn>
+              <TableHeaderColumn>Жиры, г</TableHeaderColumn>
+              <TableHeaderColumn>Углеводы, г</TableHeaderColumn>
+              <TableHeaderColumn>Калорийность, ккал</TableHeaderColumn>
+              <TableHeaderColumn className={!this.state.isAdmin ? 'hidden' : ''}>Управление</TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
+          <TableBody
+            displayRowCheckbox={false}
+            showRowHover={true}>
             {this.state.products.map((product, index) => (
-              <div key={index} className="food__table_row">
-                <div className="food__table_cell cell-1">{product.name}</div>
-                <div className="food__table_cell cell-2">{product.protein}</div>
-                <div className="food__table_cell cell-2">{product.fat}</div>
-                <div className="food__table_cell cell-2">{product.carbohydrates}</div>
-                <div className="food__table_cell cell-2">{product.calories}</div>
-                {this.props.isAdmin ?
-                  <div className="food__table_cell cell-2">
-                    <button title="Редактировать" className="table-button">E</button>
-                    <button title="Удалить" className="table-button">X</button>
-                  </div> : <div></div>}
-              </div>
+              <TableRow key={index} >
+                <TableRowColumn>{index + 1}</TableRowColumn>
+                <TableRowColumn>{product.name}</TableRowColumn>
+                <TableRowColumn>{product.protein}</TableRowColumn>
+                <TableRowColumn>{product.fat}</TableRowColumn>
+                <TableRowColumn>{product.carbohydrates}</TableRowColumn>
+                <TableRowColumn>{product.calories}</TableRowColumn>
+                <TableRowColumn className={!this.state.isAdmin ? 'hidden' : ''}>
+                  <button title="Редактировать" className="table-button">E</button>
+                  <button title="Удалить" className="table-button">X</button>
+                </TableRowColumn>
+              </TableRow>
             ))}
-          </div >
-        </div >
+          </TableBody>
+        </Table>
         : <div className="loading-image"><img alt="" src={loadedGif} /></div>
     );
   }
