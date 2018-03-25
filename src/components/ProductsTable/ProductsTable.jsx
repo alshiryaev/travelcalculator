@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './ProductTable.css';
+import './productTable.css';
 import loadedGif from '../img/loading.gif';
 
 export default class ProductTable extends Component {
