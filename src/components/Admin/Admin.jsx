@@ -9,7 +9,7 @@ class Admin extends Component {
     return (
       <div>
         <p>
-          <FloatingActionButton className="add-button" title="Ддобавить новый продукт">
+          <FloatingActionButton className="add-button" title="Добавить новый продукт">
             <ContentAdd />
           </FloatingActionButton>
         </p>

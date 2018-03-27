@@ -3,14 +3,14 @@ import './css/normalize.css';
 import './css/App.css';
 import { Route, NavLink } from 'react-router-dom';
 import routes from '../routes';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends Component {
   render() {
     return (
       <MuiThemeProvider>
-        <BrowserRouter>
+        <HashRouter>
           <div className="wrapper">
             <header>
               <nav className="navbar">
@@ -45,7 +45,7 @@ class App extends Component {
               </div>
             </footer>
           </div>
-        </BrowserRouter>
+        </HashRouter>
       </MuiThemeProvider>
     );
   }

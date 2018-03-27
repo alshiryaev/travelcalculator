@@ -44,8 +44,7 @@ export default class ProductTable extends Component {
             adjustForCheckbox={false}
             displaySelectAll={false}>
             <TableRow>
-              <TableHeaderColumn>#</TableHeaderColumn>
-              <TableHeaderColumn>Название продукта</TableHeaderColumn>
+              <TableHeaderColumn style={{ width: "30%" }}>Название продукта</TableHeaderColumn>
               <TableHeaderColumn>Белки, г</TableHeaderColumn>
               <TableHeaderColumn>Жиры, г</TableHeaderColumn>
               <TableHeaderColumn>Углеводы, г</TableHeaderColumn>
@@ -58,8 +57,7 @@ export default class ProductTable extends Component {
             showRowHover={true}>
             {this.state.products.map((product, index) => (
               <TableRow key={index} >
-                <TableRowColumn>{index + 1}</TableRowColumn>
-                <TableRowColumn>{product.name}</TableRowColumn>
+                <TableRowColumn style={{ width: "30%" }}>{product.name}</TableRowColumn>
                 <TableRowColumn>{product.protein}</TableRowColumn>
                 <TableRowColumn>{product.fat}</TableRowColumn>
                 <TableRowColumn>{product.carbohydrates}</TableRowColumn>
