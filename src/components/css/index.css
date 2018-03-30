@@ -1,5 +1,45 @@
 :root{
-  --main-color: #111111;
+  --main-color: #000000;
+  --second-color: #1f9ffc;
+  --button-color: #d04000;
+  --button-hover-color: ;
+  --button-active-color: #f9572e;
+  --button-disable-color: rgb(153, 153, 153);
+}
+
+html{
+  font-family: 'Formular';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 16px;
+}
+
+@font-face{
+  font-family: 'Formular';
+  src: url('../fonts/Formular-Regular.otf');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face{
+  font-family: 'Formular';
+  src: url('../fonts/Formular-Italic.otf');
+  font-style: italic;
+  font-weight: normal;
+}
+
+@font-face{
+  font-family: 'Formular';
+  src: url('../fonts/Formular-Bold.otf');
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face{
+  font-family: 'Formular';
+  src: url('../fonts/Formular-Black.otf');
+  font-style: normal;
+  font-weight: bolder;
 }
 
 body {
