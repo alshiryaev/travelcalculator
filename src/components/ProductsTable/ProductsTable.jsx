@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './productTable.css';
-import loadedGif from '../img/loading.gif';
+import './ProductTable.css';
 import {
   Table,
   TableBody,
@@ -10,6 +9,7 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
+import CircularProgress from 'material-ui/CircularProgress';
 
 export default class ProductTable extends Component {
 
@@ -32,10 +32,7 @@ export default class ProductTable extends Component {
       });
   }
 
-
-
   render() {
-    console.log('isAdmin = ' + this.props.isAdmin);
     return (
       this.state.loaded ?
         <Table
@@ -49,7 +46,7 @@ export default class ProductTable extends Component {
               <TableHeaderColumn>Жиры, г</TableHeaderColumn>
               <TableHeaderColumn>Углеводы, г</TableHeaderColumn>
               <TableHeaderColumn>Калорийность, ккал</TableHeaderColumn>
-              <TableHeaderColumn className={!this.state.isAdmin ? 'hidden' : ''}>Управление</TableHeaderColumn>
+              <TableHeaderColumn className={this.props.isAdmin ? '' : 'hidden'}>Управление</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody
@@ -62,7 +59,7 @@ export default class ProductTable extends Component {
                 <TableRowColumn>{product.fat}</TableRowColumn>
                 <TableRowColumn>{product.carbohydrates}</TableRowColumn>
                 <TableRowColumn>{product.calories}</TableRowColumn>
-                <TableRowColumn className={!this.state.isAdmin ? 'hidden' : ''}>
+                <TableRowColumn className={this.props.isAdmin ? '' : 'hidden'}>
                   <button title="Редактировать" className="table-button">E</button>
                   <button title="Удалить" className="table-button">X</button>
                 </TableRowColumn>
@@ -70,7 +67,7 @@ export default class ProductTable extends Component {
             ))}
           </TableBody>
         </Table>
-        : <div className="loading-image"><img alt="" src={loadedGif} /></div>
+        : <div className="loading-image"><CircularProgress size={60} thickness={7} /></div>
     );
   }
 }
