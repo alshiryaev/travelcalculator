@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './productTable.css';
+import './ProductTable.css';
 import {
   Table,
   TableBody,
