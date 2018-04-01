@@ -31,5 +31,12 @@ namespace TravelCalculator.Controllers
             _productRepository.AddNewProduct(product);
             return Ok();
         }
+
+        [HttpDelete]        
+        public IActionResult Delete(Guid id)
+        {
+            _productRepository.DeleteProduct(id);
+            return Ok();
+        }
     }
 }

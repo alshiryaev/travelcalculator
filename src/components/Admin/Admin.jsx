@@ -6,6 +6,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
+import axios from 'axios';
 
 class Admin extends Component {
 
@@ -13,56 +14,83 @@ class Admin extends Component {
     super(props);
 
     this.state = {
-      addDialogOpen: false
+      open: false,
+      newProduct: {
+        Name: '',
+        Fat: 0,
+        Protein: 0,
+        Calories: 0,
+        Carbohydrates: 0
+      }
     };
   }
 
-
-  addProductHandleOpen = () => {
+  addProductDialogHandleOpen = () => {
     this.setState({ open: true })
   };
 
-  addProductHandleClose = () => {
+  addProductDialogHandleClose = () => {
     this.setState({ open: false });
+  };
+
+  propertiesChanged = (event) => {
+    const newProduct = Object.assign({}, this.state.newProduct);
+    newProduct[event.target.name] = event.target.value;
+    this.setState({ newProduct });
+  };
+
+  addNewProduct = () => {
+    axios.post('http://localhost:59638/api/products', this.state.newProduct)
+      .then(res => {
+        this.addProductDialogHandleClose();
+      });
+  };
+
+  deleteProduct = (id) => {
+    axios.delete('http://localhost:59638/api/products', { params: { id: id } })
+      .then(res => {
+
+      });
   };
 
   render() {
 
     const actions = [
+
       <FlatButton
         label="Отмена"
-        onClick={this.addProductHandleClose}
-      />,
+        onClick={this.addProductDialogHandleClose} />,
+
       <FlatButton
         label="Добавить"
         primary={true}
-        onClick={this.addProductHandleClose}
-      />,
+        onClick={this.addNewProduct} />,
     ];
 
     return (
       <div>
-        <p>
-          <FloatingActionButton className="add-button" title="Добавить новый продукт" onClick={this.addProductHandleOpen}>
-            <ContentAdd />
-          </FloatingActionButton>
-        </p>
-        <ProductTable isAdmin={true} />
+        <FloatingActionButton
+          className="add-button"
+          title="Добавить новый продукт"
+          onClick={this.addProductDialogHandleOpen}>
+          <ContentAdd />
+        </FloatingActionButton>
+        <ProductTable isAdmin={true} deleteProduct={this.deleteProduct} />
         <Dialog
           title="Добавление нового продукта"
           actions={actions}
           open={this.state.open}
           onRequestClose={this.handleClose} >
-          <TextField fullWidth={true} hintText="Название продукта" />
+          <TextField name="Name" onChange={this.propertiesChanged} fullWidth={true} hintText="Название продукта" />
           <br />
-          <TextField fullWidth={true} hintText="Белки, г" />
+          <TextField name="Protein" onChange={this.propertiesChanged} fullWidth={true} hintText="Белки, г" />
           <br />
-          <TextField fullWidth={true} hintText="Жиры, г" />
+          <TextField name="Fat" onChange={this.propertiesChanged} fullWidth={true} hintText="Жиры, г" />
           <br />
-          <TextField fullWidth={true} hintText="Углеводы, г" />
+          <TextField name="Carbohydrates" onChange={this.propertiesChanged} fullWidth={true} hintText="Углеводы, г" />
           <br />
-          <TextField fullWidth={true} hintText="Калорийность, ккал" />
-        </Dialog>
+          <TextField name="Calories" onChange={this.propertiesChanged} fullWidth={true} hintText="Калорийность, ккал" />
+        </Dialog>       
       </div>
     );
   }

@@ -23,13 +23,18 @@ export default class ProductTable extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://alexpl-001-site1.ftempurl.com/api/products/')
+    axios.get('http://localhost:59638/api/products')
       .then(res => {
         this.setState({
           loaded: true,
           products: res.data
         })
       });
+  }
+
+
+  deleteProduct = (id) => {
+    this.props.deleteProduct(id);
   }
 
   render() {
@@ -61,7 +66,7 @@ export default class ProductTable extends Component {
                 <TableRowColumn>{product.calories}</TableRowColumn>
                 <TableRowColumn className={this.props.isAdmin ? '' : 'hidden'}>
                   <button title="Редактировать" className="table-button">E</button>
-                  <button title="Удалить" className="table-button">X</button>
+                  <button title="Удалить" onClick={() => this.deleteProduct(product.id)} className="table-button">X</button>
                 </TableRowColumn>
               </TableRow>
             ))}

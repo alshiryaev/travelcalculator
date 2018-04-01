@@ -25,7 +25,13 @@ namespace TravelCalculator
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddTransient(typeof(ProductRepository));
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
@@ -37,7 +43,7 @@ namespace TravelCalculator
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
-            app.UseCors(builder => builder.AllowAnyOrigin());
+            app.UseCors("MyPolicy");
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseMvc();

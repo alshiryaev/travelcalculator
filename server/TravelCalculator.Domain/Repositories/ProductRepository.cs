@@ -23,6 +23,14 @@ namespace TravelCalculator.Domain.Repositories
         public void AddNewProduct(Product product)
         {
             _applicationContext.Products.Add(product);
+            _applicationContext.SaveChanges();
+        }
+
+        public void DeleteProduct(Guid id)
+        {
+            Product product =  _applicationContext.Products.Find(id);
+            _applicationContext.Products.Remove(product);
+            _applicationContext.SaveChanges();
         }
     }
 }
