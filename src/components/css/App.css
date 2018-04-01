@@ -15,9 +15,6 @@ ul {
     width: 80%;
     height: 100vh;
     margin: 0 auto;
-    background: #ffffff;
-    overflow: auto;
-    color: var(--main-color);
 }
 
 header {
@@ -39,6 +36,7 @@ section {
 
 nav ul {
     list-style-type: none;
+
 }
 
 nav ul li {
