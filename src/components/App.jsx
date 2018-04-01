@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './css/normalize.css';
 import './css/App.css';
+import './css/likely.css';
 import { Route, NavLink } from 'react-router-dom';
 import routes from '../routes';
 import { HashRouter } from 'react-router-dom';
@@ -16,15 +17,16 @@ class App extends Component {
               <nav className="navbar">
                 <ul>
                   <li><NavLink exact className="nav-link" activeClassName="active" to={"/"}>Главная</NavLink ></li>
-                  <li><NavLink className="nav-link" activeClassName="active" to={"/calculator"}>Калькулятор</NavLink ></li>
-                  <li><NavLink className="nav-link" activeClassName="active" to={"/products"}>Продукты</NavLink ></li>
+                  <li><NavLink className="nav-link" activeClassName="active" to={"/calculator"}>Калькулятор меню</NavLink ></li>
+                  <li><NavLink className="nav-link" activeClassName="active" to={"/products"}>Таблица БЖУ</NavLink ></li>
+                  <li><NavLink className="nav-link" activeClassName="active" to={"/recipes"}>Рецепты</NavLink ></li>
                   <li><NavLink className="nav-link" activeClassName="active" to={"/about"}>О нас</NavLink ></li>
                 </ul>
               </nav>
             </header>
 
             {/* Здесь вставляется основной контент на каждой странице */}
-            <section>
+            <section className="main-section">
               {routes.map((route, index) => (
                 <Route
                   key={index}
@@ -36,19 +38,24 @@ class App extends Component {
             </section>
             {/* Основной контент заканчивается */}
 
-            <footer>
-              <div className="social">
-                <ul>
-                  <li><a className="href-box" href="https://vk.com/alexpl"> </a><div className="social-links__logo"></div>Alexey Shiryaev</li>
-                  <li><a className="href-box" href="https://vk.com/id7339163"> </a><div className="social-links__logo"></div>Yuriy Pinegin</li>
-                </ul>
+            <footer className="first-footer">
+              <div className="likely">
+                <div class="twitter">Твитнуть</div>
+                <div class="facebook">Поделиться</div>
+                <div class="vkontakte">Поделиться</div>
+                <div class="telegram">Отправить</div>
               </div>
             </footer>
+            <section classMame="second-section">
+
+            </section>
           </div>
+
         </HashRouter>
       </MuiThemeProvider>
     );
   }
 }
+
 
 export default App;

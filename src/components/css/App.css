@@ -1,5 +1,6 @@
 ul {
     margin: 0;
+    padding: 0;
 }
 
 .href-box {
@@ -12,36 +13,42 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    width: 80%;
-    height: 100vh;
+    width: 1000px;
+    min-height: 100vh;
     margin: 0 auto;
+    padding: 35px 0;
+    box-sizing: border-box;
 }
 
 header {
-    height: 100px;
     flex: 0 0 100px;
 }
 
 .navbar {
     width: 100%;
-    height: 100%;
-    margin: 0 auto;
-}
-
-section {
-    width: 100%;
-    margin: 0 auto;
-    flex: 1;
 }
 
 nav ul {
     list-style-type: none;
-
 }
 
 nav ul li {
+    width: 85px;
     display: inline-block;
-    margin: 10px 40px;
+    margin: 10px 20px;
+    text-align: center;
+}
+
+nav ul :first-child {
+    margin-left: 0;
+}
+
+nav ul :nth-child(2) {
+    width: 190px;
+}
+
+nav ul :nth-child(3) {
+    width: 130px;
 }
 
 .nav-link {
@@ -50,19 +57,25 @@ nav ul li {
     text-transform: uppercase;
 }
 
-.nav-link:hover{
+.nav-link:hover {
     text-decoration: underline;
 }
 
 .active {
-    padding: 8px;
-    background-color: rgb(67, 107, 218);
-    color: #fff;
+    font-family: 'Formular-black', sans-serif;
+    font-weight: bolder;
+    color: var(--main-color);
+}
+
+.main-section {
+    width: 100%;
+    margin: 0 auto;
+    flex: 1;
 }
 
 /*  ****Footer style****    */
 
-footer {
+.first-footer {
     flex: 0 0 100px;
 }
 
@@ -70,6 +83,10 @@ footer {
     width: 100%;
     height: 100%;
     margin: 0 auto;
+}
+
+.social ul li{
+    display: inline-block;
 }
 
 .social a {
@@ -94,10 +111,4 @@ footer {
     background: url(../img/vk-logo.svg) no-repeat center;
     background-size: cover;
     margin-right: 10px;
-}
-
-.hello-words{
-    text-align: center;
-    margin: 0 3%;
-    font-size: 2em;
 }

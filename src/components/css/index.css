@@ -7,13 +7,6 @@
   --button-disable-color: rgb(153, 153, 153);
 }
 
-html{
-  font-family: 'Formular';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 16px;
-}
-
 @font-face{
   font-family: 'Formular';
   src: url('../fonts/Formular-Regular.otf');
@@ -22,24 +15,31 @@ html{
 }
 
 @font-face{
-  font-family: 'Formular';
+  font-family: 'Formular-italic';
   src: url('../fonts/Formular-Italic.otf');
   font-style: italic;
   font-weight: normal;
 }
 
 @font-face{
-  font-family: 'Formular';
+  font-family: 'Formular-bold';
   src: url('../fonts/Formular-Bold.otf');
   font-style: normal;
   font-weight: bold;
 }
 
 @font-face{
-  font-family: 'Formular';
+  font-family: 'Formular-black';
   src: url('../fonts/Formular-Black.otf');
   font-style: normal;
   font-weight: bolder;
+}
+
+html{
+  font-family: 'Formular', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 16px;
 }
 
 body {
@@ -50,6 +50,7 @@ body {
   background-image: url('../img/main-picture.jpg');
   background-position: center top;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100% auto;
   min-height: 100vh;
+  height: 100%;
 }

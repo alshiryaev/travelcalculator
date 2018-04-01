@@ -4,6 +4,7 @@ import About from './components/About/About';
 import ProductsTable from './components/ProductsTable/ProductsTable';
 import Admin from './components/Admin/Admin';
 import Autorization from './components/Autorization/Autorization';
+import Recipes from './components/Recipes/Recipes';
 
  const routes = [
     {
@@ -30,6 +31,10 @@ import Autorization from './components/Autorization/Autorization';
     {
         path:'/autorization',
         component:Autorization
+    },
+    {
+        path:'/recipes',
+        component:Recipes
     }
 ];
 

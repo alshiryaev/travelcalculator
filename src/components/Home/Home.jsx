@@ -4,8 +4,9 @@ import './Home.css';
 class Home extends Component {
   render() {
     return (
-      <div>
-       <p className="hello-words">Добро пожаловать! Скоро все будет готово, мы работаем над этим :)</p>
+      <div className="home-block-title">
+        <p className="home-section-title">Рассчёт меню в поход</p>
+        <p className="home-section-text">Рассчитаем необходимые в поход продукты, их вес и количество. Предложим меню на каждый день. </p>
       </div>
     );
   }
