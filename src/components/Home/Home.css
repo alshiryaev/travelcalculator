@@ -1,4 +1,4 @@
-.home-block-title{
+.home-block-title {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -6,7 +6,7 @@
     min-width: 100px;
 }
 
-.home-section-title{
+.home-section-title {
     width: 580px;
     margin: 0;
     font-family: 'Formular-bold', sans-serif;
@@ -14,7 +14,7 @@
     line-height: 3.6rem;
 }
 
-.home-section-text{
+.home-section-text {
     width: 330px;
     margin: 0;
     font-size: 1.125rem;
