@@ -1,0 +1,22 @@
+.home-block-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: top;
+    min-width: 100px;
+}
+
+.home-section-title{
+    width: 580px;
+    margin: 0;
+    font-family: 'Formular-bold', sans-serif;
+    font-size: 3rem;
+    line-height: 3.6rem;
+}
+
+.home-section-text{
+    width: 330px;
+    margin: 0;
+    font-size: 1.125rem;
+    line-height: 1.875rem;
+}

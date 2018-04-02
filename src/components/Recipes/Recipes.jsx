@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import './Dishes.css';
+import './Recipes.css';
 
-class Dishes extends Component {
+class Recipes extends Component {
   render() {
     return (
       <div>
-        Блюда
+        Рецепты
       </div>
     );
   }
 }
 
-export default Dishes;
+export default Recipes;
