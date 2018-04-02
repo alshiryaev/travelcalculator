@@ -23,7 +23,7 @@ export default class ProductTable extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:59638/api/products')
+    axios.get('http://alexpl-001-site1.ftempurl.com/api/products')
       .then(res => {
         this.setState({
           loaded: true,
