@@ -40,14 +40,14 @@ class Admin extends Component {
   };
 
   addNewProduct = () => {
-    axios.post('http://localhost:59638/api/products', this.state.newProduct)
+    axios.post('http://alexpl-001-site1.ftempurl.com/api/products', this.state.newProduct)
       .then(res => {
         this.addProductDialogHandleClose();
       });
   };
 
   deleteProduct = (id) => {
-    axios.delete('http://localhost:59638/api/products', { params: { id: id } })
+    axios.delete('http://alexpl-001-site1.ftempurl.com/api/products', { params: { id: id } })
       .then(res => {
 
       });
