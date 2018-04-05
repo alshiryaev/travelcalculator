@@ -19,12 +19,12 @@ class Home extends Component {
           <div className="block-forms">
             <div className="type-travel">Тип похода</div>
             <div className="type-travel__radio">
-              <input type="radio" name="typeTravel" value="mount" />горный
-                <input type="radio" name="typeTravel" value="walk" /> пеший
-                  <input type="radio" name="typeTravel" value="river" /> сплав
+              <input type="radio" name="typeTravel" value="mount" />горный <br />
+              <input type="radio" name="typeTravel" value="walk" /> пеший <br />
+              <input type="radio" name="typeTravel" value="river" /> сплав <br />
             </div>
-            <label htmlFor="nz">Нужен ли аварийный запас на 1 дополнительный день</label><input type="checkbox" name="accident" id="nz" />
-            <input type="submit" value="Рассчитать"/>
+            <label htmlFor="nz">Нужен ли аварийный запас на 1 дополнительный день</label><input type="checkbox" name="accident" id="nz" /> <br />
+            <input type="submit" value="Рассчитать" />
           </div>
         </form>
       </div>
