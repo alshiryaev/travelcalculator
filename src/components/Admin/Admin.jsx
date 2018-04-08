@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ProductTable from '../ProductsTable/ProductsTable';
 import './Admin.css';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
@@ -7,6 +6,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
+import Table from '../ProductsTable/ProductsTable';
 
 class Admin extends Component {
 
@@ -17,6 +17,7 @@ class Admin extends Component {
       openAddDialog: false,
       openDeleteDialog: false,
       deletingProduct: null,
+      products: [],
       newProduct: {
         Name: '',
         Fat: 0,
@@ -25,6 +26,15 @@ class Admin extends Component {
         Carbohydrates: 0
       }
     };
+  }
+
+  componentDidMount() {
+    axios.get('http://alexpl-001-site1.ftempurl.com/api/products')
+      .then(res => {
+        this.setState({
+          products: res.data
+        })
+      });
   }
 
   addProductDialogHandleOpenClose = (val) => {
@@ -55,10 +65,10 @@ class Admin extends Component {
   };
 
   deleteProduct = () => {
-    this.setState({openDeleteDialog: false});
+    this.setState({ openDeleteDialog: false });
     axios.delete('http://alexpl-001-site1.ftempurl.com/api/products', { params: { id: this.state.deletingProduct.id } })
       .then(res => {
-         
+
       });
   };
 
@@ -96,7 +106,7 @@ class Admin extends Component {
           <ContentAdd />
         </FloatingActionButton>
 
-        <ProductTable isAdmin={true} deleteProduct={this.deleteProductHandle} />
+        <Table isAdmin={true} deleteProduct={this.deleteProductHandle} products={this.state.products} />
 
         <Dialog
           title="Добавление нового продукта"
