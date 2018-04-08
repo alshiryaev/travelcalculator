@@ -11,6 +11,7 @@ import {
 } from 'material-ui/Table';
 import CircularProgress from 'material-ui/CircularProgress';
 
+
 export default class ProductTable extends Component {
 
   constructor(props) {
@@ -33,9 +34,10 @@ export default class ProductTable extends Component {
   }
 
 
-  deleteProduct = (id) => {
-    this.props.deleteProduct(id);
-  }
+  deleteProduct = (product) => {
+    this.props.deleteProduct(product);
+  };
+ 
 
   render() {
     return (
@@ -65,8 +67,8 @@ export default class ProductTable extends Component {
                 <TableRowColumn>{product.carbohydrates}</TableRowColumn>
                 <TableRowColumn>{product.calories}</TableRowColumn>
                 <TableRowColumn className={this.props.isAdmin ? '' : 'hidden'}>
-                  <button title="Редактировать" className="table-button">E</button>
-                  <button title="Удалить" onClick={() => this.deleteProduct(product.id)} className="table-button">X</button>
+                  <button title="Редактировать" className="table-button edit">E</button>
+                  <button title="Удалить" onClick={() => this.deleteProduct(product)} className="table-button delete">X</button>
                 </TableRowColumn>
               </TableRow>
             ))}

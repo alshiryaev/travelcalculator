@@ -14,7 +14,9 @@ class Admin extends Component {
     super(props);
 
     this.state = {
-      open: false,
+      openAddDialog: false,
+      openDeleteDialog: false,
+      deletingProduct: null,
       newProduct: {
         Name: '',
         Fat: 0,
@@ -25,12 +27,8 @@ class Admin extends Component {
     };
   }
 
-  addProductDialogHandleOpen = () => {
-    this.setState({ open: true })
-  };
-
-  addProductDialogHandleClose = () => {
-    this.setState({ open: false });
+  addProductDialogHandleOpenClose = (val) => {
+    this.setState({ openAddDialog: val })
   };
 
   propertiesChanged = (event) => {
@@ -42,24 +40,35 @@ class Admin extends Component {
   addNewProduct = () => {
     axios.post('http://alexpl-001-site1.ftempurl.com/api/products', this.state.newProduct)
       .then(res => {
-        this.addProductDialogHandleClose();
+        this.addProductDialogHandleOpenClose();
       });
   };
 
-  deleteProduct = (id) => {
-    axios.delete('http://alexpl-001-site1.ftempurl.com/api/products', { params: { id: id } })
-      .then(res => {
+  openDeleteDialog = (val) => {
+    this.setState({ openDeleteDialog: val })
+  }
 
+  deleteProductHandle = (product) => {
+    this.setState({ deletingProduct: product }, () => {
+      this.openDeleteDialog(true);
+    })
+  };
+
+  deleteProduct = () => {
+    this.setState({openDeleteDialog: false});
+    axios.delete('http://alexpl-001-site1.ftempurl.com/api/products', { params: { id: this.state.deletingProduct.id } })
+      .then(res => {
+         
       });
   };
 
   render() {
 
-    const actions = [
+    const addProductDialogActions = [
 
       <FlatButton
         label="Отмена"
-        onClick={this.addProductDialogHandleClose} />,
+        onClick={() => this.addProductDialogHandleOpenClose(false)} />,
 
       <FlatButton
         label="Добавить"
@@ -67,20 +76,32 @@ class Admin extends Component {
         onClick={this.addNewProduct} />,
     ];
 
+    const deleteDialogActions = [
+      <FlatButton
+        label="Отмена"
+        primary={true}
+        onClick={() => this.openDeleteDialog(false)} />,
+      <FlatButton
+        label="Да"
+        secondary={true}
+        onClick={this.deleteProduct} />,
+    ];
+
     return (
       <div>
         <FloatingActionButton
           className="add-button"
           title="Добавить новый продукт"
-          onClick={this.addProductDialogHandleOpen}>
+          onClick={() => this.addProductDialogHandleOpenClose(true)}>
           <ContentAdd />
         </FloatingActionButton>
-        <ProductTable isAdmin={true} deleteProduct={this.deleteProduct} />
+
+        <ProductTable isAdmin={true} deleteProduct={this.deleteProductHandle} />
+
         <Dialog
           title="Добавление нового продукта"
-          actions={actions}
-          open={this.state.open}
-          onRequestClose={this.handleClose} >
+          actions={addProductDialogActions}
+          open={this.state.openAddDialog} >
           <TextField name="Name" onChange={this.propertiesChanged} fullWidth={true} hintText="Название продукта" />
           <br />
           <TextField name="Protein" onChange={this.propertiesChanged} fullWidth={true} hintText="Белки, г" />
@@ -90,7 +111,15 @@ class Admin extends Component {
           <TextField name="Carbohydrates" onChange={this.propertiesChanged} fullWidth={true} hintText="Углеводы, г" />
           <br />
           <TextField name="Calories" onChange={this.propertiesChanged} fullWidth={true} hintText="Калорийность, ккал" />
-        </Dialog>       
+        </Dialog>
+
+        <Dialog
+          title="Внимание"
+          actions={deleteDialogActions}
+          modal={true}
+          open={this.state.openDeleteDialog}>
+          Удалить выбранный продукт?
+        </Dialog>
       </div>
     );
   }

@@ -40,13 +40,13 @@ class App extends Component {
 
             <footer className="first-footer">
               <div className="likely">
-                <div class="twitter">Твитнуть</div>
-                <div class="facebook">Поделиться</div>
-                <div class="vkontakte">Поделиться</div>
-                <div class="telegram">Отправить</div>
+                <div className="twitter">Твитнуть</div>
+                <div className="facebook">Поделиться</div>
+                <div className="vkontakte">Поделиться</div>
+                <div className="telegram">Отправить</div>
               </div>
             </footer>
-            <section classMame="second-section">
+            <section className="second-section">
 
             </section>
           </div>
