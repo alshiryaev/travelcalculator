@@ -19,11 +19,11 @@ class Admin extends Component {
       deletingProduct: null,
       products: [],
       newProduct: {
-        Name: '',
-        Fat: 0,
-        Protein: 0,
-        Calories: 0,
-        Carbohydrates: 0
+        name: '',
+        fat: 0,
+        protein: 0,
+        calories: 0,
+        carbohydrates: 0
       }
     };
   }
@@ -44,13 +44,16 @@ class Admin extends Component {
   propertiesChanged = (event) => {
     const newProduct = Object.assign({}, this.state.newProduct);
     newProduct[event.target.name] = event.target.value;
-    this.setState({ newProduct });
+    this.setState({ newProduct: newProduct });
   };
 
   addNewProduct = () => {
     axios.post('http://travelcalculator20180415094356.azurewebsites.net/api/products', this.state.newProduct)
       .then(res => {
-        this.addProductDialogHandleOpenClose();
+        this.addProductDialogHandleOpenClose(false);
+        this.setState(prevState => ({
+          products: prevState.products.concat(this.state.newProduct)
+        }))
       });
   };
 
@@ -68,7 +71,9 @@ class Admin extends Component {
     this.setState({ openDeleteDialog: false });
     axios.delete('http://travelcalculator20180415094356.azurewebsites.net/api/products', { params: { id: this.state.deletingProduct.id } })
       .then(res => {
-
+        this.setState(prevState => ({
+          products: prevState.products.filter(item => item.id !== this.state.deletingProduct.id)
+        }))
       });
   };
 
@@ -112,15 +117,15 @@ class Admin extends Component {
           title="Добавление нового продукта"
           actions={addProductDialogActions}
           open={this.state.openAddDialog} >
-          <TextField name="Name" onChange={this.propertiesChanged} fullWidth={true} hintText="Название продукта" />
+          <TextField name="name" onChange={this.propertiesChanged} fullWidth={true} hintText="Название продукта" />
           <br />
-          <TextField name="Protein" onChange={this.propertiesChanged} fullWidth={true} hintText="Белки, г" />
+          <TextField name="protein" onChange={this.propertiesChanged} fullWidth={true} hintText="Белки, г" />
           <br />
-          <TextField name="Fat" onChange={this.propertiesChanged} fullWidth={true} hintText="Жиры, г" />
+          <TextField name="fat" onChange={this.propertiesChanged} fullWidth={true} hintText="Жиры, г" />
           <br />
-          <TextField name="Carbohydrates" onChange={this.propertiesChanged} fullWidth={true} hintText="Углеводы, г" />
+          <TextField name="carbohydrates" onChange={this.propertiesChanged} fullWidth={true} hintText="Углеводы, г" />
           <br />
-          <TextField name="Calories" onChange={this.propertiesChanged} fullWidth={true} hintText="Калорийность, ккал" />
+          <TextField name="calories" onChange={this.propertiesChanged} fullWidth={true} hintText="Калорийность, ккал" />
         </Dialog>
 
         <Dialog
@@ -128,7 +133,7 @@ class Admin extends Component {
           actions={deleteDialogActions}
           modal={true}
           open={this.state.openDeleteDialog}>
-          Удалить выбранный продукт?
+          Удалить продукт?
         </Dialog>
       </div>
     );
