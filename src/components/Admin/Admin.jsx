@@ -29,7 +29,7 @@ class Admin extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://alexpl-001-site1.ftempurl.com/api/products')
+    axios.get('http://travelcalculator20180415094356.azurewebsites.net/api/products')
       .then(res => {
         this.setState({
           products: res.data
@@ -48,7 +48,7 @@ class Admin extends Component {
   };
 
   addNewProduct = () => {
-    axios.post('http://alexpl-001-site1.ftempurl.com/api/products', this.state.newProduct)
+    axios.post('http://travelcalculator20180415094356.azurewebsites.net/api/products', this.state.newProduct)
       .then(res => {
         this.addProductDialogHandleOpenClose();
       });
@@ -66,7 +66,7 @@ class Admin extends Component {
 
   deleteProduct = () => {
     this.setState({ openDeleteDialog: false });
-    axios.delete('http://alexpl-001-site1.ftempurl.com/api/products', { params: { id: this.state.deletingProduct.id } })
+    axios.delete('http://travelcalculator20180415094356.azurewebsites.net/api/products', { params: { id: this.state.deletingProduct.id } })
       .then(res => {
 
       });

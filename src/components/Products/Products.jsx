@@ -13,7 +13,7 @@ export default class Products extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://alexpl-001-site1.ftempurl.com/api/products')
+        axios.get('http://travelcalculator20180415094356.azurewebsites.net/api/products')
             .then(res => {
                 this.setState({
                     products: res.data

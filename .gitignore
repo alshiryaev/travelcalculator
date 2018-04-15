@@ -24,6 +24,7 @@ yarn-error.log*
 server/.vs
 server/TravelCalculator/bin
 server/TravelCalculator/obj
+server/TravelCalculator/Properties
 server/TravelCalculator/wwwroot/
 server/TravelCalculator.Domain/obj/
 server/TravelCalculator.Domain/bin/
