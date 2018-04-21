@@ -12,11 +12,13 @@ class Admin extends Component {
 
   constructor(props) {
     super(props);
-
+    this.apiUrl = "http://travelcalculator.azurewebsites.net/api/products";
     this.state = {
       openAddDialog: false,
       openDeleteDialog: false,
+      openEditDialog: false,
       deletingProduct: null,
+      editingProduct: {},
       products: [],
       newProduct: {
         name: '',
@@ -29,7 +31,7 @@ class Admin extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://travelcalculator20180415094356.azurewebsites.net/api/products')
+    axios.get(this.apiUrl)
       .then(res => {
         this.setState({
           products: res.data
@@ -41,14 +43,20 @@ class Admin extends Component {
     this.setState({ openAddDialog: val })
   };
 
-  propertiesChanged = (event) => {
+  addProductPropertiesChanged = (event) => {
     const newProduct = Object.assign({}, this.state.newProduct);
     newProduct[event.target.name] = event.target.value;
     this.setState({ newProduct: newProduct });
   };
 
+  editProductPropertiesChanged = (event) => {
+    const editProduct = Object.assign({}, this.state.editingProduct);
+    editProduct[event.target.name] = event.target.value;
+    this.setState({ editingProduct: editProduct });
+  };
+
   addNewProduct = () => {
-    axios.post('http://travelcalculator20180415094356.azurewebsites.net/api/products', this.state.newProduct)
+    axios.post(this.apiUrl, this.state.newProduct)
       .then(res => {
         this.addProductDialogHandleOpenClose(false);
         this.setState(prevState => ({
@@ -59,7 +67,11 @@ class Admin extends Component {
 
   openDeleteDialog = (val) => {
     this.setState({ openDeleteDialog: val })
-  }
+  };
+
+  openEditingDialog = (val) => {
+    this.setState({ openEditDialog: val })
+  };
 
   deleteProductHandle = (product) => {
     this.setState({ deletingProduct: product }, () => {
@@ -67,9 +79,22 @@ class Admin extends Component {
     })
   };
 
+  editProductHandle = (product) => {
+    this.setState({ editingProduct: product }, () => {
+      this.openEditingDialog(true);
+    })
+  };
+
+  editProduct = () => {
+    this.openEditingDialog(false);
+    axios.put(this.apiUrl, this.state.editingProduct).then(response => {
+
+    });
+  };
+
   deleteProduct = () => {
     this.setState({ openDeleteDialog: false });
-    axios.delete('http://travelcalculator20180415094356.azurewebsites.net/api/products', { params: { id: this.state.deletingProduct.id } })
+    axios.delete(this.apiUrl, { params: { id: this.state.deletingProduct.id } })
       .then(res => {
         this.setState(prevState => ({
           products: prevState.products.filter(item => item.id !== this.state.deletingProduct.id)
@@ -102,6 +127,17 @@ class Admin extends Component {
         onClick={this.deleteProduct} />,
     ];
 
+    const editDialogActions = [
+      <FlatButton
+        label="Отмена"
+        primary={true}
+        onClick={() => this.openEditingDialog(false)} />,
+      <FlatButton
+        label="Сохранить"
+        secondary={true}
+        onClick={this.editProduct} />,
+    ];
+
     return (
       <div>
         <FloatingActionButton
@@ -111,21 +147,86 @@ class Admin extends Component {
           <ContentAdd />
         </FloatingActionButton>
 
-        <Table isAdmin={true} deleteProduct={this.deleteProductHandle} products={this.state.products} />
+        <Table
+          isAdmin={true}
+          editProduct={this.editProductHandle}
+          deleteProduct={this.deleteProductHandle}
+          products={this.state.products} />
 
         <Dialog
           title="Добавление нового продукта"
           actions={addProductDialogActions}
           open={this.state.openAddDialog} >
-          <TextField name="name" onChange={this.propertiesChanged} fullWidth={true} hintText="Название продукта" />
+          <TextField
+            name="name"
+            onChange={this.addProductPropertiesChanged}
+            fullWidth={true}
+            hintText="Название продукта" />
           <br />
-          <TextField name="protein" onChange={this.propertiesChanged} fullWidth={true} hintText="Белки, г" />
+          <TextField
+            name="protein"
+            onChange={this.addProductPropertiesChanged}
+            fullWidth={true}
+            hintText="Белки, г" />
           <br />
-          <TextField name="fat" onChange={this.propertiesChanged} fullWidth={true} hintText="Жиры, г" />
+          <TextField
+            name="fat"
+            onChange={this.addProductPropertiesChanged}
+            fullWidth={true}
+            hintText="Жиры, г" />
           <br />
-          <TextField name="carbohydrates" onChange={this.propertiesChanged} fullWidth={true} hintText="Углеводы, г" />
+          <TextField
+            name="carbohydrates"
+            onChange={this.addProductPropertiesChanged}
+            fullWidth={true}
+            hintText="Углеводы, г" />
           <br />
-          <TextField name="calories" onChange={this.propertiesChanged} fullWidth={true} hintText="Калорийность, ккал" />
+          <TextField
+            name="calories"
+            onChange={this.addProductPropertiesChanged}
+            fullWidth={true}
+            hintText="Калорийность, ккал" />
+        </Dialog>
+
+
+        <Dialog
+          title="Редактирование"
+          actions={editDialogActions}
+          open={this.state.openEditDialog} >
+          <TextField
+            name="name"
+            onChange={this.editProductPropertiesChanged}
+            value={this.state.editingProduct.name}
+            fullWidth={true}
+            hintText="Название продукта" />
+          <br />
+          <TextField
+            name="protein"
+            onChange={this.editProductPropertiesChanged}
+            value={this.state.editingProduct.protein}
+            fullWidth={true}
+            hintText="Белки, г" />
+          <br />
+          <TextField
+            name="fat"
+            onChange={this.editProductPropertiesChanged}
+            value={this.state.editingProduct.fat}
+            fullWidth={true}
+            hintText="Жиры, г" />
+          <br />
+          <TextField
+            name="carbohydrates"
+            onChange={this.editProductPropertiesChanged}
+            value={this.state.editingProduct.carbohydrates}
+            fullWidth={true}
+            hintText="Углеводы, г" />
+          <br />
+          <TextField
+            name="calories"
+            value={this.state.editingProduct.calories}
+            onChange={this.editProductPropertiesChanged}
+            fullWidth={true}
+            hintText="Калорийность, ккал" />
         </Dialog>
 
         <Dialog

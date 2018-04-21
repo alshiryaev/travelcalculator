@@ -4,15 +4,6 @@ import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowCol
 
 
 export default class ProductTable extends Component {
-
-  deleteProduct = (product) => {
-    this.props.deleteProduct(product);
-  };
-
-  editProduct = (product) => {
-
-  };
-
   render() {
     return (
       <Table
@@ -40,8 +31,8 @@ export default class ProductTable extends Component {
               <TableRowColumn>{product.carbohydrates}</TableRowColumn>
               <TableRowColumn>{product.calories}</TableRowColumn>
               <TableRowColumn className={this.props.isAdmin ? '' : 'hidden'}>
-                <button title="Редактировать" className="table-button edit">E</button>
-                <button title="Удалить" onClick={() => this.deleteProduct(product)} className="table-button delete">X</button>
+                <button title="Редактировать" onClick={() => this.props.editProduct(product)} className="table-button edit">E</button>
+                <button title="Удалить" onClick={() => this.props.deleteProduct(product)} className="table-button delete">X</button>
               </TableRowColumn>
             </TableRow>
           ))}

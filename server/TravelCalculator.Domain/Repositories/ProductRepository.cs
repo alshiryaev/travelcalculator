@@ -26,6 +26,12 @@ namespace TravelCalculator.Domain.Repositories
             _applicationContext.SaveChanges();
         }
 
+        public void ChangeProduct(Product product)
+        {
+            _applicationContext.Update(product);
+            _applicationContext.SaveChanges();
+        }
+
         public void DeleteProduct(Guid id)
         {
             Product product =  _applicationContext.Products.Find(id);
