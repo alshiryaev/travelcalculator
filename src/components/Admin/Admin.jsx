@@ -167,24 +167,28 @@ class Admin extends Component {
             name="protein"
             onChange={this.addProductPropertiesChanged}
             fullWidth={true}
+            type={'number'}
             hintText="Белки, г" />
           <br />
           <TextField
             name="fat"
             onChange={this.addProductPropertiesChanged}
             fullWidth={true}
+            type={'number'}
             hintText="Жиры, г" />
           <br />
           <TextField
             name="carbohydrates"
             onChange={this.addProductPropertiesChanged}
             fullWidth={true}
+            type={'number'}
             hintText="Углеводы, г" />
           <br />
           <TextField
             name="calories"
             onChange={this.addProductPropertiesChanged}
             fullWidth={true}
+            type={'number'}
             hintText="Калорийность, ккал" />
         </Dialog>
 

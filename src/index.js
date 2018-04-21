@@ -8,6 +8,7 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
 // скрипт социальных кнопок
+// import jquery from './jquery';
 // import likely from './likely';
 
 ReactDOM.render(<App /> , document.getElementById('root'));
