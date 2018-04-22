@@ -91,8 +91,8 @@ class Admin extends Component {
   editProduct = () => {
     this.openEditingDialog(false);
     axios.put(this.apiUrl, this.state.editingProduct).then(response => {
-        // Здесь нужно сделать обновление выбранной записи
-        // В идеале сделать также цветовую анимацию 
+      // Здесь нужно сделать обновление выбранной записи
+      // В идеале сделать также цветовую анимацию 
     });
   };
 
