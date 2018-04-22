@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Table from '../ProductsTable/ProductsTable';
+import CircularProgress from 'material-ui/CircularProgress';
 
 export default class Products extends Component {
 
     constructor(props) {
-        super(props);        
+        super(props);
         this.apiUrl = "http://travelcalculator.azurewebsites.net/api/products";
         this.state = {
+            isLoaded: false,
             products: []
         };
     }
@@ -16,14 +18,20 @@ export default class Products extends Component {
         axios.get(this.apiUrl)
             .then(res => {
                 this.setState({
-                    products: res.data
+                    products: res.data,
+                    isLoaded: true
                 })
             });
     }
 
     render() {
-        return <div>
-            <Table isAdmin={false} products={this.state.products}/>
+        return <div> {this.state.isLoaded ?
+            <Table isAdmin={false} products={this.state.products} />
+            : <div className="progress-bar">
+                <CircularProgress size={80} thickness={5} />
+            </div>
+        }
         </div>
     }
+
 }
