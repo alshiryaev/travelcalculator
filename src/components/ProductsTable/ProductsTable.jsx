@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './ProductTable.css';
+import './productTable.css';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 
 

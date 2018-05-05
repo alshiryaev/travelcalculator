@@ -4,25 +4,10 @@ import './Home.css';
 class Home extends Component {
   render() {
     return (
-      <div className="wrapper">
-        <div className="home-block-title">
-          <p className="home-section-title">Рассчёт меню в поход</p>
-          <p className="home-section-text">Рассчитаем необходимые в поход продукты, их вес и количество. Предложим меню на каждый день. </p>
-        </div>
-        <form action="" method="post">
-            <label for="daysAmount">Количество дней</label><input type="number" name="days" min="1" max="21" placeholder="1" id="daysAmount" /><br />
-            <label for="mansAmount">Количество участников</label><input type="number" name="days" min="1" max="10" placeholder="1" id="mansAmount" /><br />
-            <div className="type-travel">Тип похода</div>
-            <div className="type-travel__radio">
-              <input type="radio" name="typeTravel" value="mount" />горный <br />
-              <input type="radio" name="typeTravel" value="walk" /> пеший <br />
-              <input type="radio" name="typeTravel" value="river" /> сплав <br />
-            </div>
-            <label htmlFor="reserve">Нужен ли аварийный запас на 1 дополнительный день</label><input type="checkbox" name="accident" id="reserve" /> <br />
-            <input type="submit" value="Рассчитать" />
-        </form>
-      </div>
-    );
+      <div>
+        <h1>Добро пожаловать! Сайт находится в процессе разработки :)</h1>
+        <i>А пока можете заглянуть в таблицу БЖУ</i>
+      </div>);
   }
 }
 
