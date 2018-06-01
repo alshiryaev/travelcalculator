@@ -117,3 +117,10 @@ nav ul :nth-child(3) {
     display: flex;
     justify-content: center
 }
+
+.error-text {
+    font-size: 2rem;
+    padding: 5px;
+    background-color:#e72121;
+    color: white;
+}

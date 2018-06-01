@@ -10,10 +10,11 @@ import Table from '../ProductsTable/ProductsTable';
 import CircularProgress from 'material-ui/CircularProgress';
 
 class Admin extends Component {
+  // todo вынести диалог подтверждения в отдельный компонент
 
   constructor(props) {
     super(props);
-    this.apiUrl = "http://travelcalculator.azurewebsites.net/api/products";
+    this.apiUrl = "http://localhost:59638/api/products";
     this.state = {
       openAddDialog: false,
       openDeleteDialog: false,
@@ -46,15 +47,15 @@ class Admin extends Component {
     this.setState({ openAddDialog: val })
   };
 
-  addProductPropertiesChanged = (event) => {
-    const newProduct = Object.assign({}, this.state.newProduct);
-    newProduct[event.target.name] = event.target.value;
+  addProductPropertiesChanged = (event) => {    
+    let targetName = event.target.name;
+    const newProduct = Object.assign({}, this.state.newProduct, { targetName: event.target.value });
     this.setState({ newProduct: newProduct });
   };
 
   editProductPropertiesChanged = (event) => {
-    const editProduct = Object.assign({}, this.state.editingProduct);
-    editProduct[event.target.name] = event.target.value;
+    let targetName = event.target.name;
+    const editProduct = Object.assign({}, this.state.editingProduct, { targetName: event.target.value });
     this.setState({ editingProduct: editProduct });
   };
 
