@@ -47,14 +47,12 @@ class Admin extends Component {
     this.setState({ openAddDialog: val })
   };
 
-  addProductPropertiesChanged = (event) => {    
-    let targetName = event.target.name;
+  addProductPropertiesChanged = (event) => {  
     const newProduct = Object.assign({}, this.state.newProduct, { targetName: event.target.value });
     this.setState({ newProduct: newProduct });
   };
 
   editProductPropertiesChanged = (event) => {
-    let targetName = event.target.name;
     const editProduct = Object.assign({}, this.state.editingProduct, { targetName: event.target.value });
     this.setState({ editingProduct: editProduct });
   };
