@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './css/normalize.css';
 import './css/App.css';
-import './css/likely.css';
 import { Route, NavLink } from 'react-router-dom';
 import routes from '../routes';
 import { HashRouter } from 'react-router-dom';
@@ -25,7 +24,7 @@ class App extends Component {
               </nav>
             </header>
 
-            {/* Здесь вставляется основной контент на каждой странице */}
+
             <section className="main-section">
               {routes.map((route, index) => (
                 <Route
@@ -36,20 +35,9 @@ class App extends Component {
                 />
               ))}
             </section>
-            {/* Основной контент заканчивается */}
 
             <footer className="first-footer">
-              <div className="likely">
-                <div className="twitter">Твитнуть</div>
-                <div className="facebook">Поделиться</div>
-                <div className="vkontakte">Поделиться</div>
-                <div className="telegram">Отправить</div>
-              </div>
-            </footer>
-            <section className="second-section">
-
-            </section>
-          </div>
+            </footer>          </div>
 
         </HashRouter>
       </MuiThemeProvider>
