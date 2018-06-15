@@ -41,7 +41,7 @@ export default class Products extends Component {
                 </div>
         }
             <div> {this.state.isError ?
-                <p className="error-text">При загрузке данных произошла ошибка. Мы решаем эту проблему. Приносим свои извенения :(</p> : <p></p>}
+                <p className="error-text">При загрузке данных произошла ошибка. Мы решаем эту проблему. Приносим свои извинения :(</p> : <p></p>}
             </div>
         </div>
     }
