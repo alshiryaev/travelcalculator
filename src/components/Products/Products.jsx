@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Table from '../ProductsTable/ProductsTable';
 import CircularProgress from 'material-ui/CircularProgress';
+import fakeProducts from '../../products';
 
 export default class Products extends Component {
 
@@ -29,7 +30,13 @@ export default class Products extends Component {
                     products: res.data,
                     isLoaded: true
                 })
-            }, () => this.setError());
+            }, 
+            () => {
+                this.setError();     
+                this.setState({
+                    products : fakeProducts
+                })           
+            });
     }
 
     render() {
@@ -41,7 +48,7 @@ export default class Products extends Component {
                 </div>
         }
             <div> {this.state.isError ?
-                <p className="error-text">При загрузке данных произошла ошибка. Мы решаем эту проблему. Приносим свои извинения :(</p> : <p></p>}
+                <p className="error-text">Нет соединения с БД. Загружены тестовые данные</p> : <p></p>}
             </div>
         </div>
     }

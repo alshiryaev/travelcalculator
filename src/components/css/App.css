@@ -12,36 +12,8 @@
     box-sizing: border-box;
   }
   
-  @font-face{
-    font-family: 'Formular';
-    src: url('../fonts/Formular-Regular.otf');
-    font-style: normal;
-    font-weight: normal;
-  }
-  
-  @font-face{
-    font-family: 'Formular-italic';
-    src: url('../fonts/Formular-Italic.otf');
-    font-style: italic;
-    font-weight: normal;
-  }
-  
-  @font-face{
-    font-family: 'Formular-bold';
-    src: url('../fonts/Formular-Bold.otf');
-    font-style: normal;
-    font-weight: bold;
-  }
-  
-  @font-face{
-    font-family: 'Formular-black';
-    src: url('../fonts/Formular-Black.otf');
-    font-style: normal;
-    font-weight: bolder;
-  }
-  
   html{
-    font-family: 'Formular', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: normal;
     font-style: normal;
     font-size: 14px;
@@ -123,15 +95,12 @@ nav ul li {
 
 .error-text {
     text-align: center;
-    font-size: 2rem;
     padding: 5px;
     background-color: #ee5959;
     color: white;
     -webkit-animation: error-block-animation ease-in 1.5s;
     animation: error-block-animation ease-in 1.5s;
-    max-width: 50%;
     margin: 5% auto;
-
 }
 
 .hello-words{
