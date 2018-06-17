@@ -8,6 +8,7 @@ import TextField from 'material-ui/TextField';
 import axios from 'axios';
 import Table from '../ProductsTable/ProductsTable';
 import CircularProgress from 'material-ui/CircularProgress';
+import fakeProducts from '../../products';
 
 class Admin extends Component {
   // todo вынести диалог подтверждения в отдельный компонент
@@ -33,12 +34,24 @@ class Admin extends Component {
     };
   }
 
+  setError() {
+    this.setState({
+      isLoaded: true,
+      isError: true
+    })
+  }
+
   componentDidMount() {
     axios.get(this.apiUrl)
       .then(res => {
         this.setState({
           products: res.data,
           isLoaded: true
+        })
+      }, () => {
+        this.setError();
+        this.setState({
+          products: fakeProducts
         })
       });
   }
@@ -47,7 +60,7 @@ class Admin extends Component {
     this.setState({ openAddDialog: val })
   };
 
-  addProductPropertiesChanged = (event) => {  
+  addProductPropertiesChanged = (event) => {
     const newProduct = Object.assign({}, this.state.newProduct, { targetName: event.target.value });
     this.setState({ newProduct: newProduct });
   };
