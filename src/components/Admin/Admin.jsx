@@ -9,13 +9,14 @@ import axios from 'axios';
 import Table from '../ProductsTable/ProductsTable';
 import CircularProgress from 'material-ui/CircularProgress';
 import fakeProducts from '../../products';
+import config from '../../config';
 
 class Admin extends Component {
   // todo вынести диалог подтверждения в отдельный компонент
 
   constructor(props) {
     super(props);
-    this.apiUrl = "http://localhost:59638/api/products";
+    this.apiUrl = config.apiUrl + "/api/products";
     this.state = {
       openAddDialog: false,
       openDeleteDialog: false,
