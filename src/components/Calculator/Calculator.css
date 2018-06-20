@@ -22,7 +22,7 @@
     padding: 10px;
 }
 
-input[type="submit"]{
+input[type="submit"] {
     width: 240px;
     height: 64px;
     border-radius: 10px;
@@ -35,12 +35,12 @@ input[type="submit"]{
     cursor: pointer;
 }
 
-input[type="submit"]:hover{
+input[type="submit"]:hover {
     background: var(--button-hover-color);
     box-shadow: 0 3px var(--button-shadow-color);
 }
 
-input[type="submit"]:active{
+input[type="submit"]:active {
     background: var(--button-active-color);
     box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.5)
 }
