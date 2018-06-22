@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Table from '../ProductsTable/ProductsTable';
 import CircularProgress from 'material-ui/CircularProgress';
-import fakeProducts from '../../products';
 import config from '../../config';
 
 export default class Products extends Component {
@@ -35,9 +34,6 @@ export default class Products extends Component {
                 },
                 () => {
                     this.setError();
-                    this.setState({
-                        products: fakeProducts
-                    })
                 });
     }
 

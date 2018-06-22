@@ -1,4 +1,6 @@
-const products = [
+
+
+module.exports.products = [
     {
         name: 'Молоко',
         protein: 2.8,
@@ -49,6 +51,3 @@ const products = [
         calories: 87
     }
 ];
-
-
-export default products;
