@@ -43,14 +43,7 @@ class Admin extends Component {
 
   componentDidMount() {
     axios.get(this.apiUrl)
-      .then(res => {
-        this.setState({
-          products: res.data,
-          isLoaded: true
-        })
-      }, () => {
-        this.setError();
-      });
+      .then(res => this.setState({ products: res.data, isLoaded: true }), this.setError);
   }
 
   addProductDialogHandleOpenClose = (val) => {
@@ -77,13 +70,9 @@ class Admin extends Component {
       });
   };
 
-  openDeleteDialog = (val) => {
-    this.setState({ openDeleteDialog: val })
-  };
+  openDeleteDialog = (val) => this.setState({ openDeleteDialog: val });
 
-  openEditingDialog = (val) => {
-    this.setState({ openEditDialog: val })
-  };
+  openEditingDialog = (val) => this.setState({ openEditDialog: val });
 
   deleteProductHandle = (product) => {
     this.setState({ deletingProduct: product }, () => {
@@ -108,11 +97,11 @@ class Admin extends Component {
   deleteProduct = () => {
     this.setState({ openDeleteDialog: false });
     axios.delete(this.apiUrl, { params: { id: this.state.deletingProduct.id } })
-      .then(res => {
+      .then(res =>
         this.setState(prevState => ({
           products: prevState.products.filter(item => item.id !== this.state.deletingProduct.id)
         }))
-      });
+      );
   };
 
   render() {

@@ -25,22 +25,15 @@ export default class Products extends Component {
 
     componentDidMount() {
         axios.get(this.apiUrl)
-            .then(
-                res => {
-                    this.setState({
-                        products: res.data,
-                        isLoaded: true
-                    })
-                },
-                () => {
-                    this.setError();
-                });
+            .then(res => this.setState({ products: res.data, isLoaded: true }), this.setError);
     }
 
     render() {
         return <div> {
             this.state.isLoaded ?
-                <Table isAdmin={false} products={this.state.products} />
+                <Table
+                    isAdmin={false}
+                    products={this.state.products} />
                 : <div className="progress-bar">
                     <CircularProgress size={80} thickness={5} />
                 </div>
@@ -50,5 +43,4 @@ export default class Products extends Component {
             </div>
         </div>
     }
-
 }
