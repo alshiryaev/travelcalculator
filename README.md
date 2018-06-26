@@ -7,3 +7,5 @@
 
 Также должна быть установлена PostreSQL
 
+sequelize db:create
+sequelize db:migrate

@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+
 const sequelize = new Sequelize('travelcalculator', 'postgres', '12345', {
     host: 'localhost',
     dialect: 'postgres',
@@ -12,7 +13,7 @@ const sequelize = new Sequelize('travelcalculator', 'postgres', '12345', {
 })
 
 const db = {
-    test : () => {
+    testConnection : () => {
         sequelize
         .authenticate()
         .then(() => {

@@ -16,7 +16,7 @@ export default class Products extends Component {
         };
     }
 
-    setError() {
+    setError = () => {
         this.setState({
             isLoaded: true,
             isError: true
