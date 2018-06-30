@@ -4,15 +4,25 @@ const app = express();
 const port = process.env.PORT || 5000;
 const db = require('./db').db;
 const productRepository = require('./db/productsRepository').productsRepository;
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
+const cors = require('cors');
 
+app.use(cors());
 
 app.get('/api/products', (req, res) => {
-    
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
     productRepository.getAll().then(products => {
         res.send(products);
     })
+});
+
+app.post('/api/products', jsonParser, (req, res) => {
+    if (!req.body) return res.sendStatus(400);
+    console.log({...req.body});
+    productRepository.addProduct(req.body).then(result => {
+        console.log(result);
+        res.json(`ok`);
+    })     
 });
 
 if (process.env.NODE_ENV === 'production') {

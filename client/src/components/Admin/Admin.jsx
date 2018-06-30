@@ -51,7 +51,9 @@ class Admin extends Component {
   };
 
   addProductPropertiesChanged = (event) => {
-    const newProduct = Object.assign({}, this.state.newProduct, { targetName: event.target.value });
+    let edit = {};
+    edit[event.target.name] = event.target.value;
+    const newProduct ={...this.state.newProduct, ...edit};
     this.setState({ newProduct: newProduct });
   };
 
