@@ -67,7 +67,7 @@ class Admin extends Component {
       .then(res => {
         this.addProductDialogHandleOpenClose(false);
         this.setState(prevState => ({
-          products: prevState.products.concat(this.state.newProduct)
+          products: prevState.products.concat(res.data)
         }))
       });
   };

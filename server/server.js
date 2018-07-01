@@ -17,12 +17,13 @@ app.get('/api/products', (req, res) => {
 });
 
 app.post('/api/products', jsonParser, (req, res) => {
-    if (!req.body) return res.sendStatus(400);
-    console.log({...req.body});
-    productRepository.addProduct(req.body).then(result => {
-        console.log(result);
-        res.json(`ok`);
-    })     
+    if (!req.body)
+        return res.sendStatus(400);
+    productRepository.addProduct(req.body).then(result => res.json(result))
+});
+
+app.delete('/api/products', (req, res) => {
+    productRepository.deleteProduct(req.query.id).then(() => res.sendStatus(200));
 });
 
 if (process.env.NODE_ENV === 'production') {
