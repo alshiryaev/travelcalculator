@@ -53,12 +53,14 @@ class Admin extends Component {
   addProductPropertiesChanged = (event) => {
     let edit = {};
     edit[event.target.name] = event.target.value;
-    const newProduct ={...this.state.newProduct, ...edit};
+    const newProduct = { ...this.state.newProduct, ...edit };
     this.setState({ newProduct: newProduct });
   };
 
   editProductPropertiesChanged = (event) => {
-    const editProduct = Object.assign({}, this.state.editingProduct, { targetName: event.target.value });
+    let edit = {};
+    edit[event.target.name] = event.target.value;
+    const editProduct = {...this.state.editingProduct,...edit};
     this.setState({ editingProduct: editProduct });
   };
 
@@ -91,8 +93,7 @@ class Admin extends Component {
   editProduct = () => {
     this.openEditingDialog(false);
     axios.put(this.apiUrl, this.state.editingProduct).then(response => {
-      // Здесь нужно сделать обновление выбранной записи
-      // В идеале сделать также цветовую анимацию 
+      // Здесь нужно сделать обновление выбранной записи     
     });
   };
 

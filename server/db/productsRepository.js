@@ -3,11 +3,19 @@ const Product = require('./models/product').product;
 
 const productsRepository = {
     getAll: () => Product.findAll(),
-    addProduct: (newProduct) => Product.create({ ...newProduct}),
+    addProduct: (newProduct) => Product.create({ ...newProduct
+    }),
     deleteProduct: (id) => Product.destroy({
         where: {
             id: id
         }
+    }),
+    updateProduct: (product) => Product.update({ ...product
+    }, {
+        where: {
+            id: product.id
+        },
+        returning: true
     })
 }
 

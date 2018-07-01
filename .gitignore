@@ -18,7 +18,6 @@ client/node_modules
 .env.production.local
 
 .vs
-.vscode
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

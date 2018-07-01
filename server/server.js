@@ -26,6 +26,12 @@ app.delete('/api/products', (req, res) => {
     productRepository.deleteProduct(req.query.id).then(() => res.sendStatus(200));
 });
 
+app.put('/api/products', jsonParser, (req, res) => {
+    productRepository.updateProduct(req.body).then(result => {
+        res.sendStatus(200)
+    });
+});
+
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, 'client/build')));
     app.get('*', function (req, res) {
