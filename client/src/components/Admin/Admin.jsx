@@ -5,17 +5,15 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
-import axios from 'axios';
 import Table from '../ProductsTable/ProductsTable';
 import CircularProgress from 'material-ui/CircularProgress';
-import config from '../../config';
+import AdminService from '../../services/adminService';
 
 class Admin extends Component {
   // todo вынести диалог подтверждения в отдельный компонент
 
   constructor(props) {
     super(props);
-    this.apiUrl = config.apiUrl + "/api/products";
     this.state = {
       openAddDialog: false,
       openDeleteDialog: false,
@@ -34,7 +32,9 @@ class Admin extends Component {
     };
   }
 
-  setError() {
+  adminService = new AdminService();
+
+  setError = () => {
     this.setState({
       isLoaded: true,
       isError: true
@@ -42,7 +42,7 @@ class Admin extends Component {
   }
 
   componentDidMount() {
-    axios.get(this.apiUrl)
+    this.adminService.getAllProducts()
       .then(res => this.setState({ products: res.data, isLoaded: true }), this.setError);
   }
 
@@ -65,7 +65,7 @@ class Admin extends Component {
   };
 
   addNewProduct = () => {
-    axios.post(this.apiUrl, this.state.newProduct)
+    this.adminService.addNewProduct(this.state.newProduct)
       .then(res => {
         this.addProductDialogHandleOpenClose(false);
         this.setState(prevState => ({
@@ -92,14 +92,15 @@ class Admin extends Component {
 
   editProduct = () => {
     this.openEditingDialog(false);
-    axios.put(this.apiUrl, this.state.editingProduct).then(response => {
+    this.adminService.editProduct(this.state.editingProduct).then(response => {
       // Здесь нужно сделать обновление выбранной записи     
     });
   };
 
   deleteProduct = () => {
     this.setState({ openDeleteDialog: false });
-    axios.delete(this.apiUrl, { params: { id: this.state.deletingProduct.id } })
+    let {id} = this.state.deletingProduct;
+    this.adminService.deleteProduct(id)
       .then(res =>
         this.setState(prevState => ({
           products: prevState.products.filter(item => item.id !== this.state.deletingProduct.id)
