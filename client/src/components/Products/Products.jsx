@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Table from '../ProductsTable/ProductsTable';
 import CircularProgress from 'material-ui/CircularProgress';
-import config from '../../config';
+import AdminService from '../../services/adminService'
 
 export default class Products extends Component {
 
     constructor(props) {
         super(props);
-        this.apiUrl = config.apiUrl + "/api/products";
         this.state = {
             isLoaded: false,
             isError: false,
             products: []
         };
     }
+
+    adminService = new AdminService();
 
     setError = () => {
         this.setState({
@@ -24,7 +24,8 @@ export default class Products extends Component {
     }
 
     componentDidMount() {
-        axios.get(this.apiUrl)
+
+        this.adminService.getAllProducts()
             .then(res => this.setState({ products: res.data, isLoaded: true }), this.setError);
     }
 
