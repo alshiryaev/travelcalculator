@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 5000;
-const db = require('./db').db;
 const productRepository = require('./db/productsRepository').productsRepository;
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();

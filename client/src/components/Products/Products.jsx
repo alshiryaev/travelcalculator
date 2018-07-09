@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Table from '../ProductsTable/ProductsTable';
 import CircularProgress from 'material-ui/CircularProgress';
-import AdminService from '../../services/adminService'
+import DataService from '../../services/dataService'
 
 export default class Products extends Component {
 
@@ -14,7 +14,7 @@ export default class Products extends Component {
         };
     }
 
-    adminService = new AdminService();
+    dataService = new DataService();
 
     setError = () => {
         this.setState({
@@ -25,7 +25,7 @@ export default class Products extends Component {
 
     componentDidMount() {
 
-        this.adminService.getAllProducts()
+        this.dataService.getAllProducts()
             .then(res => this.setState({ products: res.data, isLoaded: true }), this.setError);
     }
 

@@ -7,7 +7,7 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import Table from '../ProductsTable/ProductsTable';
 import CircularProgress from 'material-ui/CircularProgress';
-import AdminService from '../../services/adminService';
+import DataService from '../../services/dataService';
 
 class Admin extends Component {
   // todo вынести диалог подтверждения в отдельный компонент
@@ -32,7 +32,7 @@ class Admin extends Component {
     };
   }
 
-  adminService = new AdminService();
+  dataService = new DataService();
 
   setError = () => {
     this.setState({
@@ -42,7 +42,7 @@ class Admin extends Component {
   }
 
   componentDidMount() {
-    this.adminService.getAllProducts()
+    this.dataService.getAllProducts()
       .then(res => this.setState({ products: res.data, isLoaded: true }), this.setError);
   }
 
@@ -51,21 +51,21 @@ class Admin extends Component {
   };
 
   addProductPropertiesChanged = (event) => {
-    let edit = {};
+    let edit = Object.create(null);
     edit[event.target.name] = event.target.value;
     const newProduct = { ...this.state.newProduct, ...edit };
     this.setState({ newProduct: newProduct });
   };
 
   editProductPropertiesChanged = (event) => {
-    let edit = {};
+    let edit = Object.create(null);
     edit[event.target.name] = event.target.value;
     const editProduct = {...this.state.editingProduct,...edit};
     this.setState({ editingProduct: editProduct });
   };
 
   addNewProduct = () => {
-    this.adminService.addNewProduct(this.state.newProduct)
+    this.dataService.addNewProduct(this.state.newProduct)
       .then(res => {
         this.addProductDialogHandleOpenClose(false);
         this.setState(prevState => ({
@@ -92,7 +92,7 @@ class Admin extends Component {
 
   editProduct = () => {
     this.openEditingDialog(false);
-    this.adminService.editProduct(this.state.editingProduct).then(response => {
+    this.dataService.editProduct(this.state.editingProduct).then(response => {
       // Здесь нужно сделать обновление выбранной записи     
     });
   };
@@ -100,7 +100,7 @@ class Admin extends Component {
   deleteProduct = () => {
     this.setState({ openDeleteDialog: false });
     let {id} = this.state.deletingProduct;
-    this.adminService.deleteProduct(id)
+    this.dataService.deleteProduct(id)
       .then(res =>
         this.setState(prevState => ({
           products: prevState.products.filter(item => item.id !== this.state.deletingProduct.id)

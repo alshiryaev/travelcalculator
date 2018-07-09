@@ -1,7 +1,7 @@
 import axios from 'axios';
 import config from '../config';
 
-export default class AdminService {
+export default class DataService {
 
     apiUrl = config.apiUrl + "/api/products";
 
