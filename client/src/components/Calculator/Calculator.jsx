@@ -1,11 +1,23 @@
 import React from 'react';
 import './Calculator.css';
-import TextField from 'material-ui/TextField';
-import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
-import Checkbox from 'material-ui/Checkbox';
-import RaisedButton from 'material-ui/RaisedButton';
+import TextField from '@material-ui/core/TextField';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 class Calculator extends React.Component {
+
+  state = {
+    value: 'Mountain'
+  }
+
+  handleChange = event => {
+    this.setState({ value: event.target.value });
+  };
+
   render() {
     return (
       <div className="wrapper">
@@ -13,31 +25,39 @@ class Calculator extends React.Component {
           <p className="home-section-title">Меню в поход</p>
           <p className="home-section-text">Рассчет необходимых в поход продукты, их вес и количество. Предложим меню на каждый день. </p>
         </div>
-        <form>
-          <TextField hintText="Количество дней" type="number" min="1" max="21" />
+        <FormGroup>
+          <TextField placeholder="Количество дней" type="number" min="1" max="21" />
           <br />
-          <TextField hintText="Количество участников" type="number" min="1" max="10" />
+          <TextField placeholder="Количество участников" type="number" min="1" max="10" />
           <br />
           <div className="type-travel">Тип похода</div>
           <div className="type-travel__radio">
 
-            <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
-              <RadioButton
+            <RadioGroup value={this.state.value}>
+
+              <FormControlLabel
                 value="Mountain"
+                control={<Radio color="primary" />}
+                onChange={this.handleChange}
                 label="Горный" />
-              <RadioButton
+              <FormControlLabel
                 value="Walk"
+                control={<Radio color="primary" />}
+                onChange={this.handleChange}
                 label="Пеший" />
-              <RadioButton
+              <FormControlLabel
                 value="River"
+                control={<Radio color="primary" />}
+                onChange={this.handleChange}
                 label="Сплав" />
-            </RadioButtonGroup>
+            </RadioGroup>
           </div>
           <br />
-          <Checkbox label="Нужен ли аварийный запас на 1 дополнительный день?" />
-          <br />
-          <RaisedButton label="Рассчитать" />
-        </form>
+          <FormControlLabel control={
+            <Checkbox />
+          } label="Нужен ли аварийный запас на 1 дополнительный день?" />
+          <Button color="primary" >Рассчитать</Button>
+        </FormGroup>
       </div>
     );
   }
