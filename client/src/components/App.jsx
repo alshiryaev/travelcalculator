@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './css/normalize.css';
 import './css/App.css';
 import { Route, NavLink } from 'react-router-dom';
 import routes from '../routes';
