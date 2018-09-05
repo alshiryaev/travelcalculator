@@ -6,11 +6,7 @@
     --button-active-color: #f9572e;
     --button-disable-color: rgb(153, 153, 153);
     --button-shadow-color: #753b1d;
-  }
-
-  * {
-    box-sizing: border-box;
-  }k
+  }  
   
   html{
     font-family: 'Montserrat', sans-serif;

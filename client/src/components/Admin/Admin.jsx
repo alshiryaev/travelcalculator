@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import './Admin.css';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import Table from '../ProductsTable/ProductsTable';
 import CircularProgress from 'material-ui/CircularProgress';
 import DataService from '../../services/dataService';
+import Button from '@material-ui/core/Button';
 
 class Admin extends Component {
   // todo вынести диалог подтверждения в отдельный компонент
@@ -60,7 +59,7 @@ class Admin extends Component {
   editProductPropertiesChanged = (event) => {
     let edit = Object.create(null);
     edit[event.target.name] = event.target.value;
-    const editProduct = {...this.state.editingProduct,...edit};
+    const editProduct = { ...this.state.editingProduct, ...edit };
     this.setState({ editingProduct: editProduct });
   };
 
@@ -99,7 +98,7 @@ class Admin extends Component {
 
   deleteProduct = () => {
     this.setState({ openDeleteDialog: false });
-    let {id} = this.state.deletingProduct;
+    let { id } = this.state.deletingProduct;
     this.dataService.deleteProduct(id)
       .then(res =>
         this.setState(prevState => ({
@@ -148,13 +147,9 @@ class Admin extends Component {
       <div>
         {this.state.isLoaded ?
           <div>
-            <FloatingActionButton
-              className="add-button"
-              title="Добавить новый продукт"
-              onClick={() => this.addProductDialogHandleOpenClose(true)}>
-              <ContentAdd />
-            </FloatingActionButton>
-
+            <Button onClick={() => this.addProductDialogHandleOpenClose(true)} color="primary">
+              Добавить
+            </Button>
             <Table
               isAdmin={true}
               editProduct={this.editProductHandle}
