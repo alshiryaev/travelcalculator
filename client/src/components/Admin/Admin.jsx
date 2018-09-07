@@ -13,7 +13,6 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 class Admin extends Component {
-  // todo вынести диалог подтверждения в отдельный компонент
 
   constructor(props) {
     super(props);
@@ -104,7 +103,7 @@ class Admin extends Component {
     this.setState({ openDeleteDialog: false });
     let { id } = this.state.deletingProduct;
     this.dataService.deleteProduct(id)
-      .then(res =>
+      .then(() =>
         this.setState(prevState => ({
           products: prevState.products.filter(item => item.id !== this.state.deletingProduct.id)
         }))
