@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import './Admin.css';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import TextField from 'material-ui/TextField';
 import Table from '../ProductsTable/ProductsTable';
-import CircularProgress from 'material-ui/CircularProgress';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import DataService from '../../services/dataService';
+
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 class Admin extends Component {
   // todo вынести диалог подтверждения в отдельный компонент
@@ -108,41 +112,6 @@ class Admin extends Component {
   };
 
   render() {
-
-    const addProductDialogActions = [
-
-      <FlatButton
-        label="Отмена"
-        onClick={() => this.addProductDialogHandleOpenClose(false)} />,
-
-      <FlatButton
-        label="Добавить"
-        primary={true}
-        onClick={this.addNewProduct} />,
-    ];
-
-    const deleteDialogActions = [
-      <FlatButton
-        label="Отмена"
-        primary={true}
-        onClick={() => this.openDeleteDialog(false)} />,
-      <FlatButton
-        label="Да"
-        secondary={true}
-        onClick={this.deleteProduct} />,
-    ];
-
-    const editDialogActions = [
-      <FlatButton
-        label="Отмена"
-        primary={true}
-        onClick={() => this.openEditingDialog(false)} />,
-      <FlatButton
-        label="Сохранить"
-        secondary={true}
-        onClick={this.editProduct} />,
-    ];
-
     return (
       <div>
         {this.state.isLoaded ?
@@ -156,89 +125,103 @@ class Admin extends Component {
               deleteProduct={this.deleteProductHandle}
               products={this.state.products} />
 
-            <Dialog
-              title="Добавление нового продукта"
-              actions={addProductDialogActions}
-              open={this.state.openAddDialog} >
-              <TextField
-                name="name"
-                onChange={this.addProductPropertiesChanged}
-                fullWidth={true}
-                hintText="Название продукта" />
-              <br />
-              <TextField
-                name="protein"
-                onChange={this.addProductPropertiesChanged}
-                fullWidth={true}
-                hintText="Белки, г" />
-              <br />
-              <TextField
-                name="fat"
-                onChange={this.addProductPropertiesChanged}
-                fullWidth={true}
-                hintText="Жиры, г" />
-              <br />
-              <TextField
-                name="carbohydrates"
-                onChange={this.addProductPropertiesChanged}
-                fullWidth={true}
-                hintText="Углеводы, г" />
-              <br />
-              <TextField
-                name="calories"
-                onChange={this.addProductPropertiesChanged}
-                fullWidth={true}
-                hintText="Калорийность, ккал" />
+            <Dialog open={this.state.openAddDialog}>
+              <DialogTitle>Добавление нового продукта</DialogTitle>
+              <DialogContent>
+                <TextField
+                  name="name"
+                  onChange={this.addProductPropertiesChanged}
+                  fullWidth
+                  placeholder="Название продукта" />
+                <br />
+                <TextField
+                  name="protein"
+                  onChange={this.addProductPropertiesChanged}
+                  fullWidth
+                  placeholder="Белки, г" />
+                <br />
+                <TextField
+                  name="fat"
+                  onChange={this.addProductPropertiesChanged}
+                  fullWidth
+                  placeholder="Жиры, г" />
+                <br />
+                <TextField
+                  name="carbohydrates"
+                  onChange={this.addProductPropertiesChanged}
+                  fullWidth
+                  placeholder="Углеводы, г" />
+                <br />
+                <TextField
+                  name="calories"
+                  onChange={this.addProductPropertiesChanged}
+                  fullWidth
+                  placeholder="Калорийность, ккал" />
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={() => this.addProductDialogHandleOpenClose(false)}>Отмена</Button>
+                <Button onClick={this.addNewProduct} >Добавить</Button>
+              </DialogActions>
             </Dialog>
 
 
-            <Dialog
-              title="Редактирование"
-              actions={editDialogActions}
-              open={this.state.openEditDialog} >
-              <TextField
-                name="name"
-                onChange={this.editProductPropertiesChanged}
-                value={this.state.editingProduct.name}
-                fullWidth={true}
-                hintText="Название продукта" />
-              <br />
-              <TextField
-                name="protein"
-                onChange={this.editProductPropertiesChanged}
-                value={this.state.editingProduct.protein}
-                fullWidth={true}
-                hintText="Белки, г" />
-              <br />
-              <TextField
-                name="fat"
-                onChange={this.editProductPropertiesChanged}
-                value={this.state.editingProduct.fat}
-                fullWidth={true}
-                hintText="Жиры, г" />
-              <br />
-              <TextField
-                name="carbohydrates"
-                onChange={this.editProductPropertiesChanged}
-                value={this.state.editingProduct.carbohydrates}
-                fullWidth={true}
-                hintText="Углеводы, г" />
-              <br />
-              <TextField
-                name="calories"
-                value={this.state.editingProduct.calories}
-                onChange={this.editProductPropertiesChanged}
-                fullWidth={true}
-                hintText="Калорийность, ккал" />
+            <Dialog open={this.state.openEditDialog} >
+              <DialogContentText>Редактирование</DialogContentText>
+              <DialogContent>
+                <TextField
+                  name="name"
+                  onChange={this.editProductPropertiesChanged}
+                  value={this.state.editingProduct.name}
+                  fullWidth
+                  placeholder="Название продукта" />
+                <br />
+                <TextField
+                  name="protein"
+                  onChange={this.editProductPropertiesChanged}
+                  value={this.state.editingProduct.protein}
+                  fullWidth
+                  placeholder="Белки, г" />
+                <br />
+                <TextField
+                  name="fat"
+                  onChange={this.editProductPropertiesChanged}
+                  value={this.state.editingProduct.fat}
+                  fullWidth
+                  placeholder="Жиры, г" />
+                <br />
+                <TextField
+                  name="carbohydrates"
+                  onChange={this.editProductPropertiesChanged}
+                  value={this.state.editingProduct.carbohydrates}
+                  fullWidth
+                  placeholder="Углеводы, г" />
+                <br />
+                <TextField
+                  name="calories"
+                  value={this.state.editingProduct.calories}
+                  onChange={this.editProductPropertiesChanged}
+                  fullWidth
+                  placeholder="Калорийность, ккал" />
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={() => this.openEditingDialog(false)}>Отмена</Button>
+                <Button onClick={this.editProduct}>Сохранить</Button>
+              </DialogActions>
             </Dialog>
 
-            <Dialog
-              title="Внимание"
-              actions={deleteDialogActions}
-              modal={true}
-              open={this.state.openDeleteDialog}>
-              Удалить продукт?
-        </Dialog>
+            <Dialog open={this.state.openDeleteDialog}>
+              <DialogTitle>Внимание</DialogTitle>
+              <DialogContent>
+                <DialogContentText>Удалить данный продукт?</DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={() => this.openDeleteDialog(false)} >
+                  Отмена
+                </Button>
+                <Button onClick={this.deleteProduct}> Да</Button>
+              </DialogActions>
+
+            </Dialog>
           </div> :
           <div className="progress-bar">
             <CircularProgress size={80} thickness={5} />

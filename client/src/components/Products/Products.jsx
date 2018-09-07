@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Table from '../ProductsTable/ProductsTable';
-import CircularProgress from 'material-ui/CircularProgress';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import DataService from '../../services/dataService'
 
 export default class Products extends Component {

@@ -11,7 +11,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Build';
 
 const ProductTable = props => {
-  const { isAdmin, products, editProduct, deleteProduct } = props;
+  const { isAdmin, products, editProduct = f => f, deleteProduct = f => f } = props;
   return (
     <Paper>
       <Table>
@@ -38,10 +38,10 @@ const ProductTable = props => {
                 <TableCell>{product.calories}</TableCell>
                 {isAdmin ?
                   <TableCell>
-                    <IconButton title="Редактировать" onClick={() => editProduct(product)}>
+                    <IconButton title="Удалить" onClick={() => deleteProduct(product)}>
                       <DeleteIcon/>
                     </IconButton>
-                    <IconButton title="Удалить" onClick={() => deleteProduct(product)}>
+                    <IconButton title="Редактировать" onClick={() => editProduct(product)}>
                       <EditIcon/>
                     </IconButton>
                   </TableCell> : <TableCell></TableCell>}
