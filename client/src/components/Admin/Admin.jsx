@@ -115,7 +115,7 @@ class Admin extends Component {
       <div>
         {this.state.isLoaded ?
           <div>
-            <Button onClick={() => this.addProductDialogHandleOpenClose(true)} color="primary">
+            <Button onClick={() => this.addProductDialogHandleOpenClose(true)} color="secondary">
               Добавить
             </Button>
             <Table
