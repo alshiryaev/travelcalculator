@@ -15,8 +15,8 @@ class Calculator extends React.Component {
 
     this.state = {
       type: 'Mountain',
-      peopleCount: 0,
-      daysCount: 0
+      peopleCount: 1,
+      daysCount: 1
     }
   }
 
@@ -43,10 +43,8 @@ class Calculator extends React.Component {
 
   render() {
     return (
-      <form autoComplete="off" onSubmit={this.handleSubmit}>
-        <div className="wrapper">
+      <form className="calculator-form" autoComplete="off" onSubmit={this.handleSubmit}>
           <div className="home-block-title">
-            <p className="home-section-title">Меню в поход</p>
             <p className="home-section-text">Рассчет необходимых в поход продуктов, их вес и количество. Предложим меню на каждый день. </p>
           </div>
           <FormGroup>
@@ -96,7 +94,6 @@ class Calculator extends React.Component {
             } label="Нужен ли аварийный запас на 1 дополнительный день?" />
             <Button type="submit" color="primary" >Рассчитать</Button>
           </FormGroup>
-        </div>
       </form>
     );
   }

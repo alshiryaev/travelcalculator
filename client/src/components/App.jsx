@@ -4,12 +4,14 @@ import { Route, NavLink } from 'react-router-dom';
 import routes from '../routes';
 import { HashRouter } from 'react-router-dom';
 
+
+
 export default class App extends Component {
   render() {
     return (
         <HashRouter>
           <div className="wrapper">
-            <header className="header">
+            <header className="header">         
               <nav>
                 <ul className="nav-menu">
                   <li className="nav-menu__item"><NavLink exact className="menu-link" activeClassName="menu-link_active" to={"/"}>Главная</NavLink ></li>
@@ -22,6 +24,7 @@ export default class App extends Component {
             </header>
             
             <section className="main-section">
+           
               {routes.map((route, index) => (
                 <Route
                   key={index}

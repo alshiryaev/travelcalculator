@@ -51,8 +51,6 @@
     text-decoration: underline;
 }
 
-
-
 .main-section {
     max-width: 50%;
     margin: 0 auto;
@@ -90,13 +88,18 @@
     }
 }
 
-@media (max-width: 500px){
-    nav ul {       
-        display: flex;
-        flex-direction: column;
+@media (max-width: 500px){ 
+
+    html {
+         font-size: .8rem;
     }
 
-    nav ul li {
-        margin: 0;
+    .nav-menu{
+        flex-direction: column;       
+    }
+
+    .main-section {
+        max-width: 90%;
+        margin: 0 auto;
     }
 }

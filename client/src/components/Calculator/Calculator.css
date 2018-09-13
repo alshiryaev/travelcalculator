@@ -1,50 +1,25 @@
 .home-block-title {
     display: -ms-flexbox;
     -ms-flex-pack: center;
-    margin: 40px auto;
+    margin: 10px auto;
     text-align: center;
 }
 
 .home-section-title {
-    width: 580px;
     margin: 0 auto;
     font-family: 'Formular-bold', sans-serif;
-    font-size: 3rem;
-    line-height: 3.6rem;
 }
 
 .home-section-text {
     margin: 0;
-    font-size: 1.125rem;
-    line-height: 1.875rem;
-    background-color: #f15525fd;
+    background-color: #f87a53fd;
     color: #fff;
     padding: 10px;
 }
 
-input[type="submit"] {
-    width: 240px;
-    height: 64px;
-    border-radius: 10px;
-    background: var(--button-active-color);
-    box-shadow: 0 3px var(--button-shadow-color);
-    border: none;
-    outline: none;
-    font-size: 1.25rem;
-    color: #ffffff;
-    cursor: pointer;
-}
+@media (max-width: 500px){ 
 
-input[type="submit"]:hover {
-    background: var(--button-hover-color);
-    box-shadow: 0 3px var(--button-shadow-color);
-}
-
-input[type="submit"]:active {
-    background: var(--button-active-color);
-    box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.5)
-}
-
-form {
-    margin: 0 auto;
+    .calculator-form{
+         font-size: .8rem;
+    }   
 }

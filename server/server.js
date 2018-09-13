@@ -6,6 +6,7 @@ const productRepository = require('./db/productsRepository').productsRepository;
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const cors = require('cors');
+const {products}  = require('./testProducts');
 
 app.use(cors());
 
