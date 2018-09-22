@@ -6,13 +6,14 @@ const productRepository = require('./db/productsRepository').productsRepository;
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const cors = require('cors');
+const testProducts = require('./testProducts').products;
 
 app.use(cors());
 
 app.get('/api/products', (req, res) => {
     productRepository.getAll().then(products => {
         res.send(products);
-    })
+    },() => res.send(testProducts))
 });
 
 app.post('/api/products', jsonParser, (req, res) => {
