@@ -13,7 +13,7 @@ app.use(cors());
 app.get('/api/products', (req, res) => {
     productRepository.getAll().then(products => {
         res.send(products);
-    },() => res.send(testProducts))
+    },() => res.send(products))
 });
 
 app.post('/api/products', jsonParser, (req, res) => {
