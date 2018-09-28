@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Products', {
+    return queryInterface.createTable('Food', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -9,30 +9,23 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        allowNull: false,
         type: Sequelize.STRING
       },
-      protein: {
+      dayTimeType: {
         allowNull: false,
-        type: Sequelize.DOUBLE
+        type: Sequelize.INTEGER
       },
-      fat: {
+      travelType: {
         allowNull: false,
-        type: Sequelize.DOUBLE
+        type: Sequelize.INTEGER
       },
-      carbohydrates: {
+      recipe: {
         allowNull: false,
-        type: Sequelize.DOUBLE
-      },
-      calories: {
-        allowNull: false,
-        type: Sequelize.DOUBLE
+        type: Sequelize.INTEGER
       }
     });
-    
-
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Products');
+    return queryInterface.dropTable('Food');
   }
 };
