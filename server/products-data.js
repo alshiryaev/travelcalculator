@@ -1,7 +1,8 @@
-
+const { v4 } = require('uuid');
 
 module.exports.products = [
-    {
+    {        
+        id: v4(),
         name: 'Молоко',
         protein: 2.8,
         fat: 3.2,
@@ -9,6 +10,7 @@ module.exports.products = [
         calories: 58
     },
     {
+        id: v4(),
         name: 'Крупа гречневая',
         protein: 12.6,
         fat: 2.6,
@@ -16,6 +18,7 @@ module.exports.products = [
         calories: 345
     },
     {
+        id: v4(),
         name: 'Рис',
         protein: 8.0,
         fat: 1,
@@ -23,6 +26,7 @@ module.exports.products = [
         calories: 345
     },
     {
+        id: v4(),
         name: 'Яйцо куриное',
         protein: 12.7,
         fat: 11.5,
@@ -30,6 +34,7 @@ module.exports.products = [
         calories: 157
     },
     {
+        id: v4(),
         name: 'Крупа ячневая',
         protein: 10.4,
         fat: 1.3,
@@ -37,6 +42,7 @@ module.exports.products = [
         calories: 340
     },
     {
+        id: v4(),
         name: 'Крупа пшеничная',
         protein: 12.7,
         fat: 1.1,
@@ -44,6 +50,7 @@ module.exports.products = [
         calories: 343
     },
     {
+        id: v4(),
         name: 'Картофель',
         protein: 2,
         fat: 0.1,
