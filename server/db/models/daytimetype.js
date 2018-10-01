@@ -1,10 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var dayTimeTypes = sequelize.define('dayTimeTypes', {
+  const DayTimeTypes = sequelize.define('DayTimeType', {
     name: DataTypes.STRING
   }, { timestamps: false});
-  dayTimeTypes.associate = function(models) {
-    // associations can be defined here
+  DayTimeTypes.associate = models => {
+    DayTimeTypes.belongToMany(models.Food, {through: 'FoodsDayTimeTypes' });
   };
   return dayTimeTypes;
 };
