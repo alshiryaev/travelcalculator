@@ -1,5 +1,43 @@
+.tableWrapper {
+    width: 100%;
+}
+
 .loading-image {
     margin-left: 45%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1040px;
+    min-width: 320px;
+    margin-top: 30px;
+}
+
+thead td{
+    background-color: rgb(200, 218, 244);
+    border-bottom: 2px solid rgb(165, 165, 165);
+    font-weight: bold;
+}
+
+thead :first-child{
+    width: 35%;
+}
+
+thead :nth-child(2),
+thead :nth-child(3),
+thead :nth-child(4){
+    width: 15%;
+}
+
+thead :nth-child(5){
+    width: 25%;
+}
+
+td {
+    height: 2.5rem;
+    padding-left: 10px;
+    border-bottom: 1px solid rgb(235, 235, 235)
 }
 
 button.table-button {
@@ -19,6 +57,10 @@ button.table-button {
 .table-button.edit {
     background: #7088f5;
     color: white;
+}
+
+.forAdmin {
+    display: none;
 }
 
 .hidden {

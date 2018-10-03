@@ -116,7 +116,9 @@
 }
 
 .main-section {
-    max-width: 50%;
+    width: 100%;
+    max-width: 980px;
+    min-width: 320px;
     margin: 0 auto;
     padding-top: 3rem;
 }
@@ -169,7 +171,9 @@
     }
 
     .main-section {
-        max-width: 90%;
+        width: 90%;
+        max-width: 1200px;
+        min-width: 320px; 
         margin: 0 auto;
     }
 
