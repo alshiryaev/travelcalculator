@@ -30,7 +30,7 @@ export default class Products extends Component {
     }
 
     render() {
-        return <div> {
+        return <div class="tableWrapper"> {
             this.state.isLoaded ?
                 <Table
                     isAdmin={false}
@@ -40,7 +40,8 @@ export default class Products extends Component {
                 </div>
         }
             <div> {this.state.isError ?
-                <p className="error-text">Нет соединения с БД. Загружены тестовые данные</p> : <p></p>}
+            
+                            <p className="error-text">Нет соединения с БД. Загружены тестовые данные</p> : <p></p>}
             </div>
         </div>
     }
