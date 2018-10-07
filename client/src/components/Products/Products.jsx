@@ -30,7 +30,7 @@ export default class Products extends Component {
     }
 
     render() {
-        return <div class="tableWrapper"> {
+        return <div className="tableWrapper"> {
             this.state.isLoaded ?
                 <Table
                     isAdmin={false}

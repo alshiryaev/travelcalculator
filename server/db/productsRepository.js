@@ -1,4 +1,4 @@
-const Product = require('./models/product').product;
+const {Product} = require('./models/product');
 
 
 const productsRepository = {

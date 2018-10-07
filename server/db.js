@@ -10,7 +10,7 @@ const sequelize = new Sequelize('travelcalculator', 'postgres', '12345', {
         acquire: 30000,
         idle: 10000
     },
-    sync: true
+    sync: {force: true}
 })
 
 const db = {
