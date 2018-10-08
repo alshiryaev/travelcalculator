@@ -1,14 +1,15 @@
-'use strict';
+'use strict'
+
 module.exports = (sequelize, DataTypes) => {
-  const Product = sequelize.define('product', {    
+  const product = sequelize.define('product', {
     name: DataTypes.STRING,
     protein: DataTypes.DOUBLE,
     fat: DataTypes.DOUBLE,
     carbohydrates: DataTypes.DOUBLE
   }, {
-    timestamps: false
-  });
-  Product.associate = models => {
+      timestamps: false
+    });
+  product.associate = models => {
   };
-  return Product;
+  return product;
 };

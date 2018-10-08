@@ -1,22 +1,25 @@
-const {Product} = require('./models/product');
+const { db } = require('../db');
 
+const product = db.sequelize.import(__dirname + "/models/product");
 
 const productsRepository = {
-    getAll: () => Product.findAll(),
-    addProduct: (newProduct) => Product.create({ ...newProduct
+    getAll: () => product.findAll(),
+    addProduct: (newProduct) => product.create({
+        ...newProduct
     }),
-    deleteProduct: (id) => Product.destroy({
+    deleteProduct: (id) => product.destroy({
         where: {
             id: id
         }
     }),
-    updateProduct: (product) => Product.update({ ...product
+    updateProduct: (product) => product.update({
+        ...product
     }, {
-        where: {
-            id: product.id
-        },
-        returning: true
-    })
+            where: {
+                id: product.id
+            },
+            returning: true
+        })
 }
 
 module.exports.productsRepository = productsRepository;
