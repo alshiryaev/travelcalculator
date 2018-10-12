@@ -22,8 +22,8 @@ const ProductTable = props => {
             <td>Жиры, г</td>
             <td>Углеводы, г</td>
             <td>Калорийность, ккал</td>
-            {(isAdmin) ?
-              <td class="forAdmin">Управление</td> : <td  class="forAdmin"></td>}
+
+            <td style={isAdmin ? {display:'block'} : {display: 'none'}}>Управление</td>
 
           </tr>
         </thead>
@@ -36,15 +36,15 @@ const ProductTable = props => {
                 <td>{product.fat}</td>
                 <td>{product.carbohydrates}</td>
                 <td>{product.calories}</td>
-                {isAdmin ?
-                  <td  class="forAdmin">
-                    <IconButton title="Удалить" onClick={() => deleteProduct(product)}>
-                      <DeleteIcon/>
-                    </IconButton>
-                    <IconButton title="Редактировать" onClick={() => editProduct(product)}>
-                      <EditIcon/>
-                    </IconButton>
-                  </td> : <td class="forAdmin"></td>}
+
+                <td style={isAdmin ? {display:'block'} : {display: 'none'}}>
+                  <IconButton title="Удалить" onClick={() => deleteProduct(product)}>
+                    <DeleteIcon />
+                  </IconButton>
+                  <IconButton title="Редактировать" onClick={() => editProduct(product)}>
+                    <EditIcon />
+                  </IconButton>
+                </td>
               </tr>)
           })}
         </tbody>
