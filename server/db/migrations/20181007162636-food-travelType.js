@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('food-travelType', {
+    return queryInterface.createTable('food-travelTypes', {
       id: {
         type: Sequelize.UUID,
         primaryKey: true,
@@ -13,7 +13,7 @@ module.exports = {
       foodId : {
         type: Sequelize.UUID,
         references : {
-          model: 'food',
+          model: 'foods',
           key: 'id'
         },
         allowNull: false
@@ -21,7 +21,7 @@ module.exports = {
       travelTypeId : {
         type: Sequelize.UUID,
         references : {
-          model: 'travelType',
+          model: 'travelTypes',
           key: 'id'
         },
         allowNull: false
@@ -30,6 +30,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-      return queryInterface.dropTable('food-travelType');
+      return queryInterface.dropTable('food-travelTypes');
   }
 };

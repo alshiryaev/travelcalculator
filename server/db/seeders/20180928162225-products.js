@@ -3,10 +3,10 @@ const firstProducts =  require('../../products-data');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('product', firstProducts.products, {});
+    return queryInterface.bulkInsert('products', firstProducts.products, {});
   },
 
   down: (queryInterface, Sequelize) => {    
-      return queryInterface.bulkDelete('product', null, {});
+      return queryInterface.bulkDelete('products', null, {});
   }
 };

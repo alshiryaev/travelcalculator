@@ -3,7 +3,7 @@ const { v4 } = require('uuid');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('dayTimeType', [
+    return queryInterface.bulkInsert('dayTimeTypes', [
       {
         id: v4(),
         name: "Завтрак"
@@ -22,6 +22,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {    
-      return queryInterface.bulkDelete('dayTimeType', null, {});
+      return queryInterface.bulkDelete('dayTimeTypes', null, {});
   }
 };

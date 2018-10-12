@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('dayTimeType', {
+    return queryInterface.createTable('dayTimeTypes', {
       id: {
         type: Sequelize.UUID,
         primaryKey: true,
@@ -15,6 +15,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('dayTimeType');
+    return queryInterface.dropTable('dayTimeTypes');
   }
 };

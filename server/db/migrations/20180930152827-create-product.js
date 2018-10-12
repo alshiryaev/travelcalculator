@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('product', {
+    return queryInterface.createTable('products', {
       id: {
         type: Sequelize.UUID,
         primaryKey: true,
@@ -32,6 +32,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('product');
+    return queryInterface.dropTable('products');
   }
 };

@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('food-dayTimeType', {
+    return queryInterface.createTable('food-dayTimeTypes', {
       id: {
         type: Sequelize.UUID,
         primaryKey: true,
@@ -13,7 +13,7 @@ module.exports = {
       foodId : {
         type: Sequelize.UUID,
         references : {
-          model: 'food',
+          model: 'foods',
           key: 'id'
         },
         allowNull: false
@@ -21,7 +21,7 @@ module.exports = {
       dayTimeTypeId : {
         type: Sequelize.UUID,
         references : {
-          model: 'dayTimeType',
+          model: 'dayTimeTypes',
           key: 'id'
         },
         allowNull: false
@@ -30,6 +30,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-      return queryInterface.dropTable('food-dayTimeType');   
+      return queryInterface.dropTable('food-dayTimeTypes');   
   }
 };
