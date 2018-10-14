@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     protein: DataTypes.DOUBLE,
     fat: DataTypes.DOUBLE,
-    carbohydrates: DataTypes.DOUBLE
+    carbohydrates: DataTypes.DOUBLE,
+    calories: DataTypes.DOUBLE
   }, {
       timestamps: false
     });
