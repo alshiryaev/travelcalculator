@@ -1,5 +1,5 @@
 const { db } = require('../db');
-const { v4} = require('uuid');
+const { v4 } = require('uuid');
 
 const product = db.sequelize.import(__dirname + "/models/product");
 
@@ -16,14 +16,15 @@ const productsRepository = {
             id: id
         }
     }),
-    updateProduct: (product) => product.update({
-        ...product
-    }, {
-            where: {
-                id: product.id
-            },
-            returning: true
-        })
+    updateProduct: (editProduct) => product.update({
+        ...editProduct
+    },
+    {
+        where: {
+            id: editProduct.id
+        },
+        returning: true
+    })
 }
 
 module.exports.productsRepository = productsRepository;
