@@ -2,11 +2,10 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 5000;
-const { productsRepository } = require('./db/productsRepository');
+const { productsRepository } = require('./server/db/productsRepository');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const cors = require('cors');
-const { products } = require('./products-data');
 
 app.use(cors());
 
@@ -32,10 +31,10 @@ app.put('/api/products', jsonParser, (req, res) => {
     });
 });
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'client/build')));
-    app.get('*', function (req, res) {
-        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-    });
-}
+//if (process.env.NODE_ENV === 'production') {
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+//}
 app.listen(port, () => console.log(`Listening on port ${port}`));
