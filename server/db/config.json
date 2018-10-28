@@ -1,12 +1,5 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "12345",
-    "database": "travelcalculator",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
-  },
-  "development-remote": {
     "username": "ufbymoxopiprqj",
     "password": "290fdc3ae848542bc4ccc9e05c14a42b565ca033ba5db9cde4759d1cca62d788",
     "database": "d9hko1m7coq5g7",

@@ -1,10 +1,5 @@
 import React from 'react';
 import './productTable.css';
-// import Table from '@material-ui/core/Table';
-// import TableHead from '@material-ui/core/TableHead';
-// import TableRow from '@material-ui/core/TableRow';
-// import td from '@material-ui/core/td';
-// import TableBody from '@material-ui/core/TableBody';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';

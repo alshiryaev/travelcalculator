@@ -40,8 +40,7 @@ export default class Products extends Component {
                 </div>
         }
             <div> {this.state.isError ?
-            
-                            <p className="error-text">Нет соединения с БД. Загружены тестовые данные</p> : <p></p>}
+                <p className="error-text">Нет соединения с БД.</p> : <p></p>}
             </div>
         </div>
     }
