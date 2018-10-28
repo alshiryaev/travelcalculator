@@ -5,7 +5,7 @@
             "type": "node",
             "request": "launch",
             "name": "Запустить программу",
-            "program": "${workspaceFolder}\\server\\server.js"
+            "program": "${workspaceFolder}\\server.js"
         }
     ]
 }

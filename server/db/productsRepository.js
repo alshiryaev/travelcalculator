@@ -1,4 +1,4 @@
-const { db } = require('../db');
+const  db = require('../db/models/index');
 const { v4 } = require('uuid');
 
 const product = db.sequelize.import(__dirname + "/models/product");

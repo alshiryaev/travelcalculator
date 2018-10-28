@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Food = sequelize.define('food',
+  const food = sequelize.define('food',
     {
       name: DataTypes.STRING,
       recipe: DataTypes.STRING
@@ -8,9 +8,9 @@ module.exports = (sequelize, DataTypes) => {
     {
       timestamps: false
     });
-  Food.associate = models => {
-    Food.belongsToMany(models.DayTimeType, { through: 'food_dayTimeType'});
-    Food.belongsToMany(models.TravelType, { through: 'food_travelType'});
+    food.associate = models => {
+      food.belongsToMany(models.dayTimeType, { through: 'food_dayTimeType'});
+      food.belongsToMany(models.travelType, { through: 'food_travelType'});
   };
-  return Food;
+  return food;
 };
