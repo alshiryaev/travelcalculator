@@ -92,7 +92,7 @@ class Calculator extends React.Component {
             <FormControlLabel control={
               <Checkbox />
             } label="Нужен ли аварийный запас на 1 дополнительный день?" />
-            <Button type="submit" color="primary" >Рассчитать</Button>
+            <Button className="buttonCalc" type="submit" color="primary" >Рассчитать</Button>
           </FormGroup>
       </form>
     );
