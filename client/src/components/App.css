@@ -133,26 +133,11 @@
     padding: 5px;
     background-color: #ee5959;
     color: white;
-    -webkit-animation: error-block-animation ease-in 1.5s;
-    animation: error-block-animation ease-in 1.5s;
     margin: 5% auto;
 }
 
 .hello-words{
     text-align: center;
-}
-
-@keyframes error-block-animation{
-    0%{
-        transform: translateX(-100px);
-        opacity: 0;
-    }
-    50%{        
-        opacity: .5;        
-    }
-    100%{
-        opacity: 1;
-    }
 }
 
 @media (max-width: 48rem){ 

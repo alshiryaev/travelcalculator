@@ -34,5 +34,5 @@ app.put('/api/products', jsonParser, (req, res) => {
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});y=
+});
 app.listen(port, () => console.log(`Listening on port ${port}`));
