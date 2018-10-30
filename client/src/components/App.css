@@ -6,6 +6,7 @@
     --button-active-color: #f9572e;
     --button-disable-color: rgb(153, 153, 153);
     --button-shadow-color: #753b1d;
+    --height-header: 3rem;
   }  
   
  .wrapper{
@@ -22,7 +23,7 @@
     position: fixed;
     align-items: center;
     justify-content: space-around;
-    min-height: 3rem;
+    min-height: var(--height-header);
     border-bottom: 1px solid #e2e2e2;
     margin-bottom: 1%;
     background-color: #fff;
@@ -120,8 +121,10 @@
     max-width: 980px;
     min-width: 320px;
     margin: 0 auto;
-    padding-top: 3rem;
+    margin-top: calc(var(--height-header) + 1rem);
 }
+
+
 
 .progress-bar {
     display: flex;
