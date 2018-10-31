@@ -1,4 +1,11 @@
 {
+  "development2": {
+    "username": "postgres",
+    "password": "12345",
+    "database": "travelcalculator",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
   "development": {
     "username": "ufbymoxopiprqj",
     "password": "290fdc3ae848542bc4ccc9e05c14a42b565ca033ba5db9cde4759d1cca62d788",
@@ -6,25 +13,11 @@
     "host": "ec2-54-75-251-84.eu-west-1.compute.amazonaws.com",
     "dialect": "postgres",
     "port": 5432,
-    "ssl":"true",
-    "dialectOptions":{
-      "ssl":{
-         "require":true
+    "ssl": "true",
+    "dialectOptions": {
+      "ssl": {
+        "require": true
       }
-   }
-  },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    }
   }
 }
