@@ -1,5 +1,5 @@
 {
-  "development2": {
+  "development-local": {
     "username": "postgres",
     "password": "12345",
     "database": "travelcalculator",

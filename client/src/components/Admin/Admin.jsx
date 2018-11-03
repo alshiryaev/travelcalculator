@@ -12,6 +12,18 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
+function TabContainer(props) {
+  return (
+    <div>
+      {props.children}
+    </div>
+  );
+}
+
+
 class Admin extends Component {
 
   constructor(props) {
@@ -30,11 +42,16 @@ class Admin extends Component {
         protein: 0,
         calories: 0,
         carbohydrates: 0
-      }
+      },
+      tabValue: 0
     };
   }
 
   dataService = new DataService();
+
+  tabValueChange = (event, tabValue) => {
+    this.setState({ tabValue });
+  };
 
   setError = () => {
     this.setState({
@@ -111,19 +128,29 @@ class Admin extends Component {
   };
 
   render() {
+    const { tabValue } = this.state;
     return (
+
       <div>
-        {this.state.isLoaded ?
-          <div>
-            <Button onClick={() => this.addProductDialogHandleOpenClose(true)} color="secondary">
+        <Tabs value={tabValue} onChange={this.tabValueChange}>
+          <Tab label="Продукты" />
+          <Tab label="Блюда" />
+          <Tab label="Рецепты" />
+        </Tabs>
+        {tabValue === 0 && <TabContainer>
+          <Button onClick={() => this.addProductDialogHandleOpenClose(true)} color="secondary">
               Добавить
             </Button>
-            <Table
-              isAdmin={true}
-              editProduct={this.editProductHandle}
-              deleteProduct={this.deleteProductHandle}
-              products={this.state.products} />
-
+          <Table
+            isAdmin={true}
+            editProduct={this.editProductHandle}
+            deleteProduct={this.deleteProductHandle}
+            products={this.state.products} />
+        </TabContainer>}
+        {tabValue === 1 && <TabContainer>Блюда</TabContainer>}
+        {tabValue === 2 && <TabContainer>Рецепты</TabContainer>}
+        {this.state.isLoaded ?
+          <div>
             <Dialog open={this.state.openAddDialog}>
               <DialogTitle>Добавление нового продукта</DialogTitle>
               <DialogContent>
