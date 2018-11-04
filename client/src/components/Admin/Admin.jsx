@@ -3,6 +3,7 @@ import './Admin.css';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Product from '../Admin/Product/Product';
+import Food from '../Admin/Food/Food';
 
 function TabContainer(props) {
   return (
@@ -32,13 +33,13 @@ class Admin extends Component {
         <Tabs value={tabValue} onChange={this.tabValueChange}>
           <Tab label="Продукты" />
           <Tab label="Блюда" />
-          <Tab label="Рецепты" />
         </Tabs>
         {tabValue === 0 && <TabContainer>
           <Product />
         </TabContainer>}
-        {tabValue === 1 && <TabContainer>Блюда</TabContainer>}
-        {tabValue === 2 && <TabContainer>Рецепты</TabContainer>}
+        {tabValue === 1 && <TabContainer>
+          <Food />
+        </TabContainer>}
       </div>
     );
   }
