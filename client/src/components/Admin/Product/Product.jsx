@@ -58,7 +58,7 @@ export default class Product extends Component {
 
     componentWillUnmount() {
         console.log('unmount');
-        this._isUnmount = true;    
+        this._isUnmount = true;
     }
 
     addProductDialogHandleOpenClose = (val) => {
@@ -228,7 +228,7 @@ export default class Product extends Component {
                             <DialogActions>
                                 <Button onClick={() => this.openDeleteDialog(false)} >
                                     Отмена
-                </Button>
+                                </Button>
                                 <Button onClick={this.deleteProduct}> Да</Button>
                             </DialogActions>
 
