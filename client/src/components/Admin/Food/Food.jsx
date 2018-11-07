@@ -6,7 +6,10 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
 
 export default class Food extends Component {
 
@@ -22,14 +25,30 @@ export default class Food extends Component {
             },
             foods: [],
             travelTypes: [],
-            dayTimeTypes: []
+            dayTimeTypes: [],
+            selectedDayTimeType: null
         }
+    }
+
+    handleDayTypeTypesChange = event => {
+        this.setState({
+            selectedDayTimeType: event.target.value
+        })
     }
 
     foodService = new FoodService();
 
-    async componentDidMount() {
-        this.foodService.getDayTimeTypes().then(response => console.log(response));
+    componentDidMount() {
+        this.foodService.getDayTimeTypes().then(response => {
+            console.log(response.data);
+            this.setState({
+                dayTimeTypes: response.data
+            }, () => {
+                this.setState({
+                    selectedDayTimeType: this.state.dayTimeTypes[0]
+                })
+            })
+        });
         this.setState({
             foods: [{
                 name: 'Овсянка',
@@ -59,7 +78,7 @@ export default class Food extends Component {
     };
 
     render() {
-        const { foods } = this.state;
+        const { foods, dayTimeTypes } = this.state;
         return (
             <div>
                 <Button onClick={() => this.addFoodDialogHandleOpenClose(true)} color="secondary">
@@ -86,26 +105,42 @@ export default class Food extends Component {
                     </tbody>
                 </table>
                 <Dialog open={this.state.openAddDialog}>
-                    <DialogTitle>Добавление нового продукта</DialogTitle>
-                    <DialogContent>
-                        <TextField
-                            name="name"
-                            onChange={this.addFoodPropertiesChanged}
-                            fullWidth
-                            placeholder="Название блюда" />
-                        <br />
-                        <TextField
-                            name="recipe"
-                            onChange={this.addFoodPropertiesChanged}
-                            fullWidth
-                            multiline={true}
-                            placeholder="Рецепт" />
-                        <br />
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={() => this.addFoodDialogHandleOpenClose(false)}>Отмена</Button>
-                        <Button onClick={this.addNewFood} >Добавить</Button>
-                    </DialogActions>
+                    <form>
+                        <FormControl>
+                            <DialogTitle>Добавление нового продукта</DialogTitle>
+                            <DialogContent>
+                                <TextField
+                                    name="name"
+                                    onChange={this.addFoodPropertiesChanged}
+                                    fullWidth
+                                    placeholder="Название блюда" />
+                                <br />
+                                <TextField
+                                    name="recipe"
+                                    onChange={this.addFoodPropertiesChanged}
+                                    fullWidth
+                                    multiline={true}
+                                    placeholder="Рецепт" />
+                                <br />
+                                <InputLabel htmlFor="dayTimeTypes">Age</InputLabel>
+                                <Select
+                                    value={this.state.selectedDayTimeType}
+                                    onChange={this.handleDayTypeTypesChange}
+                                    inputProps={{
+                                        name: 'dayTimeTypes',
+                                        id: 'dayTimeTypes',
+                                    }}>
+                                    {dayTimeTypes.map(dtt =>
+                                        <MenuItem key={dtt.id} value={dtt.id} >{dtt.name}</MenuItem>
+                                    )}
+                                </Select>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={() => this.addFoodDialogHandleOpenClose(false)}>Отмена</Button>
+                                <Button onClick={this.addNewFood} >Добавить</Button>
+                            </DialogActions>
+                        </FormControl>
+                    </form>
                 </Dialog>
             </div>)
     }
