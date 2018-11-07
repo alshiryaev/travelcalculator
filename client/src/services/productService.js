@@ -4,7 +4,7 @@ import config from '../config';
 const cancelToken = axios.CancelToken;
 const source = cancelToken.source();
 
-export default class DataService {
+export default class productService {
 
     apiUrl = config.apiUrl + "/api/products";
 

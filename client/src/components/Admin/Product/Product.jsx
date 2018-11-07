@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Table from '../../ProductsTable/ProductsTable';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import DataService from '../../../services/dataService';
+import ProductService from '../../../services/productService';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -35,7 +35,7 @@ export default class Product extends Component {
     }
 
     _isUnmount = false;
-    dataService = new DataService();
+    dataService = new ProductService();
 
     tabValueChange = (event, tabValue) => {
         this.setState({ tabValue });

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
+import FoodService from '../../../services/foodService';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -19,11 +20,16 @@ export default class Food extends Component {
                 name: '',
                 recipe: ''
             },
-            foods: []
+            foods: [],
+            travelTypes: [],
+            dayTimeTypes: []
         }
     }
 
-    componentDidMount() {
+    foodService = new FoodService();
+
+    async componentDidMount() {
+        this.foodService.getDayTimeTypes().then(response => console.log(response));
         this.setState({
             foods: [{
                 name: 'Овсянка',
