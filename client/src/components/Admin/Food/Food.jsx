@@ -9,9 +9,19 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
 import FormControl from '@material-ui/core/FormControl';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
 
-export default class Food extends Component {
+const styles = theme => ({
+    formControl: {
+        width: "300px"
+    }
+});
+
+class Food extends Component {
 
     constructor(props) {
         super(props);
@@ -26,7 +36,8 @@ export default class Food extends Component {
             foods: [],
             travelTypes: [],
             dayTimeTypes: [],
-            selectedDayTimeType: null
+            selectedDayTimeTypes: [],
+            isLoaded: false
         }
     }
 
@@ -40,13 +51,10 @@ export default class Food extends Component {
 
     componentDidMount() {
         this.foodService.getDayTimeTypes().then(response => {
-            console.log(response.data);
             this.setState({
-                dayTimeTypes: response.data
-            }, () => {
-                this.setState({
-                    selectedDayTimeType: this.state.dayTimeTypes[0]
-                })
+                dayTimeTypes: response.data,
+                isLoaded: true,
+                selectedDayTimeType: []
             })
         });
         this.setState({
@@ -78,12 +86,17 @@ export default class Food extends Component {
     };
 
     render() {
-        const { foods, dayTimeTypes } = this.state;
+        const { foods, dayTimeTypes, isLoaded } = this.state;
         return (
             <div>
-                <Button onClick={() => this.addFoodDialogHandleOpenClose(true)} color="secondary">
-                    Добавить
-                </Button>
+                {isLoaded ?
+                    <Button onClick={() => this.addFoodDialogHandleOpenClose(true)} color="secondary">
+                        Добавить
+                    </Button>
+                    : <div>
+                        <CircularProgress size={80} thickness={5} />
+                    </div>
+                }
                 <table>
                     <thead>
                         <tr>
@@ -106,42 +119,47 @@ export default class Food extends Component {
                 </table>
                 <Dialog open={this.state.openAddDialog}>
                     <form>
-                        <FormControl>
-                            <DialogTitle>Добавление нового продукта</DialogTitle>
-                            <DialogContent>
-                                <TextField
-                                    name="name"
-                                    onChange={this.addFoodPropertiesChanged}
-                                    fullWidth
-                                    placeholder="Название блюда" />
-                                <br />
-                                <TextField
-                                    name="recipe"
-                                    onChange={this.addFoodPropertiesChanged}
-                                    fullWidth
-                                    multiline={true}
-                                    placeholder="Рецепт" />
-                                <br />
-                                <InputLabel htmlFor="dayTimeTypes">Age</InputLabel>
+                        <DialogTitle>Добавление нового продукта</DialogTitle>
+                        <DialogContent>
+                            <TextField
+                                name="name"
+                                onChange={this.addFoodPropertiesChanged}
+                                fullWidth
+                                placeholder="Название блюда" />
+                            <br />
+                            <TextField
+                                name="recipe"
+                                onChange={this.addFoodPropertiesChanged}
+                                fullWidth
+                                multiline={true}
+                                placeholder="Рецепт" />
+                            <br />
+                            <FormControl className={this.props.classes.formControl}>
+                                <InputLabel htmlFor="dayTimeTypes">Время приема</InputLabel>
                                 <Select
+                                    multiple
                                     value={this.state.selectedDayTimeType}
                                     onChange={this.handleDayTypeTypesChange}
-                                    inputProps={{
-                                        name: 'dayTimeTypes',
-                                        id: 'dayTimeTypes',
-                                    }}>
+                                    input={<Input name="dayTimeTypes" id="dayTimeTypes" />}>
                                     {dayTimeTypes.map(dtt =>
                                         <MenuItem key={dtt.id} value={dtt.id} >{dtt.name}</MenuItem>
                                     )}
                                 </Select>
-                            </DialogContent>
-                            <DialogActions>
-                                <Button onClick={() => this.addFoodDialogHandleOpenClose(false)}>Отмена</Button>
-                                <Button onClick={this.addNewFood} >Добавить</Button>
-                            </DialogActions>
-                        </FormControl>
+                            </FormControl>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={() => this.addFoodDialogHandleOpenClose(false)}>Отмена</Button>
+                            <Button onClick={this.addNewFood} >Добавить</Button>
+                        </DialogActions>
+
                     </form>
                 </Dialog>
             </div>)
     }
 }
+
+Food.propTypes = {
+    classes: PropTypes.object
+};
+
+export default withStyles(styles)(Food);
