@@ -1,12 +1,11 @@
 import axios from 'axios';
-import config from '../config';
 
 const cancelToken = axios.CancelToken;
 const source = cancelToken.source();
 
 export default class productService {
 
-    apiUrl = config.apiUrl + "/api/products";
+    apiUrl = process.env.REACT_APP_API_URL + "/api/products";
 
     getAllProducts() {
         return axios.get(this.apiUrl, {
@@ -29,7 +28,7 @@ export default class productService {
         });
     };
 
-    editProduct(product){
+    editProduct(product) {
         return axios.put(this.apiUrl, product, {
             cancelToken: source.token
         });

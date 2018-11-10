@@ -1,5 +1,7 @@
 'use strict';
-
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').load();
+}
 var fs        = require('fs');
 var path      = require('path');
 var Sequelize = require('sequelize');
@@ -9,11 +11,7 @@ const configPath = path.join(__dirname, '/../config.json');
 var config    = require(configPath)[env];
 var db        = {};
 
-if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  var sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, config);
 
 fs
   .readdirSync(__dirname)
