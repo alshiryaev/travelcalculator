@@ -17,7 +17,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
     formControl: {
-        width: "300px"
+        width: '300px'
     }
 });
 
@@ -37,6 +37,7 @@ class Food extends Component {
             travelTypes: [],
             dayTimeTypes: [],
             selectedDayTimeTypes: [],
+            selectedTravelTypes: [],
             isLoaded: false
         }
     }
@@ -47,27 +48,38 @@ class Food extends Component {
         })
     }
 
-    foodService = new FoodService();
-
-    componentDidMount() {
-        this.foodService.getDayTimeTypes().then(response => {
-            this.setState({
-                dayTimeTypes: response.data,
-                isLoaded: true,
-                selectedDayTimeType: []
-            })
-        });
+    handleTravelTypesChange = event => {
         this.setState({
-            foods: [{
-                name: 'Овсянка',
-                dayTimeType: 'Утро',
-                travelType: 'Пеший, сплав',
-                recipe: 'Берем молоко и крупу, смешиваем, солим и варим до готовности'
-            }]
+            selectedTravelTypes: event.target.value
         })
     }
 
-    addNewFood = () => {
+    foodService = new FoodService();
+
+    async getDayTimeTypes() {
+        const { data: dayTimeTypes } = await this.foodService.getDayTimeTypes();
+        this.setState({
+            dayTimeTypes: dayTimeTypes,
+            selectedDayTimeType: []
+        });
+    }
+
+    async getTravelTypes() {
+        const { data: travelTypes } = await this.foodService.getTravelTypes();
+        this.setState({
+            travelTypes: travelTypes,
+            selectedTravelTypes: [],
+            isLoaded: true
+        })
+    }
+
+    componentDidMount() {
+        this.getDayTimeTypes();
+        this.getTravelTypes();
+    }
+
+    addNewFood = (event) => {
+        event.stopPropagation();
         this.addFoodDialogHandleOpenClose(false);
         this.setState(prevState => ({
             foods: prevState.foods.concat(this.state.newFood)
@@ -86,7 +98,7 @@ class Food extends Component {
     };
 
     render() {
-        const { foods, dayTimeTypes, isLoaded } = this.state;
+        const { foods, dayTimeTypes, travelTypes, isLoaded } = this.state;
         return (
             <div>
                 {isLoaded ?
@@ -117,17 +129,19 @@ class Food extends Component {
                         )}
                     </tbody>
                 </table>
-                <Dialog open={this.state.openAddDialog}>
-                    <form>
+                <Dialog maxWidth="xs" open={this.state.openAddDialog}>
+                    <form onSubmit={this.addNewFood}>
                         <DialogTitle>Добавление нового продукта</DialogTitle>
                         <DialogContent>
                             <TextField
+                                className={this.props.classes.formControl}
                                 name="name"
                                 onChange={this.addFoodPropertiesChanged}
                                 fullWidth
                                 placeholder="Название блюда" />
                             <br />
                             <TextField
+                                className={this.props.classes.formControl}
                                 name="recipe"
                                 onChange={this.addFoodPropertiesChanged}
                                 fullWidth
@@ -146,12 +160,23 @@ class Food extends Component {
                                     )}
                                 </Select>
                             </FormControl>
+                            <FormControl className={this.props.classes.formControl}>
+                                <InputLabel htmlFor="travelTypes">Тип похода</InputLabel>
+                                <Select
+                                    multiple
+                                    value={this.state.selectedTravelTypes}
+                                    onChange={this.handleTravelTypesChange}
+                                    input={<Input name="travelTypes" id="travelTypes" />}>
+                                    {travelTypes.map(dtt =>
+                                        <MenuItem key={dtt.id} value={dtt.id} >{dtt.name}</MenuItem>
+                                    )}
+                                </Select>
+                            </FormControl>
                         </DialogContent>
                         <DialogActions>
                             <Button onClick={() => this.addFoodDialogHandleOpenClose(false)}>Отмена</Button>
-                            <Button onClick={this.addNewFood} >Добавить</Button>
+                            <Button onClick={this.addNewFood} type="submit" >Добавить</Button>
                         </DialogActions>
-
                     </form>
                 </Dialog>
             </div>)

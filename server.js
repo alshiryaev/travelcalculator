@@ -39,7 +39,7 @@ app.get('/api/dayTimeTypes', (req, res) => {
 });
 
 app.get('/api/travelTypes', (req, res) => {
-    foodsRepository.getAllDayTimeTypes().then(dayTimeTypes => {
+    foodsRepository.getAllTravelType().then(dayTimeTypes => {
         res.send(dayTimeTypes);
     })
 });
