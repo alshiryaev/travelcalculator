@@ -44,6 +44,12 @@ app.get('/api/travelTypes', (req, res) => {
     })
 });
 
+app.post('/api/foods', jsonParser, (req, res) => {
+    if (!req.body)
+        return res.sendStatus(400);
+    foodsRepository.addFood(req.body).then(result => res.json(result))
+});
+
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));

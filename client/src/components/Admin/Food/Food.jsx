@@ -81,9 +81,11 @@ class Food extends Component {
     addNewFood = (event) => {
         event.stopPropagation();
         this.addFoodDialogHandleOpenClose(false);
-        this.setState(prevState => ({
-            foods: prevState.foods.concat(this.state.newFood)
-        }))
+        this.foodService.addFood(this.state.newFood).then(response => {
+            this.setState(prevState => ({
+                foods: prevState.foods.concat(this.state.newFood)
+            }))
+        })
     }
 
     addFoodDialogHandleOpenClose = (val) => {

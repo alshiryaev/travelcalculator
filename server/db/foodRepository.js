@@ -14,7 +14,11 @@ const foodsRepository = {
     },
     getAllTravelType: () => {
         return travelTypes.findAll();
-    }
+    },
+    addFood: (newFood) => food.create({
+        id: v4(),
+        ...newFood
+    }),
 }
 
 module.exports.foodsRepository = foodsRepository;
