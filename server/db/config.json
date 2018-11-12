@@ -1,6 +1,6 @@
 {
   "development": {
-    "host": "127.0.0.1",
+    "host": "ec2-54-75-251-84.eu-west-1.compute.amazonaws.com",
     "dialect": "postgres",
     "port": 5432
   },
