@@ -39,9 +39,15 @@ app.get('/api/dayTimeTypes', (req, res) => {
 });
 
 app.get('/api/travelTypes', (req, res) => {
-    foodsRepository.getAllDayTimeTypes().then(dayTimeTypes => {
+    foodsRepository.getAllTravelType().then(dayTimeTypes => {
         res.send(dayTimeTypes);
     })
+});
+
+app.post('/api/foods', jsonParser, (req, res) => {
+    if (!req.body)
+        return res.sendStatus(400);
+    foodsRepository.addFood(req.body).then(result => res.json(result))
 });
 
 app.use(express.static(path.join(__dirname, 'client/build')));

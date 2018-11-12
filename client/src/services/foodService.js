@@ -8,15 +8,15 @@ export default class FoodService {
     apiDayTimeTypesUrl = process.env.REACT_APP_API_URL + "/api/dayTimeTypes";
     apiTravelTypesUrl = process.env.REACT_APP_API_URL + "/api/travelTypes";
 
-    getDayTimeTypes() {
-        return axios.get(this.apiDayTimeTypesUrl, {
-            cancelToken: source.token
-        });
-    };
+    getDayTimeTypes = () => axios.get(this.apiDayTimeTypesUrl, {
+        cancelToken: source.token
+    });
 
-    getTravelTypes() {
-        return axios.get(this.apiTravelTypesUrl, {
-            cancelToken: source.token
-        });
-    };
+    getTravelTypes = () => axios.get(this.apiTravelTypesUrl, {
+        cancelToken: source.token
+    });
+
+    addFood = (newFood) => axios.post(this.apiFoodUrl, newFood, {
+        cancelToken: source.token
+    })
 }
