@@ -104,9 +104,9 @@ class Food extends Component {
         return (
             <div>
                 {isLoaded ?
-                    <Button onClick={() => this.addFoodDialogHandleOpenClose(true)} color="secondary">
+                    <button onClick={() => this.addFoodDialogHandleOpenClose(true)} className="add-Btn-dish">
                         Добавить
-                    </Button>
+                    </button>
                     : <div>
                         <CircularProgress size={80} thickness={5} />
                     </div>

@@ -128,9 +128,9 @@ export default class Product extends Component {
             <div>
                 {this.state.isLoaded ?
                     <div>
-                        <Button onClick={() => this.addProductDialogHandleOpenClose(true)} color="secondary">
+                        <button onClick={() => this.addProductDialogHandleOpenClose(true)} className="add-Btn-dish">
                             Добавить
-                        </Button>
+                        </button>
                         <Table
                             isAdmin={true}
                             editProduct={this.editProductHandle}
