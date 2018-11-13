@@ -9,13 +9,11 @@
     outline: none;
     display: inline-block;
     margin: 10px 0;
-    /* padding: 10px 30px; */
     position: relative;
     background-color: white;
     border: none;
     border-bottom: 2px solid #f1c40f;
     color: #000000;
-    font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     transition: .4s;
 }
@@ -23,14 +21,13 @@
 .add-Btn-dish:hover {
     color: #000;
     cursor: pointer;
-    transition: 0.3s ease-in;
+    transition: 0.2s ease-in;
     border-bottom: 2px solid #f50057;
-    /* background-image: linear-gradient(#9dc7e7, #74afdd 50%, #378bce); */
 }
 
 .add-Btn-dish:active {
     color: #000;
-    border-color: #2970a9;
-    background-image: linear-gradient(#5796c8, #6aa2ce);
+    transition: 0.1s ease-out;
+    border-color: #f1c40f;
     box-shadow: none;
 }
