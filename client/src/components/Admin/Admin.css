@@ -31,3 +31,9 @@
     border-color: #f1c40f;
     box-shadow: none;
 }
+
+@media (max-width: 48rem) {
+    .add-Btn-dish{
+        font-size: .8rem;
+    }
+}
