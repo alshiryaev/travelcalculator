@@ -115,7 +115,7 @@ class Food extends Component {
                     <thead>
                         <tr>
                             <th>Название</th>
-                            <th>Время суток</th>
+                            <th>Время приема пищи</th>
                             <th>Тип похода</th>
                             <th>Рецепт</th>
                         </tr>
