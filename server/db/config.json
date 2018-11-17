@@ -1,7 +1,8 @@
 {
   "development": {
+    "host": "ec2-54-75-251-84.eu-west-1.compute.amazonaws.com",
     "dialect": "postgres",
-    "use_env_variable": "DATABASE_URL"
+    "port": 5432
   },
   "production": {
     "host": "ec2-54-75-251-84.eu-west-1.compute.amazonaws.com",
