@@ -6,11 +6,13 @@ module.exports = (sequelize, DataTypes) => {
       recipe: DataTypes.STRING
     },
     {
-      timestamps: false
+      timestamps: false,
+      freezeTableName: true,
+      tableName: 'foods'
     });
-    food.associate = models => {
-      food.belongsToMany(models.dayTimeType, { through: 'food_dayTimeType'});
-      food.belongsToMany(models.travelType, { through: 'food_travelType'});
+  food.associate = models => {
+    food.belongsToMany(models.dayTimeType, { through: models.foodDayTimeType, as : 'dayTimeTypes' });
+    food.belongsToMany(models.travelType, { through: models.foodTravelType, as : 'travelTypes' });
   };
   return food;
 };

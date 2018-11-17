@@ -1,24 +1,21 @@
-const  db = require('../db/models/index');
+const db = require('../db/models/index');
 const { v4 } = require('uuid');
 
-const food = db.sequelize.import(__dirname + "/models/food");
-const dayTimeTypes = db.sequelize.import(__dirname + "/models/daytimetype");
-const travelTypes = db.sequelize.import(__dirname + "/models/traveltype");
+const food = db.food;
+const dayTimeTypes = db.dayTimeType;
+const travelTypes = db.travelType;
 
 const foodsRepository = {
-    getAll: () => {
-        return food.findAll()
-    },    
-    getAllDayTimeTypes: () => {
-        return dayTimeTypes.findAll();
-    },
-    getAllTravelType: () => {
-        return travelTypes.findAll();
-    },
+    getAll: () => food.findAll({ include: ['dayTimeTypes', 'travelTypes'] }),
+    getAllDayTimeTypes: () => dayTimeTypes.findAll(),
+    getAllTravelType: () => travelTypes.findAll(),
     addFood: (newFood) => food.create({
         id: v4(),
         ...newFood
-    }),
+    }).then(createdFood => {
+        createdFood.addDayTimeTypes(newFood.dayTimeTypes);
+        createdFood.addTravelTypes(newFood.travelTypes);
+    })
 }
 
 module.exports.foodsRepository = foodsRepository;

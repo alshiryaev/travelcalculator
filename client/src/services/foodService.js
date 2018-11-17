@@ -4,7 +4,7 @@ const source = cancelToken.source();
 
 export default class FoodService {
 
-    apiFoodUrl = process.env.REACT_APP_API_URL + "/api/food";
+    apiFoodUrl = process.env.REACT_APP_API_URL + "/api/foods";
     apiDayTimeTypesUrl = process.env.REACT_APP_API_URL + "/api/dayTimeTypes";
     apiTravelTypesUrl = process.env.REACT_APP_API_URL + "/api/travelTypes";
 
@@ -16,7 +16,11 @@ export default class FoodService {
         cancelToken: source.token
     });
 
+    getFoods = () => axios.get(this.apiFoodUrl, {
+        cancelToken: source.token
+    });
+
     addFood = (newFood) => axios.post(this.apiFoodUrl, newFood, {
         cancelToken: source.token
-    })
+    });
 }
