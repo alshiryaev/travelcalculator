@@ -11,7 +11,12 @@ const configPath = path.join(__dirname, '/../config.json');
 var config    = require(configPath)[env];
 var db        = {};
 
-const sequelize = new Sequelize(process.env.DATABASE_URL);
+
+if (config.use_env_variable) {
+  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+} else {
+  var sequelize = new Sequelize(config.url);
+}
 
 fs
   .readdirSync(__dirname)

@@ -39,15 +39,21 @@ app.get('/api/dayTimeTypes', (req, res) => {
 });
 
 app.get('/api/travelTypes', (req, res) => {
-    foodsRepository.getAllTravelType().then(dayTimeTypes => {
-        res.send(dayTimeTypes);
+    foodsRepository.getAllTravelType().then(travelTypes => {
+        res.send(travelTypes);
+    })
+});
+
+app.get('/api/foods', (req, res) => {
+    foodsRepository.getAll().then(foods => {
+        res.send(foods);
     })
 });
 
 app.post('/api/foods', jsonParser, (req, res) => {
     if (!req.body)
         return res.sendStatus(400);
-    foodsRepository.addFood(req.body).then(result => res.json(result))
+    foodsRepository.addFood(req.body).then(newFood => res.sendStatus(res.sendStatus(200)));
 });
 
 app.use(express.static(path.join(__dirname, 'client/build')));
