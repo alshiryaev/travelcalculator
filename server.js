@@ -53,7 +53,9 @@ app.get('/api/foods', (req, res) => {
 app.post('/api/foods', jsonParser, (req, res) => {
     if (!req.body)
         return res.sendStatus(400);
-    foodsRepository.addFood(req.body).then(newFood => res.sendStatus(res.sendStatus(200)));
+    foodsRepository.addFood(req.body).then(() => {
+        res.sendStatus(res.sendStatus(200))
+    });
 });
 
 app.use(express.static(path.join(__dirname, 'client/build')));

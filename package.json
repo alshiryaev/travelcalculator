@@ -9,7 +9,8 @@
     "server": "nodemon server.js ",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node server.js",
-    "postinstall": "cd client && npm run build"
+    "postinstall": "cd client && npm run build",
+    "test": "cd client && yarn test"
   },
   "dependencies": {
     "@material-ui/core": "^3.0.1",
