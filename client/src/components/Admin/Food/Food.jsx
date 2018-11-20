@@ -139,7 +139,7 @@ class Food extends Component {
                                 <td>{food.name}</td>
                                 <td>{food.dayTimeTypes.map(d => d.name).join(',')}</td>
                                 <td>{food.travelTypes.map(d => d.name).join(',')}</td>
-                                <td>{food.recipe}</td>
+                                <td>{food.recipes.length ? food.recipes[0].description : ''}</td>
                             </tr>
                         )}
                     </tbody>
