@@ -1,16 +1,10 @@
 {
   "development": {
     "host": "localhost",
-    "dialect": "postgres",
-    "port": 5432,
-    "username": "postgres",
-    "password": "12345",
-    "database": "travelcalculator"
+    "dialect": "postgres"
   },
-  "production": {
-    "host": "ec2-54-75-251-84.eu-west-1.compute.amazonaws.com",
+  "production": {   
     "dialect": "postgres",
-    "port": 5432,
     "ssl": "true",
     "dialectOptions": {
       "ssl": {
