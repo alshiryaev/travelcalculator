@@ -2,15 +2,17 @@
 module.exports = (sequelize, DataTypes) => {
   const food = sequelize.define('food',
     {
-      name: DataTypes.STRING,
-      recipe: DataTypes.STRING
+      name: DataTypes.STRING
     },
     {
-      timestamps: false
+      timestamps: false,
+      freezeTableName: true,
+      tableName: 'foods'
     });
-    food.associate = models => {
-      food.belongsToMany(models.dayTimeType, { through: 'food_dayTimeType'});
-      food.belongsToMany(models.travelType, { through: 'food_travelType'});
+  food.associate = models => {
+    food.belongsToMany(models.dayTimeType, { through: models.foodDayTimeType, as : 'dayTimeTypes' });
+    food.belongsToMany(models.travelType, { through: models.foodTravelType, as : 'travelTypes' });
+    food.hasMany(models.recipe, {as: 'recipes'});
   };
   return food;
 };

@@ -45,7 +45,7 @@ class Food extends Component {
 
     handleDayTypeTypesChange = event => {
         this.setState({
-            selectedDayTimeType: event.target.value
+            selectedDayTimeTypes: event.target.value
         })
     }
 
@@ -57,11 +57,18 @@ class Food extends Component {
 
     foodService = new FoodService();
 
+    async getFoods() {
+        const {data: foods} = await this.foodService.getFoods();
+        this.setState({
+            foods: foods
+        });
+    }
+
     async getDayTimeTypes() {
         const { data: dayTimeTypes } = await this.foodService.getDayTimeTypes();
         this.setState({
             dayTimeTypes: dayTimeTypes,
-            selectedDayTimeType: []
+            selectedDayTimeTypes: []
         });
     }
 
@@ -75,16 +82,22 @@ class Food extends Component {
     }
 
     componentDidMount() {
+        this.getFoods();
         this.getDayTimeTypes();
         this.getTravelTypes();
     }
 
     addNewFood = (event) => {
         event.stopPropagation();
-        this.addFoodDialogHandleOpenClose(false);
-        this.foodService.addFood(this.state.newFood).then(response => {
+        const newFood = {
+            ...this.state.newFood,
+            travelTypes: this.state.selectedTravelTypes,
+            dayTimeTypes: this.state.selectedDayTimeTypes
+        }
+        this.foodService.addFood(newFood).then(() => {
+            this.addFoodDialogHandleOpenClose(false);
             this.setState(prevState => ({
-                foods: prevState.foods.concat(this.state.newFood)
+                foods: prevState.foods.concat(newFood)
             }))
         })
     }
@@ -125,62 +138,60 @@ class Food extends Component {
                         {foods.map((food, index) =>
                             <tr key={index}>
                                 <td>{food.name}</td>
-                                <td>{food.dayTimeType}</td>
-                                <td>{food.travelType}</td>
-                                <td>{food.recipe}</td>
+                                <td>{food.dayTimeTypes.map(d => d.name).join(',')}</td>
+                                <td>{food.travelTypes.map(d => d.name).join(',')}</td>
+                                <td>{food.recipes.length ? food.recipes[0].description : ''}</td>
                             </tr>
                         )}
                     </tbody>
                 </table>
                 <Dialog maxWidth="xs" open={this.state.openAddDialog}>
-                    <form onSubmit={this.addNewFood}>
-                        <DialogTitle>Добавление нового продукта</DialogTitle>
-                        <DialogContent>
-                            <TextField
-                                className={this.props.classes.formControl}
-                                name="name"
-                                onChange={this.addFoodPropertiesChanged}
-                                fullWidth
-                                placeholder="Название блюда" />
-                            <br />
-                            <TextField
-                                className={this.props.classes.formControl}
-                                name="recipe"
-                                onChange={this.addFoodPropertiesChanged}
-                                fullWidth
-                                multiline={true}
-                                placeholder="Рецепт" />
-                            <br />
-                            <FormControl className={this.props.classes.formControl}>
-                                <InputLabel htmlFor="dayTimeTypes">Время приема</InputLabel>
-                                <Select
-                                    multiple
-                                    value={this.state.selectedDayTimeType}
-                                    onChange={this.handleDayTypeTypesChange}
-                                    input={<Input name="dayTimeTypes" id="dayTimeTypes" />}>
-                                    {dayTimeTypes.map(dtt =>
-                                        <MenuItem key={dtt.id} value={dtt.id} >{dtt.name}</MenuItem>
-                                    )}
-                                </Select>
-                            </FormControl>
-                            <FormControl className={this.props.classes.formControl}>
-                                <InputLabel htmlFor="travelTypes">Тип похода</InputLabel>
-                                <Select
-                                    multiple
-                                    value={this.state.selectedTravelTypes}
-                                    onChange={this.handleTravelTypesChange}
-                                    input={<Input name="travelTypes" id="travelTypes" />}>
-                                    {travelTypes.map(dtt =>
-                                        <MenuItem key={dtt.id} value={dtt.id} >{dtt.name}</MenuItem>
-                                    )}
-                                </Select>
-                            </FormControl>
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={() => this.addFoodDialogHandleOpenClose(false)}>Отмена</Button>
-                            <Button onClick={this.addNewFood} type="submit" >Добавить</Button>
-                        </DialogActions>
-                    </form>
+                    <DialogTitle>Добавление нового продукта</DialogTitle>
+                    <DialogContent>
+                        <TextField
+                            className={this.props.classes.formControl}
+                            name="name"
+                            onChange={this.addFoodPropertiesChanged}
+                            fullWidth
+                            placeholder="Название блюда" />
+                        <br />
+                        <TextField
+                            className={this.props.classes.formControl}
+                            name="recipe"
+                            onChange={this.addFoodPropertiesChanged}
+                            fullWidth
+                            multiline={true}
+                            placeholder="Рецепт" />
+                        <br />
+                        <FormControl className={this.props.classes.formControl}>
+                            <InputLabel htmlFor="dayTimeTypes">Время приема</InputLabel>
+                            <Select
+                                multiple
+                                value={this.state.selectedDayTimeTypes}
+                                onChange={this.handleDayTypeTypesChange}
+                                input={<Input name="dayTimeTypes" id="dayTimeTypes" />}>
+                                {dayTimeTypes.map(dtt =>
+                                    <MenuItem key={dtt.id} value={dtt.id} >{dtt.name}</MenuItem>
+                                )}
+                            </Select>
+                        </FormControl>
+                        <FormControl className={this.props.classes.formControl}>
+                            <InputLabel htmlFor="travelTypes">Тип похода</InputLabel>
+                            <Select
+                                multiple
+                                value={this.state.selectedTravelTypes}
+                                onChange={this.handleTravelTypesChange}
+                                input={<Input name="travelTypes" id="travelTypes" />}>
+                                {travelTypes.map(dtt =>
+                                    <MenuItem key={dtt.id} value={dtt.id} >{dtt.name}</MenuItem>
+                                )}
+                            </Select>
+                        </FormControl>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => this.addFoodDialogHandleOpenClose(false)}>Отмена</Button>
+                        <Button onClick={this.addNewFood}  >Добавить</Button>
+                    </DialogActions>
                 </Dialog>
             </div>)
     }

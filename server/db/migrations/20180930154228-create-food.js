@@ -12,11 +12,7 @@ module.exports = {
       name: {
         type: Sequelize.STRING,
         allowNull: false
-      },
-      recipe: {
-        type: Sequelize.STRING,
-        allowNull: false
-      }      
+      }    
     });
   },
   down: (queryInterface, Sequelize) => {
