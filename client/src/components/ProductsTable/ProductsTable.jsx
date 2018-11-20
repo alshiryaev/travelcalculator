@@ -16,7 +16,7 @@ const ProductTable = props => {
             <td>Белки, г</td>
             <td>Жиры, г</td>
             <td>Углеводы, г</td>
-            <td>Калорийность, ккал</td>
+            <td style={isAdmin ? {borderTopRightRadius:'0'} : {borderTopRightRadius:'5px'}}>Калорийность, ккал</td>
 
             <td style={isAdmin ? {display:'table-cell'} : {display: 'none'}}>Управление</td>
 
