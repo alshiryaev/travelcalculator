@@ -50,6 +50,13 @@ app.get('/api/foods', (req, res) => {
     })
 });
 
+app.get('/api/recipes', (req, res) => {
+    foodsRepository.getRecipes().then(recipes => {
+        res.send(recipes);
+    })
+});
+
+
 app.post('/api/foods', jsonParser, (req, res) => {
     if (!req.body)
         return res.sendStatus(400);

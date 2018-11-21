@@ -23,7 +23,8 @@ const foodsRepository = {
             createdFood.addDayTimeTypes(newFood.dayTimeTypes);
             createdFood.addTravelTypes(newFood.travelTypes);
         })
-    )
+    ),
+    getRecipes: () => recipe.findAll()
 }
 
 module.exports.foodsRepository = foodsRepository;
