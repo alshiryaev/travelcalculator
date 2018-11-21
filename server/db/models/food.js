@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   food.associate = models => {
     food.belongsToMany(models.dayTimeType, { through: models.foodDayTimeType, as : 'dayTimeTypes' });
     food.belongsToMany(models.travelType, { through: models.foodTravelType, as : 'travelTypes' });
-    food.hasMany(models.recipe, {as: 'recipes'});
+    food.belongsTo(models.recipe, {as: 'recipe'});
   };
   return food;
 };

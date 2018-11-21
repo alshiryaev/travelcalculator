@@ -1,9 +1,12 @@
 {
   "development": {
     "host": "localhost",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "username": "postgres",
+    "password": "12345",
+    "database": "travelcalculator"
   },
-  "production": {   
+  "production": {
     "dialect": "postgres",
     "ssl": "true",
     "dialectOptions": {

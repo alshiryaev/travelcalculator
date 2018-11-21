@@ -9,22 +9,42 @@ module.exports = {
         allowNull: false,
         autoIncrement: false
       },
-      foodId: {
-        type: Sequelize.UUID,
-        references: {
-          model: 'foods', 
-          key: 'id',
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       description: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      foodId: {
+        type: Sequelize.UUID,
+        references: {
+          model: 'foods',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
       }
+    }).then(() => {
+      queryInterface.addColumn(
+        'foods',
+        'recipeId',
+        {
+          type: Sequelize.UUID,
+          references: {
+            model: 'recipes',
+            key: 'id',
+          },
+          onUpdate: 'CASCADE',
+          onDelete: 'SET NULL',
+        }
+      )
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('recipes');
+    return queryInterface.removeColumn('foods', 'recipeId').then(() => {
+      return queryInterface.dropTable('recipes');
+    })
   }
 };

@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const recipe = sequelize.define('recipe', {
+    name: DataTypes.STRING,
     description: DataTypes.STRING
   },
     {
@@ -8,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
       freezeTableName: true,
       tableName: 'recipes'
     });
-  recipe.associate = function (models) {
+  recipe.associate = (models) => {
+    recipe.hasOne(models.food);
   };
   return recipe;
 };

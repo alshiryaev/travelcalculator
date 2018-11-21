@@ -7,7 +7,7 @@ const dayTimeTypes = db.dayTimeType;
 const travelTypes = db.travelType;
 
 const foodsRepository = {
-    getAll: () => food.findAll({ include: ['dayTimeTypes', 'travelTypes', 'recipes'] }),
+    getAll: () => food.findAll({ include: ['dayTimeTypes', 'travelTypes', 'recipe'] }),
     getAllDayTimeTypes: () => dayTimeTypes.findAll(),
     getAllTravelType: () => travelTypes.findAll(),
     addFood: (newFood) => food.create({
@@ -16,9 +16,10 @@ const foodsRepository = {
     }).then(createdFood =>
         recipe.create({
             id: v4(),
+            name: newFood.name,
             description: newFood.recipe
         }).then(addedRecipe => {
-            createdFood.addRecipe(addedRecipe.id);
+            createdFood.setRecipe(addedRecipe.id);
             createdFood.addDayTimeTypes(newFood.dayTimeTypes);
             createdFood.addTravelTypes(newFood.travelTypes);
         })
