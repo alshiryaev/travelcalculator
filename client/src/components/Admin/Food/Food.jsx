@@ -1,129 +1,37 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
+import './Food.css';
 import FoodService from '../../../services/foodService';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
-import FormControl from '@material-ui/core/FormControl';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-
-const styles = theme => ({
-    formControl: {
-        width: '300px'
-    }
-});
+import { Link } from 'react-router-dom';
 
 class Food extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            openAddDialog: false,
             openDeleteDialog: false,
             openEditDialog: false,
-            newFood: {
-                name: '',
-                recipe: ''
-            },
-            foods: [],
-            travelTypes: [],
-            dayTimeTypes: [],
-            selectedDayTimeTypes: [],
-            selectedTravelTypes: [],
-            isLoaded: false
+            foods: []
         }
-    }
-
-    handleDayTypeTypesChange = event => {
-        this.setState({
-            selectedDayTimeTypes: event.target.value
-        })
-    }
-
-    handleTravelTypesChange = event => {
-        this.setState({
-            selectedTravelTypes: event.target.value
-        })
     }
 
     foodService = new FoodService();
 
     async getFoods() {
-        const {data: foods} = await this.foodService.getFoods();
+        const { data: foods } = await this.foodService.getFoods();
         this.setState({
             foods: foods
         });
     }
 
-    async getDayTimeTypes() {
-        const { data: dayTimeTypes } = await this.foodService.getDayTimeTypes();
-        this.setState({
-            dayTimeTypes: dayTimeTypes,
-            selectedDayTimeTypes: []
-        });
-    }
-
-    async getTravelTypes() {
-        const { data: travelTypes } = await this.foodService.getTravelTypes();
-        this.setState({
-            travelTypes: travelTypes,
-            selectedTravelTypes: [],
-            isLoaded: true
-        })
-    }
-
     componentDidMount() {
         this.getFoods();
-        this.getDayTimeTypes();
-        this.getTravelTypes();
     }
-
-    addNewFood = (event) => {
-        event.stopPropagation();
-        const newFood = {
-            ...this.state.newFood,
-            travelTypes: this.state.selectedTravelTypes,
-            dayTimeTypes: this.state.selectedDayTimeTypes
-        }
-        this.foodService.addFood(newFood).then(() => {
-            this.addFoodDialogHandleOpenClose(false);
-            this.setState(prevState => ({
-                foods: prevState.foods.concat(newFood)
-            }))
-        })
-    }
-
-    addFoodDialogHandleOpenClose = (val) => {
-        this.setState({ openAddDialog: val })
-    };
-
-    addFoodPropertiesChanged = (event) => {
-        let edit = Object.create(null);
-        edit[event.target.name] = event.target.value;
-        const newFood = { ...this.state.newFood, ...edit };
-        this.setState({ newFood: newFood });
-    };
 
     render() {
-        const { foods, dayTimeTypes, travelTypes, isLoaded } = this.state;
+        const { foods } = this.state;
         return (
             <div>
-                {isLoaded ?
-                    <button onClick={() => this.addFoodDialogHandleOpenClose(true)} className="add-Btn-dish">
-                        Добавить
-                    </button>
-                    : <div>
-                        <CircularProgress size={80} thickness={5} />
-                    </div>
-                }
+                <Link className="control-button" to={`/admin/addfood`} > Добавить </Link>
                 <table>
                     <thead>
                         <tr>
@@ -144,60 +52,8 @@ class Food extends Component {
                         )}
                     </tbody>
                 </table>
-                <Dialog maxWidth="xs" open={this.state.openAddDialog}>
-                    <DialogTitle>Добавление нового продукта</DialogTitle>
-                    <DialogContent>
-                        <TextField
-                            className={this.props.classes.formControl}
-                            name="name"
-                            onChange={this.addFoodPropertiesChanged}
-                            fullWidth
-                            placeholder="Название блюда" />
-                        <br />
-                        <TextField
-                            className={this.props.classes.formControl}
-                            name="recipe"
-                            onChange={this.addFoodPropertiesChanged}
-                            fullWidth
-                            multiline={true}
-                            placeholder="Рецепт" />
-                        <br />
-                        <FormControl className={this.props.classes.formControl}>
-                            <InputLabel htmlFor="dayTimeTypes">Время приема</InputLabel>
-                            <Select
-                                multiple
-                                value={this.state.selectedDayTimeTypes}
-                                onChange={this.handleDayTypeTypesChange}
-                                input={<Input name="dayTimeTypes" id="dayTimeTypes" />}>
-                                {dayTimeTypes.map(dtt =>
-                                    <MenuItem key={dtt.id} value={dtt.id} >{dtt.name}</MenuItem>
-                                )}
-                            </Select>
-                        </FormControl>
-                        <FormControl className={this.props.classes.formControl}>
-                            <InputLabel htmlFor="travelTypes">Тип похода</InputLabel>
-                            <Select
-                                multiple
-                                value={this.state.selectedTravelTypes}
-                                onChange={this.handleTravelTypesChange}
-                                input={<Input name="travelTypes" id="travelTypes" />}>
-                                {travelTypes.map(dtt =>
-                                    <MenuItem key={dtt.id} value={dtt.id} >{dtt.name}</MenuItem>
-                                )}
-                            </Select>
-                        </FormControl>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={() => this.addFoodDialogHandleOpenClose(false)}>Отмена</Button>
-                        <Button onClick={this.addNewFood}  >Добавить</Button>
-                    </DialogActions>
-                </Dialog>
             </div>)
     }
 }
 
-Food.propTypes = {
-    classes: PropTypes.object
-};
-
-export default withStyles(styles)(Food);
+export default Food;

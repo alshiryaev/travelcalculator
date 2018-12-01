@@ -1,0 +1,39 @@
+.add-button {
+    margin-left: 3%;
+}
+
+.add-Btn-dish {
+    width: 160px;
+    height: 2rem;
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    margin: 10px 0;
+    position: relative;
+    background-color: white;
+    border: none;
+    border-bottom: 2px solid #f1c40f;
+    color: #000000;
+    text-transform: uppercase;
+    transition: .4s;
+}
+
+.add-Btn-dish:hover {
+    color: #000;
+    cursor: pointer;
+    transition: 0.2s ease-in;
+    border-bottom: 2px solid #f50057;
+}
+
+.add-Btn-dish:active {
+    color: #000;
+    transition: 0.1s ease-out;
+    border-color: #f1c40f;
+    box-shadow: none;
+}
+
+@media (max-width: 48rem) {
+    .add-Btn-dish{
+        font-size: .8rem;
+    }
+}

@@ -6,35 +6,35 @@ import Admin from './components/Admin/Admin';
 import Autorization from './components/Autorization/Autorization';
 import Recipes from './components/Recipes/Recipes';
 
- const routes = [
+const routes = [
     {
-        path:'/',
+        path: '/',
         exact: true,
-        component:Home
+        component: Home
     },
     {
-        path:'/calculator',
-        component:Calculator
+        path: '/calculator',
+        component: Calculator
     },
     {
-        path:'/products',
-        component:Products
+        path: '/products',
+        component: Products
     },
     {
-        path:'/about',
-        component:About
+        path: '/about',
+        component: About
     },
     {
-        path:'/admin',
-        component:Admin
+        path: '/admin',
+        component: Admin
     },
     {
-        path:'/autorization',
-        component:Autorization
+        path: '/autorization',
+        component: Autorization
     },
     {
-        path:'/recipes',
-        component:Recipes
+        path: '/recipes',
+        component: Recipes
     }
 ];
 
