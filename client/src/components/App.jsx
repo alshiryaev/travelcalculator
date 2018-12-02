@@ -19,7 +19,7 @@ export default class App extends Component {
             </label>
             <ul className="nav-menu">
               <li className="nav-menu__item"><NavLink className="menu-link" activeClassName="menu-link_active" to={"/calculator"}>Калькулятор</NavLink ></li>
-              <li className="nav-menu__item"><NavLink className="menu-link" activeClassName="menu-link_active" to={"/products"}>Таблица БЖУ</NavLink ></li>
+              <li className="nav-menu__item"><NavLink className="menu-link" activeClassName="menu-link_active" to={"/products"}>Продукты</NavLink ></li>
               <li className="nav-menu__item"><NavLink className="menu-link" activeClassName="menu-link_active" to={"/recipes"}>Рецепты</NavLink ></li>
               <li className="nav-menu__item"><NavLink className="menu-link" activeClassName="menu-link_active" to={"/about"}>О нас</NavLink ></li>
             </ul>

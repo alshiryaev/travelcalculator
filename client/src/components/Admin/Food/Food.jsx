@@ -35,10 +35,10 @@ class Food extends Component {
                 <table>
                     <thead>
                         <tr>
-                            <th>Название</th>
-                            <th>Время приема пищи</th>
-                            <th>Тип похода</th>
-                            <th>Рецепт</th>
+                            <td className="admin-dish-table__name">Название</td>
+                            <td className="admin-dish-table__time">Время приема пищи</td>
+                            <td className="admin-dish-table__type-trevel">Тип похода</td>
+                            <td className="admin-dish-table__recipe">Рецепт</td>
                         </tr>
                     </thead>
                     <tbody>
