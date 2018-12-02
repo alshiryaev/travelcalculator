@@ -1,13 +1,10 @@
 {
   "development": {
-    "host": "localhost",
+    "host": "ec2-54-75-251-84.eu-west-1.compute.amazonaws.com",
     "dialect": "postgres",
-    "username": "postgres",
-    "password": "12345",
-    "database": "travelcalculator"
-  },
-  "production": {
-    "dialect": "postgres",
+    "username": "ufbymoxopiprqj",
+    "password": "290fdc3ae848542bc4ccc9e05c14a42b565ca033ba5db9cde4759d1cca62d788",
+    "database": "d9hko1m7coq5g7",
     "ssl": "true",
     "dialectOptions": {
       "ssl": {
