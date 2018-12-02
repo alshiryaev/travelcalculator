@@ -1,0 +1,20 @@
+.ingredients{
+    margin: 0;
+    padding: 0;
+}
+
+.ingredients__item {
+    display: flex;
+    align-items: center;
+}
+
+.ingredients__item-name{
+    width: 20%;
+}
+
+.ingredients__item-delete{
+    background-color:#fff;
+    border: 1px solid rgb(168, 166, 166);
+    margin-left: 20px;
+    cursor: pointer;
+}
