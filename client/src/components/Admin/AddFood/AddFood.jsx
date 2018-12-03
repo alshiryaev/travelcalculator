@@ -104,8 +104,10 @@ export default class AddFood extends Component {
     }
 
     quantityChanged = (event) => {
+        const {quantityValue, selectedIngredient} = this.state;
         this.setState({
-            quantityValue: event.target.value
+            quantityValue: event.target.value,
+            canAddIngredient: quantityValue > 0 && selectedIngredient
         })
     }
 
@@ -118,7 +120,10 @@ export default class AddFood extends Component {
                 name: this.getProductNameById(selectedIngredient),
                 quantity: quantityValue
             })
-        })))
+        })), () => this.setState({
+            selectedIngredient: '',
+            quantityValue: 0
+        }));
     }
 
     deleteIngredient = (id) => {
@@ -128,9 +133,9 @@ export default class AddFood extends Component {
     }
 
     getProductNameById(id) {
-        const { products, selectedIngredient } = this.state;
-        const { name } = products.find(x => x.id === selectedIngredient);
-        return name
+        const { products } = this.state;
+        const { name } = products.find(x => x.id === id);
+        return name;
     }
 
     foodService = new FoodService();

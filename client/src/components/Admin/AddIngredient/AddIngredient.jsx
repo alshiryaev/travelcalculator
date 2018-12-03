@@ -13,13 +13,13 @@ const AddIngredient = ({ products, ingredientSelected, selectedIngredient, quant
             className="form__select"
             value={selectedIngredient}
             onChange={ingredientSelected}
-            input={<Input name="ingredient" id="ingredient" />}>            
+            input={<Input name="ingredient" id="ingredient" />}>
             {products.map(dtt =>
                 <MenuItem key={dtt.id} value={dtt.id} >{dtt.name}</MenuItem>
             )}
         </Select>
-        <input onChange={quantityChanged} value={quantityValue} className="form__input" placeholder="Грамм/на человека" type="number"/>
-        <button onClick={addIngredient} className="control-button" >+</button>
+        <input onChange={quantityChanged} value={quantityValue} className="form__input" placeholder="Грамм/на человека" type="number" />
+        <button onClick={addIngredient} disabled={canAddIngredient} className={canAddIngredient ? 'control-button_disabled' : 'control-button'} >+</button>
     </div>
 
 export default AddIngredient;
