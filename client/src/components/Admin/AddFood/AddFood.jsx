@@ -28,7 +28,7 @@ export default class AddFood extends Component {
             selectedTravelTypes: [],
             selectedIngredient: '',
             quantityValue: 0,
-            canAddIngredient: true,
+            canAddIngredient: false,
             isLoaded: false
         }
     }
@@ -97,17 +97,20 @@ export default class AddFood extends Component {
     }
 
     ingredientSelected = (event) => {
-        console.log(event.target.value);
+        const {quantityValue} = this.state;
+        const selectedIngredient = event.target.value
         this.setState({
-            selectedIngredient: event.target.value
+            selectedIngredient: selectedIngredient,
+            canAddIngredient: +quantityValue > 0 && selectedIngredient
         })
     }
 
     quantityChanged = (event) => {
-        const {quantityValue, selectedIngredient} = this.state;
+        const {selectedIngredient} = this.state;
+        const quantityValue = event.target.value
         this.setState({
-            quantityValue: event.target.value,
-            canAddIngredient: quantityValue > 0 && selectedIngredient
+            quantityValue: quantityValue,
+            canAddIngredient: +quantityValue > 0 && selectedIngredient
         })
     }
 

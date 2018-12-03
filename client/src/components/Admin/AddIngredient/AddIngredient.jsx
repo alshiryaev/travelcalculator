@@ -19,7 +19,8 @@ const AddIngredient = ({ products, ingredientSelected, selectedIngredient, quant
             )}
         </Select>
         <input onChange={quantityChanged} value={quantityValue} className="form__input" placeholder="Грамм/на человека" type="number" />
-        <button onClick={addIngredient} disabled={canAddIngredient} className={canAddIngredient ? 'control-button_disabled' : 'control-button'} >+</button>
+        <button onClick={addIngredient} disabled={!canAddIngredient} className={canAddIngredient ? 'control-button' : 'control-button_disabled'} >+</button>
     </div>
+
 
 export default AddIngredient;
