@@ -3,10 +3,11 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('ingredients', {
       id: {
-        allowNull: false,
-        autoIncrement: true,
+        type: Sequelize.UUID,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        defaultValue: Sequelize.UUIDV4,
+        allowNull: false,
+        autoIncrement: false
       },
       productId: {
         type: Sequelize.UUID,
@@ -16,6 +17,7 @@ module.exports = {
         },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
+        allowNull: false
       },
       foodId: {
         type: Sequelize.UUID,
@@ -25,6 +27,7 @@ module.exports = {
         },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
+        allowNull: false,
       },
       quantity: {
         type: Sequelize.INTEGER,

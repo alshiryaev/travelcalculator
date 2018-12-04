@@ -73,7 +73,8 @@ export default class AddFood extends Component {
         const newFood = {
             ...this.state.newFood,
             travelTypes: this.state.selectedTravelTypes,
-            dayTimeTypes: this.state.selectedDayTimeTypes
+            dayTimeTypes: this.state.selectedDayTimeTypes,
+            ingredients: this.state.ingredients
         }
         this.foodService.addFood(newFood).then(() => {
             this.addFoodDialogHandleOpenClose(false);
@@ -97,7 +98,7 @@ export default class AddFood extends Component {
     }
 
     selectedIngredientChanged = (event) => {
-        const {quantityValue} = this.state;
+        const { quantityValue } = this.state;
         const selectedIngredient = event.target.value
         this.setState({
             selectedIngredient: selectedIngredient,
@@ -106,7 +107,7 @@ export default class AddFood extends Component {
     }
 
     quantityValueChanged = (event) => {
-        const {selectedIngredient} = this.state;
+        const { selectedIngredient } = this.state;
         const quantityValue = event.target.value
         this.setState({
             quantityValue: quantityValue,
@@ -122,7 +123,8 @@ export default class AddFood extends Component {
                 id: selectedIngredient,
                 name: this.getProductNameById(selectedIngredient),
                 quantity: quantityValue
-            })
+            }),
+            products: prevState.products.filter(p => p.id !== selectedIngredient)
         })), () => this.setState({
             selectedIngredient: '',
             quantityValue: 0
@@ -177,7 +179,9 @@ export default class AddFood extends Component {
                     </Select>
                 </div>
                 <div className="form__select-container">
-                    <InputLabel className="form__label" htmlFor="travelTypes">Тип похода</InputLabel>
+                    <InputLabel
+                        className="form__label"
+                        htmlFor="travelTypes">Тип похода</InputLabel>
                     <Select
                         className="form__select"
                         multiple
@@ -190,18 +194,19 @@ export default class AddFood extends Component {
                     </Select>
                 </div>
                 <br />
-                <IngredientList deleteIngredient={this.deleteIngredient} ingredients={ingredients} />
-                <div>
-                    <AddIngredient
-                        products={products}
-                        selectedIngredientChanged={this.selectedIngredientChanged}
-                        selectedIngredient={selectedIngredient}
-                        quantityValueChanged={this.quantityValueChanged}
-                        quantityValue={quantityValue}
-                        canAddIngredient={canAddIngredient}
-                        addIngredientHandler={this.addIngredientHandler}
-                    />
-                </div>
+                <IngredientList
+                    deleteIngredient={this.deleteIngredient}
+                    ingredients={ingredients}
+                />
+                <AddIngredient
+                    products={products}
+                    selectedIngredientChanged={this.selectedIngredientChanged}
+                    selectedIngredient={selectedIngredient}
+                    quantityValueChanged={this.quantityValueChanged}
+                    quantityValue={quantityValue}
+                    canAddIngredient={canAddIngredient}
+                    addIngredientHandler={this.addIngredientHandler}
+                />
                 <div className="form__action">
                     <Link to={`/admin/`} className="control-button">Назад </Link>
                     <button onClick={this.addNewFood} className="control-button" type="submit" >Добавить</button>

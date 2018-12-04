@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     food.belongsToMany(models.dayTimeType, { through: models.foodDayTimeType, as : 'dayTimeTypes' });
     food.belongsToMany(models.travelType, { through: models.foodTravelType, as : 'travelTypes' });
     food.belongsTo(models.recipe, {as: 'recipe'});
-    food.hasMany(models.ingredient, {as: 'ingridients'});
+    food.hasMany(models.ingredient, {as: 'ingredients'});
   };
   return food;
 };

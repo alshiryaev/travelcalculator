@@ -19,6 +19,7 @@ module.exports = {
       },
       foodId: {
         type: Sequelize.UUID,
+        allowNull: false,
         references: {
           model: 'foods',
           key: 'id',
@@ -38,6 +39,7 @@ module.exports = {
           },
           onUpdate: 'CASCADE',
           onDelete: 'SET NULL',
+          allowNull: false,
         }
       )
     });
