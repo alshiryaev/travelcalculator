@@ -96,7 +96,7 @@ export default class AddFood extends Component {
         this.getProducts();
     }
 
-    ingredientSelected = (event) => {
+    selectedIngredientChanged = (event) => {
         const {quantityValue} = this.state;
         const selectedIngredient = event.target.value
         this.setState({
@@ -105,7 +105,7 @@ export default class AddFood extends Component {
         })
     }
 
-    quantityChanged = (event) => {
+    quantityValueChanged = (event) => {
         const {selectedIngredient} = this.state;
         const quantityValue = event.target.value
         this.setState({
@@ -114,7 +114,7 @@ export default class AddFood extends Component {
         })
     }
 
-    addIngredient = (event) => {
+    addIngredientHandler = (event) => {
         event.stopPropagation();
         const { selectedIngredient, quantityValue } = this.state;
         this.setState((prevState => ({
@@ -194,12 +194,12 @@ export default class AddFood extends Component {
                 <div>
                     <AddIngredient
                         products={products}
-                        ingredientSelected={this.ingredientSelected}
+                        selectedIngredientChanged={this.selectedIngredientChanged}
                         selectedIngredient={selectedIngredient}
-                        quantityChanged={this.quantityChanged}
+                        quantityValueChanged={this.quantityValueChanged}
                         quantityValue={quantityValue}
                         canAddIngredient={canAddIngredient}
-                        addIngredient={this.addIngredient}
+                        addIngredientHandler={this.addIngredientHandler}
                     />
                 </div>
                 <div className="form__action">
