@@ -16,16 +16,6 @@ module.exports = {
       description: {
         type: Sequelize.STRING,
         allowNull: false,
-      },
-      foodId: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        references: {
-          model: 'foods',
-          key: 'id',
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
       }
     }).then(() => {
       queryInterface.addColumn(

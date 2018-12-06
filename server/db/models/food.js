@@ -10,10 +10,10 @@ module.exports = (sequelize, DataTypes) => {
       tableName: 'foods'
     });
   food.associate = models => {
-    food.belongsToMany(models.dayTimeType, { through: models.foodDayTimeType, as : 'dayTimeTypes' });
-    food.belongsToMany(models.travelType, { through: models.foodTravelType, as : 'travelTypes' });
-    food.belongsTo(models.recipe, {as: 'recipe'});
-    food.hasMany(models.ingredient, {as: 'ingredients'});
+    food.belongsToMany(models.dayTimeType, { through: models.foodDayTimeType });
+    food.belongsToMany(models.travelType, { through: models.foodTravelType});
+    food.belongsTo(models.recipe);
+    food.hasMany(models.ingredient);
   };
   return food;
 };

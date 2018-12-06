@@ -62,7 +62,7 @@ app.post('/api/foods', jsonParser, (req, res) => {
         return res.sendStatus(400);
     foodsRepository.addFood(req.body).then(() => {
         res.sendStatus(res.sendStatus(200))
-    });
+    }).catch(err => res.sendStatus(500));
 });
 
 app.use(express.static(path.join(__dirname, 'client/build')));

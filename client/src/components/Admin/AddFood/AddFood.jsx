@@ -47,7 +47,6 @@ export default class AddFood extends Component {
 
     async getProducts() {
         const { data: products } = await this.productService.getAllProducts();
-        console.log(products);
         this.setState({ products: products }, () => this.setState({ selectedIngredient: products[0] }));
     }
 
@@ -69,6 +68,7 @@ export default class AddFood extends Component {
     }
 
     addNewFood = (event) => {
+       
         event.stopPropagation();
         const newFood = {
             ...this.state.newFood,
@@ -77,10 +77,7 @@ export default class AddFood extends Component {
             ingredients: this.state.ingredients
         }
         this.foodService.addFood(newFood).then(() => {
-            this.addFoodDialogHandleOpenClose(false);
-            this.setState(prevState => ({
-                foods: prevState.foods.concat(newFood)
-            }))
+            this.props.history.push('/admin/');
         })
     }
 

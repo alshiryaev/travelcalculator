@@ -34,21 +34,6 @@ module.exports = {
         allowNull: false,
       }
     })
-    // .then(() => {
-    //   queryInterface.addColumn(
-    //     'products',
-    //     'ingredientId',
-    //     {
-    //       type: Sequelize.UUID,
-    //       references: {
-    //         model: 'ingredients',
-    //         key: 'id',
-    //       },
-    //       onUpdate: 'CASCADE',
-    //       onDelete: 'SET NULL',
-    //     }
-    //   )
-    // });
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('ingredients');
