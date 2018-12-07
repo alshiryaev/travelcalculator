@@ -57,7 +57,6 @@ export default class Product extends Component {
     }
 
     componentWillUnmount() {
-        console.log('unmount');
         this._isUnmount = true;
     }
 
@@ -128,7 +127,7 @@ export default class Product extends Component {
             <div>
                 {this.state.isLoaded ?
                     <div>
-                        <button onClick={() => this.addProductDialogHandleOpenClose(true)}  className="control-button">
+                        <button onClick={() => this.addProductDialogHandleOpenClose(true)} className="control-button">
                             Добавить
                         </button>
                         <Table
