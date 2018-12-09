@@ -14,28 +14,22 @@ export default class AddProduct extends Component {
 
     productService = new ProductService();
 
-    addNewProduct(event) {
+    addNewProduct = async (event) => {
         event.preventDefault();
-        this.productService.addNewProduct(this.state.newProduct)
-            .then(res => {
-                this.addProductDialogHandleOpenClose(false);
-                this.setState(prevState => ({
-                    products: prevState.products.concat(res.data)
-                }))
-            });
+        const { product } = this.state;
+        await this.productService.addNewProduct(product)
     }
 
     addProductPropertiesChanged = (event) => {
         const { product } = this.state;
         this.setState({
             product: { ...product, [event.target.name]: event.target.value }
-        }, () => console.log(this.state.product))
+        })
     }
 
     render() {
         return (
             <div>
-
                 <form autoComplete="off" onSubmit={this.addNewProduct}>
                     <input
                         className="form__input"
