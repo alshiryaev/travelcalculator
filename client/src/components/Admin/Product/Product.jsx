@@ -11,6 +11,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+import { Link } from 'react-router-dom';
+
 export default class Product extends Component {
 
     constructor(props) {
@@ -23,13 +25,6 @@ export default class Product extends Component {
             editingProduct: {},
             products: [],
             isLoaded: false,
-            newProduct: {
-                name: '',
-                fat: 0,
-                protein: 0,
-                calories: 0,
-                carbohydrates: 0
-            },
             tabValue: 0
         };
     }
@@ -76,17 +71,7 @@ export default class Product extends Component {
         edit[event.target.name] = event.target.value;
         const editProduct = { ...this.state.editingProduct, ...edit };
         this.setState({ editingProduct: editProduct });
-    };
-
-    addNewProduct = () => {
-        this.dataService.addNewProduct(this.state.newProduct)
-            .then(res => {
-                this.addProductDialogHandleOpenClose(false);
-                this.setState(prevState => ({
-                    products: prevState.products.concat(res.data)
-                }))
-            });
-    };
+    };    
 
     openDeleteDialog = (val) => this.setState({ openDeleteDialog: val });
 
@@ -127,53 +112,12 @@ export default class Product extends Component {
             <div>
                 {this.state.isLoaded ?
                     <div>
-                        <button onClick={() => this.addProductDialogHandleOpenClose(true)} className="control-button">
-                            Добавить
-                        </button>
+                        <Link className="control-button" to={`/admin/addproduct`} > Добавить </Link>                        
                         <Table
                             isAdmin={true}
                             editProduct={this.editProductHandle}
                             deleteProduct={this.deleteProductHandle}
-                            products={this.state.products} />
-                        <Dialog open={this.state.openAddDialog}>
-                            <DialogTitle>Добавление нового продукта</DialogTitle>
-                            <DialogContent>
-                                <TextField
-                                    name="name"
-                                    onChange={this.addProductPropertiesChanged}
-                                    fullWidth
-                                    placeholder="Название продукта" />
-                                <br />
-                                <TextField
-                                    name="protein"
-                                    onChange={this.addProductPropertiesChanged}
-                                    fullWidth
-                                    placeholder="Белки, г" />
-                                <br />
-                                <TextField
-                                    name="fat"
-                                    onChange={this.addProductPropertiesChanged}
-                                    fullWidth
-                                    placeholder="Жиры, г" />
-                                <br />
-                                <TextField
-                                    name="carbohydrates"
-                                    onChange={this.addProductPropertiesChanged}
-                                    fullWidth
-                                    placeholder="Углеводы, г" />
-                                <br />
-                                <TextField
-                                    name="calories"
-                                    onChange={this.addProductPropertiesChanged}
-                                    fullWidth
-                                    placeholder="Калорийность, ккал" />
-                            </DialogContent>
-                            <DialogActions>
-                                <Button onClick={() => this.addProductDialogHandleOpenClose(false)}>Отмена</Button>
-                                <Button onClick={this.addNewProduct} >Добавить</Button>
-                            </DialogActions>
-                        </Dialog>
-
+                            products={this.state.products} />                        
 
                         <Dialog open={this.state.openEditDialog} >
                             <DialogContentText>Редактирование</DialogContentText>

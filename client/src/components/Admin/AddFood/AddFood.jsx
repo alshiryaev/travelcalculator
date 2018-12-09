@@ -68,7 +68,7 @@ export default class AddFood extends Component {
     }
 
     addNewFood = (event) => {
-       
+
         event.stopPropagation();
         const newFood = {
             ...this.state.newFood,
@@ -145,10 +145,12 @@ export default class AddFood extends Component {
 
     render() {
         const { ingredients, products, dayTimeTypes, travelTypes, selectedIngredient, quantityValue, canAddIngredient } = this.state;
+
         return (
             <div className="form">
                 <h1>Добавление нового блюда</h1>
                 <input
+                    autoComplete="off"
                     className="form__input"
                     name="name"
                     onChange={this.addFoodPropertiesChanged}

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "license": "MIT",
   "scripts": {
     "client": "cd client && yarn start",
     "client-build": "cd client && yarn build",
