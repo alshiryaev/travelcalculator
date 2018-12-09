@@ -6,7 +6,7 @@ import ProductService from '../../../services/productService';
 
 export default class AddProduct extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             product: {}
         }

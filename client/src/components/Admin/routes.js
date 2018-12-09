@@ -16,6 +16,10 @@ const routes = [
     {
         path: '/admin/addproduct',
         component: AddProduct
+    },
+    {
+        path: '/admin/editproduct/:id',
+        component: AddProduct
     }
 ];
 

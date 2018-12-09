@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route, NavLink } from 'react-router-dom';
 import routes from '../routes';
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import history from '../history';
 
 export default class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <div className="wrapper">
           <header className="header">            
             <div className="logo">
@@ -40,7 +41,7 @@ export default class App extends Component {
           </footer>
         </div>
 
-      </BrowserRouter>
+      </Router>
     );
   }
 }

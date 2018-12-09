@@ -10,8 +10,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+import history from '../../../history';
 
 export default class Product extends Component {
 
@@ -24,17 +24,14 @@ export default class Product extends Component {
             deletingProduct: null,
             editingProduct: {},
             products: [],
-            isLoaded: false,
-            tabValue: 0
-        };
+            isLoaded: false
+        };     
     }
 
-    _isUnmount = false;
-    dataService = new ProductService();
+ 
 
-    tabValueChange = (event, tabValue) => {
-        this.setState({ tabValue });
-    };
+    _isUnmount = false;
+    dataService = new ProductService();  
 
     setError = () => {
         this.setState({
@@ -87,6 +84,7 @@ export default class Product extends Component {
         this.setState({ editingProduct: product }, () => {
             this.openEditingDialog(true);
         })
+        //history.push(`/admin/editproduct/${id}`);
     };
 
     editProduct = () => {
