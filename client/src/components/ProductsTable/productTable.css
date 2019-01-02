@@ -17,6 +17,7 @@ thead td{
     background-color: rgb(200, 218, 244);
     border-bottom: 2px solid rgb(165, 165, 165);
     font-weight: bold;
+    text-align: center;
 }
 
 thead :first-child{
@@ -36,7 +37,8 @@ thead :nth-child(5){
 td {
     height: 2rem;
     padding: 0 15px;
-    border-bottom: 1px solid rgb(235, 235, 235)
+    border-bottom: 1px solid rgb(235, 235, 235);    
+    font-size: 0.9rem;
 }
 
 .table-button.delete {
