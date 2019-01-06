@@ -12,8 +12,15 @@ var config = require(configPath)[env];
 var db = {};
 
 const isProduction = process.env.NODE_ENV === 'production';
+const dialectOptions = {
+  ssl: {
+    require: true
+  }
+};
+
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  ssl: isProduction
+  ssl: isProduction,
+  dialectOptions: isProduction ? dialectOptions : null
 });
 
 fs
