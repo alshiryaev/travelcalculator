@@ -1,7 +1,7 @@
 import Home from './components/Home/Home';
 import Calculator from './components/Calculator/Calculator';
 import About from './components/About/About';
-import Products from './components/Products/Products';
+import ProductsTab from './containers/ProductsTab';
 import Admin from './components/Admin/Admin';
 import Autorization from './components/Autorization/Autorization';
 import Recipes from './components/Recipes/Recipes';
@@ -18,7 +18,7 @@ const routes = [
     },
     {
         path: '/products',
-        component: Products
+        component: ProductsTab
     },
     {
         path: '/about',

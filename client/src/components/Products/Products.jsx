@@ -1,45 +1,29 @@
 import React, { Component } from 'react';
 import Table from '../ProductsTable/ProductsTable';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import productService from '../../services/productService'
 
 export default class Products extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            isLoaded: false,
-            isError: false,
-            products: []
-        };
-    }
-
-    productService = new productService();
-
-    setError = () => {
-        this.setState({
-            isLoaded: true,
-            isError: true
-        })
     }
 
     componentDidMount() {
-
-        this.productService.getAllProducts()
-            .then(res => this.setState({ products: res.data, isLoaded: true }), this.setError);
+        this.props.getProducts();
     }
 
     render() {
+        const { showLoader, products, isError } = this.props;
         return <div className="tableWrapper"> {
-            this.state.isLoaded ?
+            showLoader ?
+                <div className="progress-bar">
+                    <CircularProgress size={80} thickness={5} />
+                </div> :
                 <Table
                     isAdmin={false}
-                    products={this.state.products} />
-                : <div className="progress-bar">
-                    <CircularProgress size={80} thickness={5} />
-                </div>
+                    products={products} />
         }
-            <div> {this.state.isError ?
+            <div> {isError ?
                 <p className="error-text">Нет соединения с БД.</p> : <p></p>}
             </div>
         </div>
