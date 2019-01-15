@@ -13,7 +13,17 @@ const receiveProducts = (products) => ({
     products
 });
 
-export const getProducts = () => async (dispatch) => {
+function shouldLoadProducts(state) {
+    return state.products.length > 0;
+}
+
+export const getProducts = () => async (dispatch, getState) => {
+
+    if (shouldLoadProducts(getState())){
+        const {products} = getState();
+        dispatch(receiveProducts(products));
+    }
+
     dispatch(requestProducts());
     const pSerive = new productService();
     try {
