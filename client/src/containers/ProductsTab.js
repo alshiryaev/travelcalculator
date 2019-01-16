@@ -4,7 +4,7 @@ import Products from '../components/Products/Products';
 
 const mapStateToProps = state => ({
     products: state.products,
-    isLoaded: state.isLoaded
+    showLoader: state.showLoader
 });
 
 const mapDispatchToProps = dispatch => ({
