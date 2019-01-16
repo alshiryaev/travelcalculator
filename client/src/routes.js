@@ -29,7 +29,7 @@ const routes = [
         component: Admin
     },
     {
-        path: '/autorization',
+        path: '/login',
         component: Autorization
     },
     {

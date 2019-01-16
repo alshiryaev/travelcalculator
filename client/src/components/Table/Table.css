@@ -1,0 +1,78 @@
+.tableWrapper {
+    width: 100%;
+}
+
+.loading-image {
+    margin-left: 45%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1040px;
+    min-width: 320px;
+}
+
+thead td{
+    background-color: rgb(200, 218, 244);
+    border-bottom: 2px solid rgb(165, 165, 165);
+    font-weight: bold;
+    text-align: center;
+}
+
+thead :first-child{
+    width: 35%;
+}
+
+thead :nth-child(2),
+thead :nth-child(3),
+thead :nth-child(4){
+    width: 15%;
+}
+
+thead :nth-child(5){
+    width: 25%;
+}
+
+td {
+    height: 2rem;
+    padding: 0 15px;
+    border-bottom: 1px solid rgb(235, 235, 235);    
+    font-size: 0.9rem;
+}
+
+.table-button.delete {
+    background: #d86f6f;
+    color: white;
+}
+
+.table-button.edit {
+    background: #7088f5;
+    color: white;
+}
+
+.forAdmin {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.delete-button{
+    background:  #ff9393;
+    padding: 3px;
+    margin: 5px;
+    border: 1px solid #e2e2e2;
+    width: 20px;
+    cursor: pointer;
+}
+
+.edit-button{
+    background: white;
+    padding: 3px;
+    margin: 5px;
+    border: 1px solid #e2e2e2;
+    width: 20px;
+    cursor: pointer;
+}

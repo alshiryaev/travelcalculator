@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Food.css';
 import FoodService from '../../../services/foodService';
 import { Link } from 'react-router-dom';
+import Table from '../../Table/Table';
 
 class Food extends Component {
 
@@ -31,44 +32,25 @@ class Food extends Component {
         const { foods } = this.state;
         return (
             <div>
-                <Link className="control-button" to={`/admin/addfood`} > Добавить </Link>
-                <table>
-                    <thead>
-                        <tr>
-                            <td className="admin-dish-table__name">Название</td>
-                            <td className="admin-dish-table__time">Время приема пищи</td>
-                            <td className="admin-dish-table__type-trevel">Тип похода</td>
-                            <td className="admin-dish-table__recipe">Рецепт</td>
-                            <td className="admin-dish-table__recipe">Ингредиенты</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {foods.map((food, index) =>
-                            <tr key={index}>
-                                <td>
-                                    {food.name}
-                                </td>
-                                <td>
-                                    {food.dayTimeTypes.map(dayTimeType =>
-                                        <div key={dayTimeType.id}>{dayTimeType.name}</div>)}
-                                </td>
-                                <td>
-                                    {food.travelTypes.map(travelType =>
-                                        <div key={travelType.id}>{travelType.name}</div>)}
-                                </td>
-                                <td>
-                                    {food.recipe.description}
-                                </td>
-                                <td>
-                                    {food.ingredients.map(ingredient => {
-                                        const { product, quantity } = ingredient;
-                                        return <div key={ingredient.id}>{product.name} - {quantity}</div>
-                                    })}
-                                </td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
+                <Link className="control-button" to={`/admin/addfood`}> Добавить </Link>
+                <Table
+                    headers={['Название', 'Время приема', 'Тип похода, г', 'Рецепт', 'Ингредиенты']}
+                    items={['name', 'dayTimeTypes', 'travelTypes', 'recipe', 'ingredients']}
+                    isAdmin={true}
+                    converters={
+                        {
+                            dayTimeTypes: dayTimeTypes => dayTimeTypes.map(dayTimeType =>
+                                <div key={dayTimeType.id}>{dayTimeType.name}</div>),
+                            travelTypes: travelTypes => travelTypes.map(travelType =>
+                                <div key={travelType.id}>{travelType.name}</div>),
+                            ingredients: ingredients => ingredients.map(ingredient => {
+                                const { product, quantity } = ingredient;
+                                return <div key={ingredient.id}>{`${product.name} - ${quantity}`}</div>
+                            }),
+                            recipe: recipe => recipe.description
+                        }
+                    }
+                    source={foods} />                
             </div>)
     }
 }

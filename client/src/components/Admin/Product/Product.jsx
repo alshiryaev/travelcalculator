@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Table from '../../ProductsTable/ProductsTable';
+import Table from '../../Table/Table';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ProductService from '../../../services/productService';
 
@@ -10,7 +10,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class Product extends Component {
 
@@ -24,13 +24,13 @@ export default class Product extends Component {
             editingProduct: {},
             products: [],
             isLoaded: false
-        };     
+        };
     }
 
- 
+
 
     _isUnmount = false;
-    dataService = new ProductService();  
+    dataService = new ProductService();
 
     setError = () => {
         this.setState({
@@ -67,7 +67,7 @@ export default class Product extends Component {
         edit[event.target.name] = event.target.value;
         const editProduct = { ...this.state.editingProduct, ...edit };
         this.setState({ editingProduct: editProduct });
-    };    
+    };
 
     openDeleteDialog = (val) => this.setState({ openDeleteDialog: val });
 
@@ -105,16 +105,19 @@ export default class Product extends Component {
     };
 
     render() {
+        const {products} = this.state;
         return (
-            <div>
+            <div>              
                 {this.state.isLoaded ?
                     <div>
-                        <Link className="control-button" to={`/admin/addproduct`} > Добавить </Link>                        
+                        <Link className="control-button" to={`/admin/addproduct`} > Добавить </Link>
                         <Table
+                            headers={['Название продукта', 'Белки, г', 'Жиры, г', 'Углеводы, г', 'Калорийность, ккал']}
+                            items={['name', 'protein', 'fat', 'carbohydrates', 'calories']}
                             isAdmin={true}
-                            editProduct={this.editProductHandle}
-                            deleteProduct={this.deleteProductHandle}
-                            products={this.state.products} />                        
+                            editHandle={this.editProductHandle}
+                            deleteHandle={this.deleteProductHandle}
+                            source={products} />                     
 
                         <Dialog open={this.state.openEditDialog} >
                             <DialogContentText>Редактирование</DialogContentText>

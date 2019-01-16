@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Recipes.css';
 import FoodService from '../../services/foodService';
+import Table from '../Table/Table';
 
 class Recipes extends Component {
 
@@ -14,7 +15,7 @@ class Recipes extends Component {
   foodService = new FoodService();
 
   async getReceipes() {
-    const {data} = await this.foodService.getRecipes();   
+    const { data } = await this.foodService.getRecipes();
     this.setState({
       recipes: data
     })
@@ -26,25 +27,13 @@ class Recipes extends Component {
 
   render() {
     const { recipes } = this.state;
-  
     return (
       <div>
-        <table>
-          <thead>
-            <tr>
-              <td>Название</td>
-              <td>Рецепт</td>
-            </tr>
-          </thead>
-          <tbody>
-            {recipes.map((recipe, index) =>
-              <tr key={index}>
-                <td>{recipe.name}</td>
-                <td>{recipe.description}</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+        <Table
+          headers={['Название', 'Рецепт']}
+          items={['name', 'description']}
+          isAdmin={false}
+          source={recipes} />
       </div>
     );
   }
