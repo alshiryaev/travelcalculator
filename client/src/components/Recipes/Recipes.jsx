@@ -1,32 +1,15 @@
 import React, { Component } from 'react';
 import './Recipes.css';
-import FoodService from '../../services/foodService';
 import Table from '../Table/Table';
 
-class Recipes extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      recipes: []
-    }
-  }
-
-  foodService = new FoodService();
-
-  async getReceipes() {
-    const { data } = await this.foodService.getRecipes();
-    this.setState({
-      recipes: data
-    })
-  }
-
+class Recipes extends Component { 
+  
   componentDidMount() {
-    this.getReceipes();
+    this.props.getRecipes();
   }
 
   render() {
-    const { recipes } = this.state;
+    const { recipes } = this.props;
     return (
       <div>
         <Table

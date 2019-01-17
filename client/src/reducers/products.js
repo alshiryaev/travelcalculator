@@ -1,4 +1,4 @@
-import { RECEIVE_PRODUCTS, REQUEST_PRODUCTS } from '../actions';
+import { RECEIVE_PRODUCTS, REQUEST_PRODUCTS } from '../actions/products';
 
 export const products = (state = [], action) => {
     switch (action.type) {

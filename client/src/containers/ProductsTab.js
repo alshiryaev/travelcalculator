@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getProducts} from '../actions';
+import { getProducts} from '../actions/products';
 import Products from '../components/Products/Products';
 
 const mapStateToProps = state => ({

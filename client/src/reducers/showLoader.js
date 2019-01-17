@@ -1,4 +1,4 @@
-import { RECEIVE_PRODUCTS, REQUEST_PRODUCTS, ERROR_RECEIVE_PRODUCTS } from '../actions';
+import { RECEIVE_PRODUCTS, REQUEST_PRODUCTS, ERROR_RECEIVE_PRODUCTS } from '../actions/products';
 
 export const showLoader = (state = false, action) => {
     switch (action.type) {

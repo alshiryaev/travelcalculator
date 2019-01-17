@@ -19,19 +19,21 @@ function shouldLoadProducts(state) {
 
 export const getProducts = () => async (dispatch, getState) => {
 
-    if (shouldLoadProducts(getState())){
-        const {products} = getState();
+    if (shouldLoadProducts(getState())) {
+        const { products } = getState();
         dispatch(receiveProducts(products));
-    }
 
-    dispatch(requestProducts());
-    const pSerive = new productService();
-    try {
-        const { data: products } = await pSerive.getAllProducts();
-        dispatch(receiveProducts(products));
     }
-    catch (error) {
-        console.log(error);
-        dispatch({ type: ERROR_RECEIVE_PRODUCTS});
+    else {
+        dispatch(requestProducts());
+        const pService = new productService();
+        try {
+            const { data: products } = await pService.getAllProducts();
+            dispatch(receiveProducts(products));
+        }
+        catch (error) {
+            console.log(error);
+            dispatch({ type: ERROR_RECEIVE_PRODUCTS });
+        }
     }
 }

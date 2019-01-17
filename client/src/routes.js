@@ -4,7 +4,7 @@ import About from './components/About/About';
 import ProductsTab from './containers/ProductsTab';
 import Admin from './components/Admin/Admin';
 import Autorization from './components/Autorization/Autorization';
-import Recipes from './components/Recipes/Recipes';
+import RecipesTab from './containers/RecipesTab';
 
 const routes = [
     {
@@ -34,7 +34,7 @@ const routes = [
     },
     {
         path: '/recipes',
-        component: Recipes
+        component: RecipesTab
     }
 ];
 
