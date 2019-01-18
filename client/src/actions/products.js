@@ -29,11 +29,11 @@ export const getProducts = () => async (dispatch, getState) => {
         const pService = new productService();
         try {
             const { data: products } = await pService.getAllProducts();
-            dispatch(receiveProducts(products));
+            return dispatch(receiveProducts(products));
         }
         catch (error) {
             console.log(error);
-            dispatch({ type: ERROR_RECEIVE_PRODUCTS });
+            return dispatch({ type: ERROR_RECEIVE_PRODUCTS });
         }
     }
 }

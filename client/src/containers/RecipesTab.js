@@ -3,7 +3,8 @@ import { getRecipes } from '../actions/recipes';
 import Recipes from '../components/Recipes/Recipes';
 
 const mapStateToProps = (state) => ({
-    recipes: state.recipes
+    recipes: state.recipes,
+    showLoader: state.showLoader
 });
 
 const mapDispatchToProps = (dispatch) => ({

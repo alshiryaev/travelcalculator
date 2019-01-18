@@ -21,12 +21,12 @@ export const getRecipes = () => async (dispatch, getState) => {
 
     if (shouldLoadRecipes(getState())) {
         const { recipes } = getState();
-        dispatch(receiveRecipes(recipes));
+        return dispatch(receiveRecipes(recipes));
     }
     else {
         dispatch(requestRecipes());
         const foodService = new FoodService();
         const { data: recipes } = await foodService.getRecipes();
-        dispatch(receiveRecipes(recipes));
+        return dispatch(receiveRecipes(recipes));
     }
 }
