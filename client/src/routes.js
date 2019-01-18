@@ -1,6 +1,5 @@
 import Home from './components/Home/Home';
 import Calculator from './components/Calculator/Calculator';
-import About from './components/About/About';
 import ProductsTab from './containers/ProductsTab';
 import Admin from './components/Admin/Admin';
 import Autorization from './components/Autorization/Autorization';
@@ -19,10 +18,6 @@ const routes = [
     {
         path: '/products',
         component: ProductsTab
-    },
-    {
-        path: '/about',
-        component: About
     },
     {
         path: '/admin',
