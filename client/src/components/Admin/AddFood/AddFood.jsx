@@ -68,8 +68,7 @@ export default class AddFood extends Component {
     }
 
     addNewFood = (event) => {
-
-        event.stopPropagation();
+        event.preventDefault();
         const newFood = {
             ...this.state.newFood,
             travelTypes: this.state.selectedTravelTypes,
