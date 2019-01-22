@@ -1,7 +1,5 @@
 'use strict';
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').load();
-}
+
 var fs = require('fs');
 var path = require('path');
 var Sequelize = require('sequelize');
