@@ -23,7 +23,7 @@ export default class AuthService {
         cancelToken: source.token
     });
 
-    getAuth(){
+    getAuth() {
         return this._isAuth;
     }
 

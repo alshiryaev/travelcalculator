@@ -19,7 +19,7 @@ module.exports = function (app) {
     res.sendStatus(200);
   });
 
-  app.get('/isAuth', (req, res) => {
+  app.get('/isAuth', (req, res) => {    
     const isAuth = req.isAuthenticated();
     res.send(isAuth)
   });

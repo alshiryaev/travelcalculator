@@ -9,7 +9,7 @@ export default function ProtectedRoute({ component: Component, ...rest }) {
     return (
         <Route {...rest}
             render={props => {
-                const isAuth = true;
+                const isAuth = authService.getAuth();
                 if (isAuth) {
                     return <Component {...props} />
                 }
