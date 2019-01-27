@@ -22,7 +22,7 @@ export const getProducts = () => async (dispatch, getState) => {
     if (shouldLoadProducts(getState())) {
         const { products } = getState();
         dispatch(receiveProducts(products));
-
+ 
     }
     else {
         dispatch(requestProducts());

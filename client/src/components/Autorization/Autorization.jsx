@@ -1,16 +1,14 @@
-import React from "react";
-import "./Autorization.css";
-import AuthService from '../../services/authService';
+import React from 'react';
+import './Autorization.css';
+import { connect } from 'react-redux';
+import { login } from '../../actions/auth';
 
-const authService = new AuthService();
 
-const Autorization = () => {
+const Autorization = ({login, history}) => {
   let inputLogin = '', inputPassword = '';
   const onSubmit = async event => {
-    console.log(inputLogin.value, inputPassword.value);
     event.preventDefault();
-    await authService.login(inputLogin.value, inputPassword.value);
-    console.log('logged');
+    login(inputLogin.value, inputPassword.value, history.push('/admin'));
   }
   return (
     <div className="login-form-container">
@@ -39,4 +37,7 @@ const Autorization = () => {
   );
 };
 
-export default Autorization;
+const LoginContainer = connect(null, dispatch => ({
+  login: (username, password, callback) => dispatch(login(username, password, callback))
+}))(Autorization);
+export default LoginContainer;

@@ -2,21 +2,27 @@ const { productsRepository } = require("./server/db/productsRepository");
 const { foodsRepository } = require("./server/db/foodRepository");
 const passport = require('passport');
 
-module.exports = function(app) {
+module.exports = function (app) {
+
   const loggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {
       next();
     } else return res.sendStatus(401);
   };
 
-  app.post(
-    "/login",
-    passport.authenticate("local", {
-      successRedirect: "/",
-      failureRedirect: "/admin",
-      failureFlash: false
-    })
-  );
+  app.post("/login", passport.authenticate("local"), (req, res) => {
+    res.sendStatus(200);
+  });
+
+  app.get('/logout', (req, res) => {
+    req.logout();
+    res.sendStatus(200);
+  });
+
+  app.get('/isAuth', (req, res) => {
+    const isAuth = req.isAuthenticated();
+    res.send(isAuth)
+  });
 
   app.get("/api/products", (req, res) => {
     productsRepository.getAll().then(products => {

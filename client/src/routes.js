@@ -1,35 +1,59 @@
 import Home from './components/Home/Home';
 import Calculator from './components/Calculator/Calculator';
 import ProductsTab from './containers/ProductsTab';
-import Admin from './components/Admin/Admin';
-import Autorization from './components/Autorization/Autorization';
+import LoginContainer from './components/Autorization/Autorization';
 import RecipesTab from './containers/RecipesTab';
+
+import Main from './components/Admin/Main/Main';
+import AddFood from './components/Admin/AddFood/AddFood';
+import AddProduct from './components/Admin/AddProduct/AddProduct';
 
 const routes = [
     {
         path: '/',
         exact: true,
-        component: Home
+        component: Home,
+        private: false
     },
     {
         path: '/calculator',
-        component: Calculator
+        component: Calculator,
+        private: false
     },
     {
         path: '/products',
-        component: ProductsTab
+        component: ProductsTab,
+        private: false
     },
     {
         path: '/admin',
-        component: Admin
+        component: Main,
+        private: true
     },
     {
         path: '/login',
-        component: Autorization
+        component: LoginContainer,
+        private:false
     },
     {
         path: '/recipes',
-        component: RecipesTab
+        component: RecipesTab,
+        private: false
+    }, 
+    {
+        path: '/admin/addfood',
+        component: AddFood,
+        private: true
+    },
+    {
+        path: '/admin/addproduct',
+        component: AddProduct,
+        private: true
+    },
+    {
+        path: '/admin/editproduct/:id',
+        component: AddProduct,
+        private: true
     }
 ];
 
