@@ -1,15 +1,11 @@
 import React from 'react';
 import { Route, Redirect } from "react-router-dom";
-import AuthService from '../../services/authService';
+import { connect } from 'react-redux';
 
-export default function ProtectedRoute({ component: Component, ...rest }) {
-
-    const authService = new AuthService();   
-
+function ProtectedRoute({ component: Component, isAuth, ...rest }) {
     return (
         <Route {...rest}
             render={props => {
-                const isAuth = authService.getAuth();
                 if (isAuth) {
                     return <Component {...props} />
                 }
@@ -21,3 +17,8 @@ export default function ProtectedRoute({ component: Component, ...rest }) {
         />
     );
 }
+
+const ProtectedRouterContainer = connect(state => ({
+    isAuth: state.auth.authenticated
+}), null)(ProtectedRoute);
+export default ProtectedRouterContainer;

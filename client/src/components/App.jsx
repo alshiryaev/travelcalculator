@@ -4,7 +4,7 @@ import { Route, NavLink } from 'react-router-dom';
 import routes from '../routes';
 import { Router } from 'react-router-dom';
 import history from '../history';
-import ProtectedRouter from './ProtectedRouter/ProtectedRouter';
+import ProtectedRouterContainer from './ProtectedRouter/ProtectedRouter';
 import { connect } from 'react-redux';
 import { authenticated } from '../actions/auth';
 
@@ -37,7 +37,7 @@ class App extends Component {
 
             {routes.map((route, index) =>
                 route.private ?
-                  <ProtectedRouter key={index}
+                  <ProtectedRouterContainer key={index}
                     path={route.path}
                     exact={route.exact}
                     component={route.component} />
