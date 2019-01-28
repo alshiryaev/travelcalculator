@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 function ProtectedRoute({ component: Component, isAuth, ...rest }) {
     return (
@@ -18,7 +19,7 @@ function ProtectedRoute({ component: Component, isAuth, ...rest }) {
     );
 }
 
-const ProtectedRouterContainer = connect(state => ({
+const ProtectedRouterContainer = withRouter(connect(state => ({
     isAuth: state.auth.authenticated
-}), null)(ProtectedRoute);
+}))(ProtectedRoute));
 export default ProtectedRouterContainer;
