@@ -1,7 +1,7 @@
 import Home from './components/Home/Home';
 import Calculator from './components/Calculator/Calculator';
 import ProductsTab from './containers/ProductsTab';
-import LoginContainer from './components/Autorization/Autorization';
+import LoginContainer from './components/Login/Login';
 import RecipesTab from './containers/RecipesTab';
 
 import Main from './components/Admin/Main/Main';

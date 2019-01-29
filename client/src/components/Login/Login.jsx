@@ -1,10 +1,10 @@
 import React from 'react';
-import './Autorization.css';
+import './Login.css';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
 
 
-const Autorization = ({login, history}) => {
+const Login = ({login, history}) => {
   let inputLogin = '', inputPassword = '';
   const onSubmit = async event => {
     event.preventDefault();
@@ -39,5 +39,5 @@ const Autorization = ({login, history}) => {
 
 const LoginContainer = connect(null, dispatch => ({
   login: (username, password, callback) => dispatch(login(username, password, callback))
-}))(Autorization);
+}))(Login);
 export default LoginContainer;
