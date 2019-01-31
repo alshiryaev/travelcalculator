@@ -1,4 +1,5 @@
 import AuthService from '../services/authService';
+import { push } from 'connected-react-router';
 
 export const LOGIN_REQUESTED = 'LOGIN_REQUESTED';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
@@ -37,15 +38,15 @@ export const login = (username, password, callback = callback => callback) => as
     const authService = new AuthService();
     dispatch(loginRequested());
     try {
-        const {status} = await authService.login(username, password);
-        if (status === 200){
-            callback();
-            return dispatch(loginSuccess('admin'));          
+        const { status } = await authService.login(username, password);
+        if (status === 200) {
+            dispatch(loginSuccess('admin'));
+            return dispatch(push('/admin'));
         }
     }
-    catch (err){
+    catch (err) {
         console.error(err);
         return dispatch(loginFailed());
     }
-   
+
 }

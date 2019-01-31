@@ -11,7 +11,7 @@ import { authenticated } from '../actions/auth';
 class App extends Component {
 
   componentDidMount() {
-      this.props.checkAuth();
+    this.props.checkAuth();
   }
 
   render() {
@@ -34,8 +34,7 @@ class App extends Component {
           </header>
 
           <section className="main-section">
-
-            {routes.map((route, index) =>
+              {routes.map((route, index) =>
                 route.private ?
                   <ProtectedRouterContainer key={index}
                     path={route.path}
