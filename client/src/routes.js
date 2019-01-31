@@ -4,9 +4,7 @@ import ProductsTab from './containers/ProductsTab';
 import LoginContainer from './components/Login/Login';
 import RecipesTab from './containers/RecipesTab';
 
-import Main from './components/Admin/Main/Main';
-import AddFood from './components/Admin/AddFood/AddFood';
-import AddProduct from './components/Admin/AddProduct/AddProduct';
+import Admin from './components/Admin/Admin';
 
 const routes = [
     {
@@ -27,7 +25,7 @@ const routes = [
     },
     {
         path: '/admin',
-        component: Main,
+        component: Admin,
         private: true
     },
     {
@@ -39,21 +37,6 @@ const routes = [
         path: '/recipes',
         component: RecipesTab,
         private: false
-    }, 
-    {
-        path: '/admin/addfood',
-        component: AddFood,
-        private: true
-    },
-    {
-        path: '/admin/addproduct',
-        component: AddProduct,
-        private: true
-    },
-    {
-        path: '/admin/editproduct/:id',
-        component: AddProduct,
-        private: true
     }
 ];
 
