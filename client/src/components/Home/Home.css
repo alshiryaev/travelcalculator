@@ -1,0 +1,9 @@
+.article{
+    text-align: justify;
+    line-height: 1.5;
+    font-size: 1.2rem;   
+    }
+
+.article__paragraph{
+    text-indent: 2rem;
+}
