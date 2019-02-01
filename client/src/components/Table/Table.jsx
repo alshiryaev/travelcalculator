@@ -27,8 +27,8 @@ const Table = props => {
         {source.map(item => <tr key={v4()}>
           {items.map(entity => <td key={v4()}>{createCellView(item, entity)}</td>)}
           <td style={isAdmin ? { display: 'block' } : { display: 'none' }}>
-            <button className="delete-button" onClick={() => deleteHandle(item)}>X</button>
-            <button className="edit-button" onClick={() => editHandle(item)}>E</button>
+            <button title="Удалить" className="delete-button" onClick={() => deleteHandle(item)}>X</button>
+            <button title="Редактировать" className="edit-button" onClick={() => editHandle(item)}>E</button>
           </td>
         </tr>)}
       </tbody>

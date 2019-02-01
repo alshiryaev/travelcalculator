@@ -20,7 +20,7 @@ class App extends Component {
         <div className="wrapper">
           <header className="header">
             <div className="logo">
-              <NavLink className="logo__link" to={"/"}>TRAVELCALCULATOR</NavLink >
+              <NavLink className="logo__link" to={"/"}>CALCULATOR</NavLink >
             </div>
             <input className="hamburger__checkbox" type="checkbox" hidden id="__hamb__button" />
             <label className="hamburger hamburger_clickable" htmlFor="__hamb__button">

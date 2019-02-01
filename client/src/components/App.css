@@ -1,12 +1,12 @@
 :root {
-    --main-color: #000000;
+    --main-color: #fff;
     --second-color: #1f9ffc;
     --button-color: #d04000;
     --button-hover-color: #f97d2e;
     --button-active-color: #f9572e;
     --button-disable-color: rgb(153, 153, 153);
     --button-shadow-color: #753b1d;
-    --height-header: 3rem;
+    --height-header: 5rem;
 }
 
 .wrapper {
@@ -33,14 +33,21 @@
     min-height: var(--height-header);
     border-bottom: 1px solid #e2e2e2;
     margin-bottom: 1%;
-    background-color: #fff;
+    background-color: #54689d;
     width: 100%;
     z-index: 3;
+    color: var(--main-color);
 }
 
 .logo__link {
-    text-decoration: none;
-    color: #000;
+    text-decoration: none;   
+    color: var(--main-color);
+    font-size: 2rem;
+}
+
+.logo__link::before{
+    content: 'TRAVEL';
+    font-weight: 600;
 }
 
 .hamburger {
@@ -117,10 +124,11 @@
     color: var(--main-color);
     text-decoration: none;
     text-transform: uppercase;
+    font-size: 1.3rem;
 }
 
 .menu-link_active {
-    text-decoration: underline;
+    font-weight: 700;
 }
 
 .main-section {

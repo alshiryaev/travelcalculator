@@ -14,10 +14,13 @@ table {
 }
 
 thead td{
-    background-color: rgb(200, 218, 244);
-    border-bottom: 2px solid rgb(165, 165, 165);
+    background-color: rgb(236, 236, 239);
     font-weight: bold;
     text-align: center;
+}
+
+tbody tr:hover{
+    background-color: #ebebeb;
 }
 
 thead :first-child{
@@ -60,12 +63,15 @@ td {
 }
 
 .delete-button{
-    background:  #ff9393;
+    background-color: #f67373;
     padding: 3px;
     margin: 5px;
-    border: 1px solid #e2e2e2;
+    border: 1px solid #f6f6f6;
     width: 20px;
     cursor: pointer;
+    border-radius: 100%;
+    font-size: 10px;
+    color: #fff;
 }
 
 .edit-button{
@@ -75,4 +81,5 @@ td {
     border: 1px solid #e2e2e2;
     width: 20px;
     cursor: pointer;
+    font-size: 10px;
 }
