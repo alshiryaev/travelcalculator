@@ -31,6 +31,15 @@ REACT_APP_API_URL=http://localhost:5000
 npx sequelize db:migrate (через npx можно без глобальной установки, о самой миграции подробнее http://docs.sequelizejs.com/manual/tutorial/migrations.html )
 для заполнения таблиц первичными данными выполняем команду npx sequelize db:seed:all
 
+для создания таблицы хранения сессий используем следующий скрипт (для этого создана отдельная миграция)
+CREATE TABLE "session" (
+  "sid" varchar NOT NULL COLLATE "default",
+	"sess" json NOT NULL,
+	"expire" timestamp(6) NOT NULL
+)
+WITH (OIDS=FALSE);
+ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+
 Что в планах?
 1) Подключить авторизацию админки
 2) Полноценно связать все модели Продукты, Блюда (состоят их продуктов) и Рецепты (состоят из блюд). Несовсем понятно как рассчитывать расскаладку.
