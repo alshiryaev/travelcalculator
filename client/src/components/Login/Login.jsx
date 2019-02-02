@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
 
 
-const Login = ({login, history}) => {
+const Login = ({login}) => {
   let inputLogin = '', inputPassword = '';
   const onSubmit = async event => {
     event.preventDefault();
-    login(inputLogin.value, inputPassword.value, history.push('/admin'));
+    login(inputLogin.value, inputPassword.value);
   }
   return (
     <div className="login-form-container">
@@ -38,6 +38,6 @@ const Login = ({login, history}) => {
 };
 
 const LoginContainer = connect(null, dispatch => ({
-  login: (username, password, callback) => dispatch(login(username, password, callback))
+  login: (username, password) => dispatch(login(username, password))
 }))(Login);
 export default LoginContainer;

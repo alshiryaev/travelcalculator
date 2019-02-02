@@ -5,8 +5,8 @@ const port = process.env.PORT || 5000;
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
-
 const session = require("express-session");
+const pgSession = require('connect-pg-simple')(session);
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').load();
@@ -18,9 +18,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   session({
+    store: new pgSession({
+      conString: process.env.DATABASE_URL
+    }),
     secret: process.env.SESSION_SECRET,
     saveUninitialized: false,
-    resave: false
+    resave: false,
+    cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }
   })
 );
 

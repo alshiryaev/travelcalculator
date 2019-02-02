@@ -34,7 +34,7 @@ export const authenticated = () => async (dispatch) => {
         return dispatch(loginFailed());
 }
 
-export const login = (username, password, callback = callback => callback) => async (dispatch) => {
+export const login = (username, password) => async (dispatch) => {
     const authService = new AuthService();
     dispatch(loginRequested());
     try {
