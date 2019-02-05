@@ -1,8 +1,8 @@
 import Home from './components/Home/Home';
 import Calculator from './components/Calculator/Calculator';
-import ProductsTab from './containers/ProductsTab';
+import {ProductsTab} from './containers/ProductsTab';
 import LoginContainer from './components/Login/Login';
-import RecipesTab from './containers/RecipesTab';
+import {RecipesTab} from './containers/RecipesTab';
 
 import Admin from './components/Admin/Admin';
 

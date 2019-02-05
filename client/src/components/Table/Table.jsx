@@ -1,19 +1,19 @@
 import React from 'react';
 import './Table.css';
-import {v4} from 'uuid';
+import { v4 } from 'uuid';
 
 const Table = props => {
-  const {headers, isAdmin, items, source, editHandle = f => f, deleteHandle = f => f, converters = {} } = props;
-  
+  const { headers, isAdmin, items, source, editHandle = f => f, deleteHandle = f => f, converters = {} } = props;
 
-  
-  function createCellView(item, entity){
-      if (entity in converters){
-          const converter = converters[entity];
-          return converter(item[entity]);
-      }
-      return <span>{item[entity]}</span>
-  }  
+
+
+  function createCellView(item, entity) {
+    if (entity in converters) {
+      const converter = converters[entity];
+      return converter(item[entity]);
+    }
+    return <span>{item[entity]}</span>
+  }
 
   return (
     <table>

@@ -17,7 +17,8 @@ export default class AddProduct extends Component {
     addNewProduct = async (event) => {
         event.preventDefault();
         const { product } = this.state;
-        await this.productService.addNewProduct(product)
+        await this.productService.addNewProduct(product);
+        this.props.history.push('/admin');
     }
 
     addProductPropertiesChanged = (event) => {
@@ -40,6 +41,7 @@ export default class AddProduct extends Component {
                     <input
                         className="form__input"
                         type="number"
+                        step="0.1"
                         name="protein"
                         onChange={this.addProductPropertiesChanged}
                         placeholder="Белки, г" />
@@ -47,11 +49,13 @@ export default class AddProduct extends Component {
                         className="form__input"
                         type="number"
                         name="fat"
+                        step="0.1"
                         onChange={this.addProductPropertiesChanged}
                         placeholder="Жиры, г" />
                     <input
                         className="form__input"
                         type="number"
+                        step="0.1"
                         name="carbohydrates"
                         onChange={this.addProductPropertiesChanged}
                         placeholder="Углеводы, г" />
@@ -60,6 +64,7 @@ export default class AddProduct extends Component {
                         className="form__input"
                         type="number"
                         name="calories"
+                        step="0.1"
                         onChange={this.addProductPropertiesChanged}
                         placeholder="Калорийность, ккал" />
                     <div className="form__action">

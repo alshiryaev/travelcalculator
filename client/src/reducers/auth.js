@@ -8,16 +8,10 @@ const defaultState = {
 export const auth = (state = defaultState, action) => {
     switch (action.type) {
         case LOGIN_SUCCESSED:
-            return {
-                authenticated: true,
-                username: action.username
-            }
+            return true;
         case LOGIN_FAILED:
         case LOGOUT:
-            return {
-                authenticated: false,
-                username: null
-            }
+            return false;
         default:
             return state;
     }

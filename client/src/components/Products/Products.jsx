@@ -10,17 +10,17 @@ export default class Products extends Component {
 
     render() {
         const { showLoader, products, isError } = this.props;
-        return <div className="tableWrapper"> {
-            showLoader ?
+        return <div className="tableWrapper">
+            {showLoader ?
                 <div className="progress-bar">
                     <CircularProgress size={80} thickness={5} />
                 </div> :
                 <Table
-                    headers = {['Название продукта', 'Белки, г', 'Жиры, г', 'Углеводы, г', 'Калорийность, ккал']}
-                    items = {['name', 'protein', 'fat', 'carbohydrates', 'calories']}
+                    headers={['Название продукта', 'Белки, г', 'Жиры, г', 'Углеводы, г', 'Калорийность, ккал']}
+                    items={['name', 'protein', 'fat', 'carbohydrates', 'calories']}
                     isAdmin={false}
                     source={products} />
-        }
+            }
             <div> {isError ?
                 <p className="error-text">Нет соединения с БД.</p> : <p></p>}
             </div>

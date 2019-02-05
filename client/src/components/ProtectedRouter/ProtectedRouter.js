@@ -9,6 +9,6 @@ function ProtectedRoute({ component: Component, isAuth, ...rest }) {
 }
 
 const ProtectedRouterContainer = withRouter(connect(state => ({
-    isAuth: state.auth.authenticated
+    isAuth: state.auth
 }))(ProtectedRoute));
 export default ProtectedRouterContainer;

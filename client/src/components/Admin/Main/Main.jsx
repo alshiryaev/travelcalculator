@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Main.css';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Product from '../Product/Product';
+import { AdminProductsTab } from '../../../containers/ProductsTab';
 import Food from '../Food/Food';
 
 function TabContainer(props) {
@@ -35,7 +35,7 @@ class Main extends Component {
           <Tab label="Блюда" />
         </Tabs>
         {tabValue === 0 && <TabContainer>
-          <Product />
+          <AdminProductsTab />
         </TabContainer>}
         {tabValue === 1 && <TabContainer>
           <Food />

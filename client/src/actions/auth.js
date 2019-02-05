@@ -10,9 +10,8 @@ export const loginRequested = () => ({
     type: LOGIN_REQUESTED
 });
 
-export const loginSuccess = (username) => ({
-    type: LOGIN_SUCCESSED,
-    username
+export const loginSuccess = () => ({
+    type: LOGIN_SUCCESSED
 });
 
 export const loginFailed = () => ({
@@ -23,13 +22,14 @@ export const logout = () => ({
     type: LOGOUT
 });
 
+// Проверка аутентификации на сервере
 export const authenticated = () => async (dispatch) => {
     const authService = new AuthService();
     dispatch(loginRequested());
     const { data: isAuth } = await authService.isAuth();
     console.log('isAuth', isAuth);
     if (isAuth)
-        return dispatch(loginSuccess('admin'));
+        return dispatch(loginSuccess());
     else
         return dispatch(loginFailed());
 }
@@ -40,7 +40,7 @@ export const login = (username, password) => async (dispatch) => {
     try {
         const { status } = await authService.login(username, password);
         if (status === 200) {
-            dispatch(loginSuccess('admin'));
+            dispatch(loginSuccess());
             return dispatch(push('/admin'));
         }
     }

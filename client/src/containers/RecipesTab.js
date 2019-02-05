@@ -11,5 +11,4 @@ const mapDispatchToProps = (dispatch) => ({
     getRecipes: () => dispatch(getRecipes())
 })
 
-const RecipesTab = connect(mapStateToProps, mapDispatchToProps)(Recipes);
-export default RecipesTab;
+export const RecipesTab = connect(mapStateToProps, mapDispatchToProps)(Recipes);
