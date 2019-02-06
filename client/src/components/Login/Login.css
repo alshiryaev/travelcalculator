@@ -11,14 +11,14 @@
 }
 
 .login-form__login{
-    width: 50%;
+    width: 100%;
     padding: 12px;
     font-size: 1rem;
     margin-bottom: 10px;
 }
 
 .login-form__password{
-    width: 50%;
+    width: 100%;
     padding: 12px;
     font-size: 1rem;
     margin-bottom: 10px;

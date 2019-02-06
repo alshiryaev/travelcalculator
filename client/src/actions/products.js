@@ -16,16 +16,13 @@ const receiveProducts = (products) => ({
     products
 });
 
-function shouldLoadProducts(state) {
-    return state.products.length > 0;
-};
+const shouldLoadProducts = state => state.products.length > 0;
 
 export const getProducts = () => async (dispatch, getState) => {
 
     if (shouldLoadProducts(getState())) {
         const { products } = getState();
         dispatch(receiveProducts(products));
-
     }
     else {
         dispatch(requestProducts());

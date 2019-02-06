@@ -22,9 +22,11 @@ export default class AddProduct extends Component {
     }
 
     addProductPropertiesChanged = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
         const { product } = this.state;
         this.setState({
-            product: { ...product, [event.target.name]: event.target.value }
+            product: { ...product, [name]: value }
         })
     }
 
@@ -59,7 +61,6 @@ export default class AddProduct extends Component {
                         name="carbohydrates"
                         onChange={this.addProductPropertiesChanged}
                         placeholder="Углеводы, г" />
-                    <br />
                     <input
                         className="form__input"
                         type="number"
