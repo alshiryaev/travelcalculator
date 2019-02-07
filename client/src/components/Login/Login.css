@@ -35,3 +35,7 @@
     padding: 5px;
     cursor: pointer;
 }
+
+.error-login {
+    color:#ff7474
+}

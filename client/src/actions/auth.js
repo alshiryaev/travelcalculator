@@ -1,17 +1,18 @@
 import AuthService from '../services/authService';
 import { push } from 'connected-react-router';
 
-export const LOGIN_REQUESTED = 'LOGIN_REQUESTED';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
+export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGIN_SUCCESSED = 'LOGIN_SUCCESSED';
 export const LOGOUT = 'LOGOUT';
 
-export const loginRequested = () => ({
-    type: LOGIN_REQUESTED
-});
-
 export const loginSuccess = () => ({
     type: LOGIN_SUCCESSED
+});
+
+export const loginError = (message) => ({
+    type: LOGIN_ERROR,
+    message
 });
 
 export const loginFailed = () => ({
@@ -25,18 +26,12 @@ export const logout = () => ({
 // Проверка аутентификации на сервере
 export const authenticated = () => async (dispatch) => {
     const authService = new AuthService();
-    dispatch(loginRequested());
     const { data: isAuth } = await authService.isAuth();
-    console.log('isAuth', isAuth);
-    if (isAuth)
-        return dispatch(loginSuccess());
-    else
-        return dispatch(loginFailed());
+    return isAuth ? dispatch(loginSuccess()) : dispatch(loginFailed());
 }
 
 export const login = (username, password) => async (dispatch) => {
     const authService = new AuthService();
-    dispatch(loginRequested());
     try {
         const { status } = await authService.login(username, password);
         if (status === 200) {
@@ -46,7 +41,7 @@ export const login = (username, password) => async (dispatch) => {
     }
     catch (err) {
         console.error(err);
-        return dispatch(loginFailed());
+        return dispatch(loginError('Неверное имя пользователя или пароль'));
     }
 
 }

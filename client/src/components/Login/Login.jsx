@@ -25,13 +25,14 @@ class Login extends Component {
     const value = event.target.value;
     this.setState({
       [name]: value
-    })
+    });
   }
 
   render() {
+    const { error } = this.props;
     const { login, password } = this.state;
     return (
-      <div className="login-form-container">
+      <div className="login-form-container">      
         <form className="login-form" autoComplete="off" onSubmit={this.onSubmit}>
           <input
             onChange={this.handledChanged}
@@ -51,16 +52,21 @@ class Login extends Component {
             type="password"
           />
           <br />
+          {error ? <div className="error-login">
+             {error}
+          </div> : ''}
           <button className="login-form__submit" type="submit">
             Войти
-        </button>
+          </button>         
         </form>
       </div>
     )
   }
 }
 
-const LoginContainer = connect(null, dispatch => ({
+const LoginContainer = connect(state => ({
+  error: state.auth.message
+}), dispatch => ({
   login: (username, password) => dispatch(login(username, password))
 }))(Login);
 export default LoginContainer;
