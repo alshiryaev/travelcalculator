@@ -10,7 +10,7 @@ export default class Products extends Component {
 
     render() {
         const { showLoader, products, isError } = this.props;
-        return <div className="tableWrapper">
+        return <div>
             {showLoader ?
                 <div className="progress-bar">
                     <CircularProgress size={80} thickness={5} />

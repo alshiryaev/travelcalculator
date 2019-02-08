@@ -5,8 +5,6 @@ import { v4 } from 'uuid';
 const Table = props => {
   const { headers, isAdmin, items, source, editHandle = f => f, deleteHandle = f => f, converters = {} } = props;
 
-
-
   function createCellView(item, entity) {
     if (entity in converters) {
       const converter = converters[entity];
@@ -20,7 +18,7 @@ const Table = props => {
       <thead>
         <tr>
           {headers.map(header => <td key={v4()}>{header}</td>)}
-          <td style={isAdmin ? { display: 'table-cell' } : { display: 'none' }}>Управление</td>
+          <td style={isAdmin ? { display: 'block' } : { display: 'none' }}>Управление</td>
         </tr>
       </thead>
       <tbody>
