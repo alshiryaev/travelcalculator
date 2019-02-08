@@ -2,8 +2,21 @@
     text-align: justify;
     line-height: 1.5;
     font-size: 1.2rem;   
+    padding: 8px;
     }
 
 .article__paragraph{
     text-indent: 2rem;
+}
+
+@media (max-width: 48rem) { 
+    .article{
+        text-align: justify;
+        line-height: 1;
+        font-size: 1rem;   
+        }
+    
+    .article__paragraph{
+        text-indent: 1rem;
+    }
 }

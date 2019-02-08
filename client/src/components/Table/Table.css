@@ -3,7 +3,7 @@
     margin-left: 45%;
 }
 
-table {
+.table {
     border-collapse: collapse;
     width: 100%;
     max-width: 1040px;
@@ -67,7 +67,7 @@ td {
 }
 
 @media (max-width: 48rem) { 
-    table {
+    .table {
         font-size: 10px;
     }
 

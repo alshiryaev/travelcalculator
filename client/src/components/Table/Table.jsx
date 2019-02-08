@@ -14,7 +14,7 @@ const Table = props => {
   }
 
   return (
-    <table>
+    <table className="table">
       <thead>
         <tr>
           {headers.map(header => <td key={v4()}>{header}</td>)}
