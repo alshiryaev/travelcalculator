@@ -14,23 +14,32 @@ const Table = props => {
   }
 
   return (
-    <table className="table">
-      <thead>
-        <tr>
-          {headers.map(header => <td key={v4()}>{header}</td>)}
-          <td style={isAdmin ? { display: 'block' } : { display: 'none' }}>Управление</td>
-        </tr>
-      </thead>
-      <tbody>
-        {source.map(item => <tr key={v4()}>
-          {items.map(entity => <td key={v4()}>{createCellView(item, entity)}</td>)}
-          <td style={isAdmin ? { display: 'block' } : { display: 'none' }}>
-            <button title="Удалить" className="delete-button" onClick={() => deleteHandle(item)}>X</button>
-            <button title="Редактировать" className="edit-button" onClick={() => editHandle(item)}>E</button>
-          </td>
-        </tr>)}
-      </tbody>
-    </table>
+    <div className="table-container">
+      <div className="filter">
+         <input className="filter__input" />
+         <button className="filter__button">Искать</button>
+      </div>
+      <table className="table">
+        <thead>
+          <tr>
+            {headers.map(header => <td key={v4()}>{header}</td>)}
+            <td style={isAdmin ? { display: 'block' } : { display: 'none' }}>Управление</td>
+          </tr>
+        </thead>
+        <tbody>
+          {source.map(item => <tr className="" key={v4()}>
+            {items.map(entity => <td key={v4()}>{createCellView(item, entity)}</td>)}
+            <td style={isAdmin ? { display: 'block' } : { display: 'none' }}>
+              <button title="Удалить" className="delete-button" onClick={() => deleteHandle(item)}>X</button>
+              <button title="Редактировать" className="edit-button" onClick={() => editHandle(item)}>E</button>
+            </td>
+          </tr>)}
+        </tbody>
+      </table>
+      <div className="pagination">
+
+      </div>
+    </div>
   )
 }
 export default Table;

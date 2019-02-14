@@ -1,6 +1,29 @@
+.table-container{
+    margin: 10px;
+}
 
-.loading-image {
-    margin-left: 45%;
+.filter {
+    margin-bottom:10px;
+}
+
+.filter__input {
+    padding: 5px 10px;
+    width: 300px;
+}
+
+.filter__button {
+    margin-left:10px;
+    padding: 5px 15px;
+    background-color: #fff;
+    outline: none;
+    border: 1px solid #b9b9b9;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.filter__button:hover{
+    background-color: #b9b9b9;
+    color:#fff;
 }
 
 .table {
@@ -15,6 +38,16 @@
 thead td{
     background-color: rgb(236, 236, 239);
     font-weight: bold;
+}
+
+tbody tr{
+    transition: background-color 0.5s;
+    animation: item 1s;
+}
+
+@keyframes item {
+    from {opacity: 0}
+    to {opacity: 1}
 }
 
 tbody tr:hover{

@@ -5,7 +5,7 @@ import './styles.css';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import  rootReducer  from './reducers';
+import rootReducer from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import history from './history';
 import { routerMiddleware } from 'connected-react-router';
