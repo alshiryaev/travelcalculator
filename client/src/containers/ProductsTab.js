@@ -5,7 +5,7 @@ import { Products as AdminProducts } from '../components/Admin/Products/Products
 import { deleteProduct } from '../actions/products';
 
 const mapStateToProps = state => ({
-    products: state.products,
+    products: state.products.items,
     showLoader: state.showLoader
 });
 

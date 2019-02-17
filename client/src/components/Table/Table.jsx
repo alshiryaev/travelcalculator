@@ -1,7 +1,6 @@
 import React from 'react';
 import './Table.css';
 import { v4 } from 'uuid';
-
 const Table = props => {
   const { headers, isAdmin, items, source, editHandle = f => f, deleteHandle = f => f, converters = {} } = props;
 
@@ -13,12 +12,8 @@ const Table = props => {
     return <span>{item[entity]}</span>
   }
 
-  return (
-    <div className="table-container">
-      <div className="filter">
-         <input className="filter__input" />
-         <button className="filter__button">Искать</button>
-      </div>
+  return (  
+    <div className="table-container">     
       <table className="table">
         <thead>
           <tr>

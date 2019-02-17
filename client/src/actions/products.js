@@ -18,9 +18,9 @@ const receiveProducts = (products) => ({
 
 const shouldLoadProducts = state => state.products.length > 0;
 
-export const getProducts = () => async (dispatch, getState) => {
+export const getProducts = (filter = '') => async (dispatch, getState) => {
 
-    if (shouldLoadProducts(getState())) {
+    if (shouldLoadProducts(getState()) && !filter.length) {
         const { products } = getState();
         dispatch(receiveProducts(products));
     }
@@ -44,3 +44,4 @@ export const deleteProduct = id => async (dispatch, getState) => {
     const { products } = getState();
     return dispatch(receiveProducts(products.filter(p => p.id !== id)));
 };
+

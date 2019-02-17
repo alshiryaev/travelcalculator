@@ -1,11 +1,30 @@
-import { RECEIVE_PRODUCTS, REQUEST_PRODUCTS } from '../actions/products';
+import * as p from '../actions/products';
+import * as filter from '../actions/filter';
 
-export const products = (state = [], action) => {
+const defaultState = {
+    items: [],
+    filter: ''
+};
+
+export const products = (state = defaultState, action) => {
     switch (action.type) {
-        case REQUEST_PRODUCTS:
+        case p.REQUEST_PRODUCTS:
             return state;
-        case RECEIVE_PRODUCTS:
-            return action.products;
+        case p.RECEIVE_PRODUCTS:
+            return {
+                ...state,
+                items: action.products
+            }
+        case filter.CHANGE_QUERY:
+            return {
+                ...state,
+                filter: action.query
+            }
+        case filter.CLEAR_QUERY:
+            return {
+                ...state,
+                filter: ''
+            }
         default:
             return state;
     }

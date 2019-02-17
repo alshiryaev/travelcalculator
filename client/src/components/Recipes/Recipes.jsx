@@ -17,11 +17,13 @@ class Recipes extends Component {
           <div className="progress-bar">
             <CircularProgress size={80} thickness={5} />
           </div> :
-          <Table
-            headers={['Название', 'Рецепт']}
-            items={['name', 'description']}
-            isAdmin={false}
-            source={recipes} />
+          <div>
+            <Table
+              headers={['Название', 'Рецепт']}
+              items={['name', 'description']}
+              isAdmin={false}
+              source={recipes} />
+          </div>
         }
       </div>
     );
