@@ -25,7 +25,8 @@ module.exports = function (app) {
   });
 
   app.get("/api/products", (req, res) => {
-    productsRepository.getAll().then(products => {
+    const filter = req.query.filter;
+    productsRepository.getAll(filter).then(products => {
       res.send(products);
     });
   });

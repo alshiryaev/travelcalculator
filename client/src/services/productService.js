@@ -7,9 +7,10 @@ export default class productService {
 
     apiUrl = process.env.REACT_APP_API_URL + "/api/products";
 
-    getAllProducts() {
+    getAllProducts(filter) {
         return axios.get(this.apiUrl, {
-            cancelToken: source.token
+            cancelToken: source.token,
+            params: { filter }
         });
     };
 

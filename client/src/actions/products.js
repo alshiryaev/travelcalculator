@@ -19,7 +19,6 @@ const receiveProducts = (products) => ({
 const shouldLoadProducts = state => state.products.length > 0;
 
 export const getProducts = (filter = '') => async (dispatch, getState) => {
-
     if (shouldLoadProducts(getState()) && !filter.length) {
         const { products } = getState();
         dispatch(receiveProducts(products));
@@ -28,7 +27,7 @@ export const getProducts = (filter = '') => async (dispatch, getState) => {
         dispatch(requestProducts());
         const pService = new productService();
         try {
-            const { data: products } = await pService.getAllProducts();
+            const { data: products } = await pService.getAllProducts(filter);
             return dispatch(receiveProducts(products));
         }
         catch (error) {
