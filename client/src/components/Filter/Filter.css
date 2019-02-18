@@ -1,7 +1,7 @@
 .filter {
-    margin-bottom:10px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .filter__control{
@@ -15,6 +15,7 @@
 
 .filter__input {
     font-size: 19px;
+    margin-top:10px;
     padding: 5px 10px;
     min-width: 300px;
     font-family: 'Montserrat', sans-serif;
@@ -45,4 +46,24 @@
 
 .filter__apply:hover, .filter__clear:hover{
     border: 1px solid #6d6d6d;
+}
+
+@media (max-width: 48rem) { 
+    
+    .filter__input {
+        font-size: 1rem;
+        margin: 5px 10px;
+        padding: 3px;
+        min-width: 65%;
+    }
+
+    .filter__apply {
+        margin-left: 2px;
+        padding: 6px 5px;    
+    }
+    
+    .filter__clear {
+        margin-left: 2px;
+        padding: 6px 10px;  
+    }
 }

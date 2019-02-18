@@ -129,7 +129,7 @@
     max-width: 1200px;
     min-width: 320px;
     margin: 0 auto;
-    padding: 8px;
+    padding: 0 8px;
 }
 
 .progress-bar {
@@ -163,7 +163,6 @@
         right: 0;
     }
     .main-section {
-        width: 90%;
         max-width: 1200px;
         min-width: 320px;
     }
