@@ -32,7 +32,7 @@ class Login extends Component {
     const { error } = this.props;
     const { login, password } = this.state;
     return (
-      <div className="login-form-container">      
+      <div className="login-form-container">
         <form className="login-form" autoComplete="off" onSubmit={this.onSubmit}>
           <input
             onChange={this.handledChanged}
@@ -53,11 +53,11 @@ class Login extends Component {
           />
           <br />
           {error ? <div className="error-login">
-             {error}
+            {error}
           </div> : ''}
           <button className="login-form__submit" type="submit">
             Войти
-          </button>         
+          </button>
         </form>
       </div>
     )
