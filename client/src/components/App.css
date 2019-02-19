@@ -17,113 +17,6 @@
     flex-direction: column;
 }
 
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    border-bottom: 1px solid #e2e2e2;
-    margin-bottom: 1%;
-    background-color: #54689d;
-    padding: 10px;
-    width: 100%;
-    z-index: 3;
-    color: var(--main-color);
-}
-
-.logo__link {
-    text-decoration: none;   
-    color: var(--main-color);
-    font-size: 24px;
-}
-
-.logo__link::before{
-    content: 'TRAVEL';
-    font-weight: 600;
-}
-
-.hamburger {
-    cursor: pointer;
-    position: relative;
-    display: none;
-}
-
-.hamburger_clickable {
-    padding: 5px;
-}
-
-.hamburger__button {
-    background-color: #fff;
-    width: 20px;
-    height: 2px;
-    position: relative;
-    transition: background .2s ease-in-out;
-}
-
-.hamburger__button::after, .hamburger__button::before {
-    content: '';
-    background-color: #fff;
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: absolute;
-    transition: all 0.3s ease-in-out;
-}
-
-.hamburger__button::after {
-    top: 5px;
-}
-
-.hamburger__button::before {
-    top: -5px;
-}
-
-.hamburger__checkbox:checked~.hamburger .hamburger__button {
-    background-color: transparent;
-}
-
-.hamburger__checkbox:checked~.hamburger .hamburger__button::after {
-    transform: rotate(45deg);
-    top: 0;
-}
-
-.hamburger__checkbox:checked~.hamburger .hamburger__button::before {
-    transform: rotate(-45deg);
-    top: 0;
-}
-
-.nav-menu {
-    list-style-type: none;
-    display: flex;
-    overflow: hidden;
-    justify-content: center;
-    flex-direction: row;
-    max-height: none;
-    margin: 0;
-    padding: 0;
-    transition: max-height .5s ease-in-out;
-    background-color: #54689d;
-}
-
-.nav-menu__item {
-    padding: 5px;
-    margin-right: 20px;
-}
-
-.nav-menu__item:hover {
-    text-decoration: underline;
-}
-
-.menu-link {
-    color: var(--main-color);
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 1rem;
-}
-
-.menu-link_active {
-    font-weight: 700;
-}
-
 .main-section {
     width: 100%;
     max-width: 1200px;
@@ -150,29 +43,11 @@
 }
 
 
-@media (max-width: 48rem) { 
-    .logo__link {
-        font-size: 18px;
-    }
-
-    .nav-menu {
-        max-height: 0;
-        flex-direction: column;
-        position: absolute;
-        top: 40px;
-        right: 0;
-    }
+@media (max-width: 48rem) {    
     .main-section {
         max-width: 1200px;
         min-width: 320px;
     }
-    .hamburger {
-        display: block;
-    }
-    .hamburger__checkbox:checked~.nav-menu {
-        max-height: 300px;
-    }
-
     .hello-words {
         font-size: 0.8rem;
     }

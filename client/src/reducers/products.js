@@ -25,6 +25,12 @@ export const products = (state = defaultState, action) => {
                 ...state,
                 filter: ''
             }
+        case p.ADD_PRODUCT:
+            const items = state.items.concat(action.product)
+            return {
+                ...state,
+                items
+            }
         default:
             return state;
     }

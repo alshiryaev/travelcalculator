@@ -1,9 +1,9 @@
 
 import AddFood from './AddFood/AddFood';
-import AddProduct from './AddProduct/AddProduct';
+import { AddProductContainer } from '../../containers/AddProductContainer';
 import Main from './Main/Main';
 
-const routes = [   
+const routes = [
     {
         path: '/admin',
         exact: true,
@@ -17,12 +17,12 @@ const routes = [
     },
     {
         path: '/admin/addproduct',
-        component: AddProduct,
+        component: AddProductContainer,
         private: true
     },
     {
         path: '/admin/editproduct/:id',
-        component: AddProduct,
+        component: AddProductContainer,
         private: true
     }
 ];

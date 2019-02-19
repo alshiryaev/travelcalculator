@@ -1,4 +1,5 @@
 import productService from '../services/productService';
+import { push } from 'connected-react-router';
 
 export const REQUEST_PRODUCTS = 'REQUEST_PRODUCTS';
 export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS';
@@ -6,6 +7,7 @@ export const ERROR_RECEIVE_PRODUCTS = 'ERROR_RECEIVE_PRODUCTS';
 export const DELETE_PRODUCT_START = 'DELETE_PRODUCT_START';
 export const DELETE_PRODUCT_FINISH = 'DELETE_PRODUCT_FINISH';
 export const DELETE_PRODUCT_ERROR = 'DELETE_PRODUCT_ERROR';
+export const ADD_PRODUCT = 'ADD_PRODUCT';
 
 const requestProducts = () => ({
     type: REQUEST_PRODUCTS
@@ -15,6 +17,11 @@ const receiveProducts = (products) => ({
     type: RECEIVE_PRODUCTS,
     products
 });
+
+const addProduct = product => ({
+    type:ADD_PRODUCT,
+    product
+})
 
 const shouldLoadProducts = state => state.products.length > 0;
 
@@ -43,4 +50,11 @@ export const deleteProduct = id => async (dispatch, getState) => {
     const { products } = getState();
     return dispatch(receiveProducts(products.filter(p => p.id !== id)));
 };
+
+export const addNewProduct = product => async (dispatch) => {
+    const pService = new productService();
+    await pService.addNewProduct(product);
+    dispatch(addProduct(product));
+    return dispatch(push('/admin'));
+}
 

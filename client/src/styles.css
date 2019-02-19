@@ -40,3 +40,7 @@
     background-color: rgb(233, 233, 233);
     color:white;
 }
+
+input[type='text'] {
+    font-family: 'Montserrat', sans-serif;
+}
