@@ -8,6 +8,7 @@ import ProtectedRouterContainer from './ProtectedRouter/ProtectedRouter';
 import { connect } from 'react-redux';
 import { authenticated } from '../actions/auth';
 import { Header } from './Header/Header';
+import { MessageContainer } from '../containers/MessageContainer';
 
 class App extends Component {
 
@@ -20,6 +21,7 @@ class App extends Component {
       <Router history={history}>
         <div className="wrapper">
           <Header />
+          <MessageContainer />
           <section className="main-section">
             {routes.map((route, index) =>
               route.private ?
@@ -35,7 +37,6 @@ class App extends Component {
             )}
           </section>
         </div>
-
       </Router>
     );
   }

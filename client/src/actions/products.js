@@ -1,5 +1,4 @@
 import productService from '../services/productService';
-import { push } from 'connected-react-router';
 
 export const REQUEST_PRODUCTS = 'REQUEST_PRODUCTS';
 export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS';
@@ -54,7 +53,6 @@ export const deleteProduct = id => async (dispatch, getState) => {
 export const addNewProduct = product => async (dispatch) => {
     const pService = new productService();
     await pService.addNewProduct(product);
-    dispatch(addProduct(product));
-    return dispatch(push('/admin'));
+    return dispatch(addProduct(product));
 }
 

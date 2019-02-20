@@ -9,6 +9,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Link } from 'react-router-dom';
+import { ProductFilterContainer } from '../../../containers/ProductFilterContainer';
 
 export class Products extends Component {
 
@@ -29,6 +30,8 @@ export class Products extends Component {
             openModal: true,
             deletingProduct: product
         });
+
+    editProductHandle = (product) => console.log(product);
 
     closeDeleteDialog = (flag) => {
         if (flag === true) {
@@ -51,6 +54,7 @@ export class Products extends Component {
                     </div> :
                     <div>
                         <Link className="control-button" to={`/admin/addproduct`} > Добавить </Link>
+                        <ProductFilterContainer />
                         <Table
                             headers={['Название продукта', 'Белки, г', 'Жиры, г', 'Углеводы, г', 'Калорийность, ккал']}
                             items={['name', 'protein', 'fat', 'carbohydrates', 'calories']}
