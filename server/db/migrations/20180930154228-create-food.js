@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('foods', {
@@ -11,11 +10,11 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
-        allowNull: false
-      }     
+        allowNull: false,
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('foods');
-  }
+  },
 };

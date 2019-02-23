@@ -1,19 +1,20 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const ingredient = sequelize.define('ingredient',
+  const ingredient = sequelize.define(
+    'ingredient',
     {
       quantity: {
         type: DataTypes.INTEGER,
-        allowNull: false
-      }
+        allowNull: false,
+      },
     },
     {
       timestamps: false,
       freezeTableName: true,
-      tableName: 'ingredients'
-    });
+      tableName: 'ingredients',
+    }
+  );
   ingredient.associate = models => {
-    ingredient.belongsTo(models.product)
+    ingredient.belongsTo(models.product);
   };
   return ingredient;
 };

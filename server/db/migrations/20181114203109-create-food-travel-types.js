@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('foodTravelTypes', {
@@ -7,27 +6,27 @@ module.exports = {
         primaryKey: true,
         defaultValue: Sequelize.UUIDV4,
         allowNull: false,
-        autoIncrement: false
+        autoIncrement: false,
       },
-      foodId : {
+      foodId: {
         type: Sequelize.UUID,
-        references : {
+        references: {
           model: 'foods',
-          key: 'id'
+          key: 'id',
         },
-        allowNull: false
+        allowNull: false,
       },
-      travelTypeId : {
+      travelTypeId: {
         type: Sequelize.UUID,
-        references : {
+        references: {
           model: 'travelTypes',
-          key: 'id'
+          key: 'id',
         },
-        allowNull: false
-      }
+        allowNull: false,
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('foodTravelTypes');
-  }
+  },
 };

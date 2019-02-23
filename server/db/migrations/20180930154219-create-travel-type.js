@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('travelTypes', {
@@ -10,11 +9,11 @@ module.exports = {
         autoIncrement: false,
       },
       name: {
-        type: Sequelize.STRING
-      }     
+        type: Sequelize.STRING,
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('travelTypes');
-  }
+  },
 };

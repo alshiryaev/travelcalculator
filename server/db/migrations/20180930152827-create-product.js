@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('products', {
@@ -11,27 +10,27 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       protein: {
         type: Sequelize.DOUBLE,
-        allowNull: false
+        allowNull: false,
       },
       calories: {
         type: Sequelize.DOUBLE,
-        allowNull: false
+        allowNull: false,
       },
       fat: {
         type: Sequelize.DOUBLE,
-        allowNull: false
+        allowNull: false,
       },
       carbohydrates: {
         type: Sequelize.DOUBLE,
-        allowNull: false
-      }
+        allowNull: false,
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('products');
-  }
+  },
 };

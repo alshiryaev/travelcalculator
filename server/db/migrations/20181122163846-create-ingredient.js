@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('ingredients', {
@@ -7,7 +6,7 @@ module.exports = {
         primaryKey: true,
         defaultValue: Sequelize.UUIDV4,
         allowNull: false,
-        autoIncrement: false
+        autoIncrement: false,
       },
       productId: {
         type: Sequelize.UUID,
@@ -17,7 +16,7 @@ module.exports = {
         },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
-        allowNull: false
+        allowNull: false,
       },
       foodId: {
         type: Sequelize.UUID,
@@ -32,10 +31,10 @@ module.exports = {
       quantity: {
         type: Sequelize.INTEGER,
         allowNull: false,
-      }
-    })
+      },
+    });
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('ingredients');
-  }
+  },
 };

@@ -8,7 +8,6 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Link } from 'react-router-dom';
 import { ProductFilterContainer } from '../../../containers/ProductFilterContainer';
 
 export class Products extends Component {
@@ -25,15 +24,19 @@ export class Products extends Component {
         this.props.getProducts();
     }
 
-    deleteProductHandle = (product) =>
+    addProductHandle = () => this.props.addProduct();
+
+    deleteProductHandle = product =>
         this.setState({
             openModal: true,
             deletingProduct: product
         });
 
-    editProductHandle = (product) => console.log(product);
+    editProductHandle = product => {
+        this.props.editProduct(product.id);
+    };
 
-    closeDeleteDialog = (flag) => {
+    closeDeleteDialog = flag => {
         if (flag === true) {
             this.props.deleteProduct(this.state.deletingProduct.id);
         }
@@ -53,7 +56,7 @@ export class Products extends Component {
                         <CircularProgress size={80} thickness={5} />
                     </div> :
                     <div>
-                        <Link className="control-button" to={`/admin/addproduct`} > Добавить </Link>
+                        <button className="control-button" onClick={this.addProductHandle} > Добавить </button>
                         <ProductFilterContainer />
                         <Table
                             headers={['Название продукта', 'Белки, г', 'Жиры, г', 'Углеводы, г', 'Калорийность, ккал']}

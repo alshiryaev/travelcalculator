@@ -1,16 +1,20 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const dayTimeTypes = sequelize.define('dayTimeType',
+  const dayTimeTypes = sequelize.define(
+    'dayTimeType',
     {
-      name: DataTypes.STRING
+      name: DataTypes.STRING,
     },
-    {      
+    {
       tableName: 'dayTimeTypes',
       timestamps: false,
-      freezeTableName: true
-    });
+      freezeTableName: true,
+    }
+  );
   dayTimeTypes.associate = models => {
-    dayTimeTypes.belongsToMany(models.food, { through: 'food_dayTimeType', as : 'foods' });
+    dayTimeTypes.belongsToMany(models.food, {
+      through: 'food_dayTimeType',
+      as: 'foods',
+    });
   };
   return dayTimeTypes;
 };

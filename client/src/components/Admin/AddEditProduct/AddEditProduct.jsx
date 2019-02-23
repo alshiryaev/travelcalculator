@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './AddProduct.css';
+import './AddEditProduct.css';
 
-export default class AddProduct extends Component {
+export default class AddEditProduct extends Component {
     constructor(props) {
         super(props);
+        console.log(props);
         this.state = {
             product: {
                 name: '',
@@ -35,7 +36,7 @@ export default class AddProduct extends Component {
         const { addNewProduct } = this.props;
         const { product } = this.state;
         addNewProduct(product);
-        this.clearState();   
+        this.clearState();
         this.props.showMessage('Продукт добавлен!');
     }
 
@@ -58,9 +59,12 @@ export default class AddProduct extends Component {
     }
 
     render() {
-        const { canAdd, product: {
-            name, protein, carbohydrates, fat, calories
-        } } = this.state;
+        const {
+            canAdd,
+            product: {
+                name, protein, carbohydrates, fat, calories
+            } 
+        } = this.state;
         return (
             <form autoComplete="off" onSubmit={this.addNewProduct}>
                 <input
