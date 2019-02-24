@@ -3,6 +3,12 @@
     margin: 0;
 }
 
+@media (max-width: 48rem) { 
+   body {
+       font-size: 10px;
+   }
+}
+
 .control-button{
     text-decoration: none;
     color: #000;   

@@ -14,7 +14,6 @@
 }
 
 .filter__input {
-    font-size: 19px;
     padding: 5px 10px;
     min-width: 300px;
     font-family: 'Montserrat', sans-serif;
@@ -22,7 +21,7 @@
 
 .filter__apply {
     margin-left:10px;
-    padding: 8px 15px;
+    padding: 6px 15px;
     background-color: #fff;
     outline: none;
     border: 1px solid #b9b9b9;
@@ -33,7 +32,7 @@
 
 .filter__clear {
     margin-left:10px;
-    padding: 8px 15px;
+    padding: 6px 15px;
     background-color: #fff;
     color: red;
     outline: none;
@@ -50,7 +49,6 @@
 @media (max-width: 48rem) { 
     
     .filter__input {
-        font-size: 1rem;
         margin: 5px;
         padding: 3px;
         min-width: 65%;

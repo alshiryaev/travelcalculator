@@ -13,12 +13,12 @@ export const products = (state = defaultState, action) => {
     case p.RECEIVE_PRODUCTS:
       return {
         ...state,
-        items: action.payload.products,
+        items: action.payload,
       };
     case filter.CHANGE_QUERY:
       return {
         ...state,
-        filter: action.query,
+        filter: action.payload,
       };
     case filter.CLEAR_QUERY:
       return {
@@ -26,7 +26,7 @@ export const products = (state = defaultState, action) => {
         filter: '',
       };
     case p.ADD_PRODUCT:
-      const items = state.items.concat(action.payload.product);
+      const items = state.items.concat(action.payload);
       return {
         ...state,
         items,

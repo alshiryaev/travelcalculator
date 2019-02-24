@@ -7,7 +7,6 @@
     width: 100%;
     max-width: 1040px;
     min-width: 320px;
-    font-size: 1rem;
     margin:2px;
 }
 
@@ -16,7 +15,11 @@ thead td{
     font-weight: bold;
 }
 
-tbody tr{
+tbody tr, thead tr {
+   line-height: 2;
+}
+
+tbody {
     transition: background-color 0.5s;
     animation: item 1s;
 }
@@ -76,11 +79,7 @@ td {
 }
 
 @media (max-width: 48rem) { 
-    .table {
-        font-size: 10px;
-    }
-
     td {
-        height: 1.3rem;
+        height: 1.3em;
     }
 }

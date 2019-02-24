@@ -14,12 +14,12 @@ const requestProducts = () => ({
 
 const receiveProducts = products => ({
   type: RECEIVE_PRODUCTS,
-  payload: { products },
+  payload: products,
 });
 
 const addProduct = product => ({
   type: ADD_PRODUCT,
-  payload: { product },
+  payload: product,
 });
 
 const shouldLoadProducts = state => state.products.length > 0;

@@ -1,7 +1,7 @@
 .article{
     text-align: justify;
     line-height: 1.5;
-    font-size: 1.2rem;   
+    font-size: 1.2em;   
     padding: 8px;
     }
 
@@ -13,7 +13,6 @@
     .article{
         text-align: justify;
         line-height: 1;
-        font-size: 1rem;   
         }
     
     .article__paragraph{
