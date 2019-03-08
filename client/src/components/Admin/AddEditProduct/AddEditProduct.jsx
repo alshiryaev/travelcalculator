@@ -6,29 +6,25 @@ export default class AddEditProduct extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: {
-        name: '',
-        protein: '',
-        carbohydrates: '',
-        fat: '',
-        calories: '',
-      },
+      product: this.getClearProduct(),
       canAdd: false,
     };
   }
 
   clearState() {
     this.setState({
-      product: {
-        name: '',
-        protein: '',
-        carbohydrates: '',
-        fat: '',
-        calories: '',
-      },
+      product: this.getClearProduct(),
       canAdd: false,
     });
   }
+
+  getClearProduct = () => ({
+    name: '',
+    protein: '',
+    carbohydrates: '',
+    fat: '',
+    calories: '',
+  })
 
   addNewProduct = event => {
     event.preventDefault();
@@ -120,8 +116,8 @@ export default class AddEditProduct extends Component {
               Добавить
             </button>
           ) : (
-            ''
-          )}
+              ''
+            )}
         </div>
       </form>
     );

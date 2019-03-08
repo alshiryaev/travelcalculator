@@ -20,11 +20,11 @@ function shouldLoadRecipes(state) {
 export const getRecipes = () => async (dispatch, getState) => {
   if (shouldLoadRecipes(getState())) {
     const { recipes } = getState();
-    return dispatch(receiveRecipes(recipes));
+    dispatch(receiveRecipes(recipes));
   } else {
     dispatch(requestRecipes());
     const foodService = new FoodService();
     const { data: recipes } = await foodService.getRecipes();
-    return dispatch(receiveRecipes(recipes));
+    dispatch(receiveRecipes(recipes));
   }
 };

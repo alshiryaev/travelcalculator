@@ -35,10 +35,10 @@ export const login = (username, password) => async dispatch => {
     const { status } = await authService.login(username, password);
     if (status === 200) {
       dispatch(loginSuccess());
-      return dispatch(push('/admin'));
+      dispatch(push('/admin'));
     }
   } catch (err) {
     console.error(err);
-    return dispatch(loginError());
+    dispatch(loginError());
   }
 };

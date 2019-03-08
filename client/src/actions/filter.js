@@ -15,5 +15,5 @@ export const clearQuery = () => ({
 
 export const clearQueryAndGetProducts = () => dispatch => {
   dispatch(clearQuery());
-  return dispatch(getProducts(''));
+  dispatch(getProducts(''));
 };

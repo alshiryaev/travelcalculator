@@ -1,4 +1,5 @@
 import productService from '../services/productService';
+import { notifyMessage } from '../actions/message';
 
 export const REQUEST_PRODUCTS = 'REQUEST_PRODUCTS';
 export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS';
@@ -33,10 +34,10 @@ export const getProducts = (filter = '') => async (dispatch, getState) => {
     const pService = new productService();
     try {
       const { data: products } = await pService.getAllProducts(filter);
-      return dispatch(receiveProducts(products));
+      dispatch(receiveProducts(products));
     } catch (error) {
       console.log(error);
-      return dispatch({ type: ERROR_RECEIVE_PRODUCTS });
+      dispatch({ type: ERROR_RECEIVE_PRODUCTS });
     }
   }
 };
@@ -44,12 +45,15 @@ export const getProducts = (filter = '') => async (dispatch, getState) => {
 export const deleteProduct = id => async (dispatch, getState) => {
   const pService = new productService();
   await pService.deleteProduct(id);
-  const { products } = getState();
-  return dispatch(receiveProducts(products.filter(p => p.id !== id)));
+  dispatch(notifyMessage('Продукт успешно удален'));
+  const {
+    products: { items },
+  } = getState();
+  dispatch(receiveProducts(items.filter(p => p.id !== id)));
 };
 
 export const addNewProduct = product => async dispatch => {
   const pService = new productService();
   await pService.addNewProduct(product);
-  return dispatch(addProduct(product));
+  dispatch(addProduct(product));
 };

@@ -11,10 +11,10 @@ export const hideMessage = () => ({
   payload: '',
 });
 
-export const notifyMessage = message => dispatch => {
+export const notifyMessage = (message, timeout = 5000) => dispatch => {
   dispatch(showMessage(message));
   const id = setTimeout(() => {
     clearTimeout(id);
-    return dispatch(hideMessage());
-  }, 5000);
+    dispatch(hideMessage());
+  }, timeout);
 };
