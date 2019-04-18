@@ -1,17 +1,12 @@
-import {
-  LOGOUT,
-  LOGIN_SUCCESSED,
-  LOGIN_FAILED,
-  LOGIN_ERROR,
-} from '../actions/auth';
+import * as types from '../constants/authTypes';
 
 export const auth = (state = false, action) => {
   switch (action.type) {
-    case LOGIN_SUCCESSED:
+    case types.LOGIN_SUCCESSED:
       return true;
-    case LOGIN_FAILED:
-    case LOGIN_ERROR:
-    case LOGOUT:
+    case types.LOGIN_FAILED:
+    case types.LOGIN_ERROR:
+    case types.LOGOUT:
       return false;
     default:
       return state;

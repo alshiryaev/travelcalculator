@@ -1,25 +1,21 @@
 import AuthService from '../services/authService';
 import { push } from 'connected-react-router';
-
-export const LOGIN_FAILED = 'LOGIN_FAILED';
-export const LOGIN_ERROR = 'LOGIN_ERROR';
-export const LOGIN_SUCCESSED = 'LOGIN_SUCCESSED';
-export const LOGOUT = 'LOGOUT';
+import * as types from '../constants/authTypes';
 
 export const loginSuccess = () => ({
-  type: LOGIN_SUCCESSED,
+  type: types.LOGIN_SUCCESSED,
 });
 
 export const loginError = () => ({
-  type: LOGIN_ERROR,
+  type: types.LOGIN_ERROR,
 });
 
 export const loginFailed = () => ({
-  type: LOGIN_FAILED,
+  type: types.LOGIN_FAILED,
 });
 
 export const logout = () => ({
-  type: LOGOUT,
+  type: types.LOGOUT,
 });
 
 // Проверка аутентификации на сервере
