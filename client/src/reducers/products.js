@@ -1,5 +1,5 @@
 import * as p from '../actions/products';
-import * as filter from '../actions/filter';
+import * as filter from '../constants/filterTypes';
 
 const defaultState = {
   items: [],

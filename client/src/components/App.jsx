@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route } from 'react-router-dom';
+import { Route, Router, Switch } from 'react-router-dom';
 import routes from '../routes';
-import { Router } from 'react-router-dom';
 import history from '../history';
 import ProtectedRouterContainer from './ProtectedRouter/ProtectedRouter';
 import { connect } from 'react-redux';
@@ -11,7 +10,6 @@ import { Header } from './Header/Header';
 import { MessageContainer } from '../containers/MessageContainer';
 
 class App extends Component {
-
   componentDidMount() {
     this.props.checkAuth();
   }
@@ -23,18 +21,25 @@ class App extends Component {
           <Header />
           <MessageContainer />
           <section className="main-section">
-            {routes.map((route, index) =>
-              route.private ?
-                <ProtectedRouterContainer key={index}
-                  path={route.path}
-                  exact={route.exact}
-                  component={route.component} />
-                : <Route
-                  key={index}
-                  path={route.path}
-                  exact={route.exact}
-                  component={route.component} />
-            )}
+            <Switch>
+              {routes.map((route, index) =>
+                route.private ? (
+                  <ProtectedRouterContainer
+                    key={index}
+                    path={route.path}
+                    exact={route.exact}
+                    component={route.component}
+                  />
+                ) : (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    exact={route.exact}
+                    component={route.component}
+                  />
+                )
+              )}
+            </Switch>
           </section>
         </div>
       </Router>
@@ -42,9 +47,10 @@ class App extends Component {
   }
 }
 
-const AppContainer = connect(null, dispatch => ({
-  checkAuth: () => dispatch(authenticated())
-}))(App);
+const AppContainer = connect(
+  null,
+  dispatch => ({
+    checkAuth: () => dispatch(authenticated()),
+  })
+)(App);
 export default AppContainer;
-
-

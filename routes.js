@@ -4,10 +4,9 @@ const passport = require('passport');
 
 module.exports = function(app) {
   const loggedIn = (req, res, next) => {
-    next();
-    // if (req.isAuthenticated()) {
-    //   next();
-    // } else return res.sendStatus(401);
+    if (req.isAuthenticated()) {
+      next();
+    } else return res.sendStatus(401);
   };
 
   app.post('/login', passport.authenticate('local'), (req, res) => {
@@ -36,10 +35,10 @@ module.exports = function(app) {
     productsRepository.addProduct(req.body).then(result => res.json(result));
   });
 
-  app.delete('/api/products', loggedIn, (req, res) => {
-    productsRepository
-      .deleteProduct(req.query.id)
-      .then(() => res.sendStatus(200));
+  app.delete('/api/products', loggedIn, async (req, res) => {
+    const result = await productsRepository.deleteProduct(req.query.id);
+    console.log(result);
+    return result;
   });
 
   app.put('/api/products', loggedIn, (req, res) => {
