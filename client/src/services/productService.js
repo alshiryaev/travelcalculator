@@ -26,6 +26,7 @@ export default class productService {
       params: {
         id,
       },
+      withCredentials: true,
     });
   }
 
