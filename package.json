@@ -5,13 +5,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "client": "cd client && yarn start",
-    "client-build": "cd client && yarn build",
+    "client": "cd client && npm start",
+    "client-build": "cd client && npm run build",
     "server": "nodemon server.js ",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "start": "node server.js",
     "postinstall": "cd client && npm run build",
-    "test": "cd client && yarn test",
+    "test": "cd client && npm test",
     "precommit": "lint-staged",
     "eslint": "node_modules/.bin/eslint client/src server --max-warnings=0"
   },
@@ -41,7 +41,7 @@
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.7",
     "redux-thunk": "^2.3.0",
-    "sequelize": "^4.38.0",
+    "sequelize": "^4.44.3",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
@@ -50,7 +50,9 @@
     "eslint-plugin-prettier": "^3.0.1",
     "husky": "^1.3.1",
     "lint-staged": "^8.1.4",
-    "prettier": "^1.16.4"
+    "nodemon": "^1.19.2",
+    "prettier": "^1.16.4",
+    "sequelize-cli": "^5.5.1"
   },
   "lint-staged": {
     "*.{js, jsx}": [

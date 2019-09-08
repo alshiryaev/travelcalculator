@@ -3,7 +3,7 @@
     "host": "localhost",
     "dialect": "postgres",
     "username": "postgres",
-    "password": "12345",
+    "password": "123456",
     "database": "travelcalculator"
   },
   "production": {

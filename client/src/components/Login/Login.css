@@ -13,21 +13,23 @@
 .login-form{
    margin: 0;
    width: 400px;
-   height: 200px;
+   padding: 10px;
+   box-shadow: 1px 1px 10px #c0b9b9;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
 }
 
 .login-form__login{
-    width: 100%;
     padding: 12px;
     font-size: 1rem;
-    margin-bottom: 10px;
+    border: 1px solid #eee;
 }
 
 .login-form__password{
-    width: 100%;
     padding: 12px;
     font-size: 1rem;
-    margin-bottom: 10px;
+    border: 1px solid #eee;
 }
 
 .login-form__submit{
@@ -40,6 +42,7 @@
     font-size: 1rem;
     padding: 5px;
     cursor: pointer;
+    align-self: flex-end;
 }
 
 .error-login {
