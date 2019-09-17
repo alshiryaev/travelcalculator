@@ -18,7 +18,6 @@ export default class AuthService {
   isAuth = () =>
     axios.get(this.isAuthUrl, {
       cancelToken: source.token,
-      withCredentials: true,
     });
 
   getAuth() {
