@@ -12,25 +12,22 @@ import { routerMiddleware } from 'connected-react-router';
 import { ConnectedRouter } from 'connected-react-router';
 
 function configureStore() {
-    const store = createStore(
-        rootReducer(history),
-        {},
-        composeWithDevTools(
-            applyMiddleware(
-                routerMiddleware(history),
-                thunk
-            ),
-        ),
-    )
+  const store = createStore(
+    rootReducer(history),
+    {},
+    composeWithDevTools(applyMiddleware(routerMiddleware(history), thunk))
+  );
 
-    return store
+  return store;
 }
 
 const store = configureStore();
 
 ReactDOM.render(
-    <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <AppContainer />
-        </ConnectedRouter>
-    </Provider>, document.getElementById('root'));
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <AppContainer />
+    </ConnectedRouter>
+  </Provider>,
+  document.getElementById('root')
+);

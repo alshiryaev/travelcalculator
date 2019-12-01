@@ -18,7 +18,6 @@ export const logout = () => ({
   type: types.LOGOUT,
 });
 
-// Проверка аутентификации на сервере
 export const authenticated = () => async dispatch => {
   const authService = new AuthService();
   const { data: isAuth } = await authService.isAuth();
