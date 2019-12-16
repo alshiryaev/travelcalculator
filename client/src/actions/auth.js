@@ -18,12 +18,6 @@ export const logout = () => ({
   type: types.LOGOUT,
 });
 
-export const authenticated = () => async dispatch => {
-  const authService = new AuthService();
-  const { data: isAuth } = await authService.isAuth();
-  return isAuth ? dispatch(loginSuccess()) : dispatch(loginFailed());
-};
-
 export const login = (username, password) => async dispatch => {
   const authService = new AuthService();
   try {

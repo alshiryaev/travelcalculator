@@ -24,7 +24,7 @@ export default class AddEditProduct extends Component {
     carbohydrates: '',
     fat: '',
     calories: '',
-  })
+  });
 
   addNewProduct = event => {
     event.preventDefault();
@@ -116,8 +116,8 @@ export default class AddEditProduct extends Component {
               Добавить
             </button>
           ) : (
-              ''
-            )}
+            ''
+          )}
         </div>
       </form>
     );

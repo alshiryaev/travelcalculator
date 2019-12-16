@@ -20,7 +20,7 @@ export default class Products extends Component {
                     <ProductFilterContainer />
                     <Table
                         headers={['Название продукта', 'Белки, г', 'Жиры, г', 'Углеводы, г', 'Калорийность, ккал']}
-                        items={['name', 'protein', 'fat', 'carbohydrates', 'calories']}
+                        items={['name', 'proteins', 'fats', 'carbohydrates', 'calories']}
                         isAdmin={false}
                         source={products} />
                 </div>

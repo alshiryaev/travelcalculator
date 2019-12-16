@@ -14,13 +14,4 @@ export default class AuthService {
       data: { username, password },
     });
   }
-
-  isAuth = () =>
-    axios.get(this.isAuthUrl, {
-      cancelToken: source.token,
-    });
-
-  getAuth() {
-    return this._isAuth;
-  }
 }

@@ -5,15 +5,10 @@ import routes from '../routes';
 import history from '../history';
 import ProtectedRouterContainer from './ProtectedRouter/ProtectedRouter';
 import { connect } from 'react-redux';
-import { authenticated } from '../actions/auth';
 import { Header } from './Header/Header';
 import { MessageContainer } from '../containers/MessageContainer';
 
 class App extends Component {
-  componentDidMount() {
-    this.props.checkAuth();
-  }
-
   render() {
     return (
       <Router history={history}>
@@ -49,8 +44,6 @@ class App extends Component {
 
 const AppContainer = connect(
   null,
-  dispatch => ({
-    checkAuth: () => dispatch(authenticated()),
-  })
+  null
 )(App);
 export default AppContainer;
