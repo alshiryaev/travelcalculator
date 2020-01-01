@@ -1,6 +1,6 @@
 import * as types from '../constants/authTypes';
 
-export const auth = (state = false, action) => {
+export const auth = (state = true, action) => {
   switch (action.type) {
     case types.LOGIN_SUCCESSED:
       return true;
