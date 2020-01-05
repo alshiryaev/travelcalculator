@@ -14,10 +14,13 @@ export default class productService {
   }
 
   addNewProduct(product) {
-    return axios.post(this.apiUrl, product, {
-      cancelToken: source.token,
-      withCredentials: true,
-    });
+    return axios.post(
+      this.apiUrl,
+      { product },
+      {
+        cancelToken: source.token,
+      }
+    );
   }
 
   deleteProduct(id) {
@@ -26,7 +29,6 @@ export default class productService {
       params: {
         id,
       },
-      withCredentials: true,
     });
   }
 

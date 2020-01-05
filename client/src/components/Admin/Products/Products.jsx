@@ -60,7 +60,7 @@ export class Products extends Component {
                         <ProductFilterContainer />
                         <Table
                             headers={['Название продукта', 'Белки, г', 'Жиры, г', 'Углеводы, г', 'Калорийность, ккал']}
-                            items={['name', 'protein', 'fat', 'carbohydrates', 'calories']}
+                            items={['name', 'proteins', 'fats', 'carbohydrates', 'calories']}
                             isAdmin={true}
                             editHandle={this.editProductHandle}
                             deleteHandle={this.deleteProductHandle}
