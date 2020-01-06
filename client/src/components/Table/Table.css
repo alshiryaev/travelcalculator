@@ -34,6 +34,10 @@ td {
     border-bottom: 1px solid rgb(235, 235, 235);  
 }
 
+td:not(:first-child) {
+    text-align: center;
+}
+
 .table-button.delete {
     background: #d86f6f;
     color: white;
