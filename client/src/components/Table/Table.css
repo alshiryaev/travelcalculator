@@ -56,27 +56,7 @@ td:not(:first-child) {
     display: none;
 }
 
-.delete-button{
-    background-color: #f67373;
-    padding: 3px;
-    margin: 5px;
-    border: 1px solid #f6f6f6;
-    width: 20px;
-    cursor: pointer;
-    border-radius: 100%;
-    font-size: 10px;
-    color: #fff;
-}
 
-.edit-button{
-    background: white;
-    padding: 3px;
-    margin: 5px;
-    border: 1px solid #e2e2e2;
-    width: 20px;
-    cursor: pointer;
-    font-size: 10px;
-}
 
 @media (max-width: 48rem) { 
     td {

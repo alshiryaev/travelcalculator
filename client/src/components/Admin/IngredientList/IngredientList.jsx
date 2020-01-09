@@ -7,7 +7,7 @@ const IngredientList = ({ingredients, deleteIngredient}) => <div>
             <li className="ingredients__item" key={index}>
                 <div className="ingredients__item-name">{ingredient.name}</div>
                 <div>{ingredient.quantity} грамм</div>
-                <button onClick={() => deleteIngredient(ingredient.id)} className="ingredients__item-delete">x</button>
+                <button onClick={() => deleteIngredient(ingredient.id)} className="delete-button">x</button>
             </li>
         )}
     </ol>
