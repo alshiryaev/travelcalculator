@@ -35,7 +35,7 @@ class App extends Component {
                 )
               )}
             </Switch>
-          </section>
+          </section>      
         </div>
       </Router>
     );

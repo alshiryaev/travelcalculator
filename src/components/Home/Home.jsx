@@ -1,5 +1,6 @@
 import React from 'react';
 import './Home.css';
+import Sandbox from '../shared/Button/Sandbox';
 
 export function Home() {
   return (
@@ -16,6 +17,7 @@ export function Home() {
           Мы хотим сделать этот сайт удобным для Вас, поэтому с нетерпением ждем
           от Вас предложений и комментариев!
         </p>
+        <Sandbox></Sandbox>
       </article>
     </div>
   );
