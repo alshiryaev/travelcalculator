@@ -2,13 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-export const Button = ({ children, onClick, className, disabled, active }) => {
-  const classes = classNames('btn', className, { active });
+export const Button = ({
+  children = 'default button',
+  onClick = f => f,
+  className = '',
+  disabled = false,
+  active = false,
+  ...attrs
+}) => {
+
+
+  const onClickAction = e => {
+    if (disabled) {
+      e.preventDefault();
+    } else {
+      return onClick(e);
+    }
+  }
+
+  const classes = classNames('btn', className, { active });  
+  const Tag = attrs.href ? 'a' : 'button';
 
   return (
-    <button disabled={disabled} onClick={onClick} className={classes}>
+    <Tag {...attrs} disabled={disabled} onClick={onClickAction} className={classes}>
       {children}
-    </button>
+    </Tag>
   );
 };
 
@@ -17,13 +35,5 @@ Button.propTypes = {
   onClick: PropTypes.func,
   className: PropTypes.string,
   disabled: PropTypes.bool,
-  active: PropTypes.bool
-};
-
-Button.defaultProps = {
-  children: 'Default button',
-  onClick: () => {},
-  className: '',
-  disabled: false,
-  active: false
+  active: PropTypes.bool,
 };

@@ -30,6 +30,7 @@ class Main extends Component {
     const { tabValue } = this.state;
     return (
       <div>
+        <h1>Панель администрирования</h1>
         <Tabs value={tabValue} onChange={this.tabValueChange}>
           <Tab label="Продукты" />
           <Tab label="Блюда" />

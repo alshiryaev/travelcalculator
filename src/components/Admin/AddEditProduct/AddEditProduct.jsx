@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import {Button} from '../../shared/Button/Button';
 import './AddEditProduct.css';
 
 export default class AddEditProduct extends Component {
@@ -108,13 +109,13 @@ export default class AddEditProduct extends Component {
           placeholder="Калорийность, ккал"
         />
         <div className="form__action">
-          <Link to={`/admin/`} className="control-button">
+          <Link to={`/admin/`} className="btn">
             Назад{' '}
           </Link>
           {canAdd ? (
-            <button className="control-button" type="submit">
+            <Button className="btn" type="submit">
               Добавить
-            </button>
+            </Button>
           ) : (
             ''
           )}

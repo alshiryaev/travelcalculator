@@ -9,22 +9,28 @@
    }
 }
 
-.control-button{
-    color: #000; 
-    border:none;
-    border-radius: 2px;  
+.btn{
+    display: inline-block;
+    color: rgb(110, 108, 108);
+    border: 1px solid #777;
+    outline: none;
+    border-radius: 50px;
     background-color: #fff;
     font-size: 1rem;
     font-family: inherit;
     cursor: pointer;
     min-width: 30px;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: all .2s;
 }
 
-.control-button:hover{
-    background-color: rgb(221, 221, 221);
+.btn:hover{
+   
 }
 
-.control-button_disabled{
+
+.btn:disabled{
     border:none;
     border-radius: 2px;
     font-size: 1rem;
@@ -39,10 +45,9 @@ input[type='text'] {
     font-family: 'Montserrat', sans-serif;
 }
 
-.delete-button{
+.btn.warn{
     background-color: #f67373;
     padding: 3px;
-    margin: 5px;
     border: 1px solid #f6f6f6;
     width: 20px;
     cursor: pointer;
@@ -51,10 +56,9 @@ input[type='text'] {
     color: #fff;
 }
 
-.edit-button{
+.btn.primary{
     background: white;
     padding: 3px;
-    margin: 5px;
     border: 1px solid #e2e2e2;
     width: 20px;
     cursor: pointer;

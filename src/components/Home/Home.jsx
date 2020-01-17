@@ -1,6 +1,5 @@
 import React from 'react';
 import './Home.css';
-import Sandbox from '../shared/Button/Sandbox';
 
 export function Home() {
   return (
@@ -12,12 +11,7 @@ export function Home() {
           разнообразное меню в различные виды походов. Сейчас это сплав, пеший
           поход и горный. Также на сайте планируется создать удобные таблицы
           продуктов и рецептов для походов (с фильтрами и сортировкой).
-        </p>
-        <p className="article__paragraph">
-          Мы хотим сделать этот сайт удобным для Вас, поэтому с нетерпением ждем
-          от Вас предложений и комментариев!
-        </p>
-        <Sandbox></Sandbox>
+        </p>        
       </article>
     </div>
   );

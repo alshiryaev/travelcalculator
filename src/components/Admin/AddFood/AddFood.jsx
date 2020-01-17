@@ -206,8 +206,8 @@ export default class AddFood extends Component {
                     addIngredientHandler={this.addIngredientHandler}
                 />
                 <div className="form__action">
-                    <Link to={`/admin/`} className="control-button">Назад </Link>
-                    <button onClick={this.addNewFood} className="control-button" type="submit" >Добавить</button>
+                    <Link to={`/admin/`} className="btn">Назад </Link>
+                    <button onClick={this.addNewFood} className="btn" type="submit" >Добавить</button>
                 </div>
             </div>
         )
