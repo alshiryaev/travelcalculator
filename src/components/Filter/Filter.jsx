@@ -6,8 +6,8 @@ export const Filter = ({ filter = '', queryChangeHandler = f => f, queryClearHan
     const onChangeHandler = event => queryChangeHandler(event.target.value);
     const onClickHandler = () => queryApplyHandler(filter);
 
-    return <div className="filter">
-        <input className="filter__input" value={filter} onChange={onChangeHandler} />
+    return <div className="form filter">
+        <input className="form__input" value={filter} onChange={onChangeHandler} />
         {filter.length > 0 ?
             <div className="filter__control">
                 <button className="filter__clear" onClick={queryClearHandler}>X</button>
